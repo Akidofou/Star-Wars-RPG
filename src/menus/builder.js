@@ -115,7 +115,7 @@ const builder = {
                     .setStyle(ButtonStyle.Success)
                     .setEmoji('🛌')
             );
-            
+
         return { embeds: [embed], components: [row], flags: 64 };
     },
 
@@ -124,7 +124,68 @@ const builder = {
         const plein = '🟥';
         const vide = '⬛';
         return plein.repeat(pct) + vide.repeat(10 - pct);
-    }
+    },
+
+    profil(joueur) {
+        const barre = this.barreVie(joueur.hp_actuel, joueur.hp_max);
+
+        const embed = new EmbedBuilder()
+            .setTitle(`👤 Profil de ${joueur.username}`)
+            .setDescription(
+                `**Classe :** ${joueur.classe}\n` +
+                `**Faction :** ${joueur.faction}\n` +
+                `**Niveau :** ${joueur.niveau}\n` +
+                `**XP :** ${joueur.experience}\n` +
+                `${barre}\n` +
+                `❤️ **HP :** ${joueur.hp_actuel} / ${joueur.hp_max}\n\n` +
+                `** --Statistiques-- **\n` +
+                `🛡️ Endurance : ${joueur.endurance}\n` +
+                `⚔️ Maîtrise : ${joueur.maitrise}\n` +
+                `🎯 Précision : ${joueur.precision_stat}\n` +
+                `✨ Pouvoir : ${joueur.pouvoir}\n` +
+                `💨 Esquive : ${joueur.esquive}\n` +
+                `🎲 Critique : ${joueur.critique}\n\n` +
+                `** --Points disponibles-- **\n` +
+                `📊 Point de stat : ${joueur.points_stat}\n` +
+                `📚 Point de compétence : ${joueur.points_competence}`
+            )
+            .setColor(0x1a1a2e);
+        
+        const row = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('profil_stats')
+                    .setLabel('Statistiques')
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji('📊'),
+                new ButtonBuilder()
+                    .setCustomId('profil_competences')
+                    .setLabel('Compétences')
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji('📚'),
+                new ButtonBuilder()
+                    .setCustomId('profil_equipement')
+                    .setLabel('Équipement')
+                    .setStyle(ButtonStyle.Secondary)
+                    .setEmoji('🛡️'),
+                new ButtonBuilder()
+                    .setCustomId('profil_inventaire')
+                    .setLabel('Inventaire')
+                    .setStyle(ButtonStyle.Secondary)
+                    .setEmoji('🎒'),
+            );
+        
+        const rowRetour = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('retour_menu')
+                    .setLabel('Retour')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔙')
+            );
+
+        return { embeds: [embed], components: [row, rowRetour], flags: 64 };
+    },
 };
 
 module.exports = builder;
