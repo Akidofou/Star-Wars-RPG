@@ -137,3 +137,12 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Bot Discord
+node_modules/
+.env
+
+# Base de données SQLite
+game.db
+*.db-shm
+*.db-wal

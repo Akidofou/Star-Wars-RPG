@@ -1,0 +1,40 @@
+const Database = require('better-sqlite3');
+const path = require('path');
+
+const db = new Database(path.join(__dirname,'../../game.db'));
+
+db.pragma('journal_mode = WAL');
+db.pragma('foreign_keys = ON');
+
+const initDB = () => {
+    db.exec(`
+        CREATE TABLE IF NOT EXISTS players (
+        discord_id          TEXT PRIMARY KEY,
+        username            TEXT NOT NULL,
+        classe              TEXT DEFAULT 'aucune',
+        faction             TEXT DEFAULT 'neutre',
+        niveau              INTEGER DEFAULT 1,
+        experience          INTEGER DEFAULT 0,
+        credits             INTEGER DEFAULT 500,
+        hp_actuel           INTEGER DEFAULT 50,
+        hp_max              INTEGER DEFAULT 50,
+        endurance           INTEGER DEFAULT 0,
+        maitrise            INTEGER DEFAULT 0,
+        precision_stat      INTEGER DEFAULT 0,
+        pouvoir             INTEGER DEFAULT 0,
+        esquive             INTEGER DEFAULT 0,
+        critique            INTEGER DEFAULT 0,
+        points_stat         INTEGER DEFAULT 0,
+        points_competence   INTEGER DEFAULT 0,
+        zone_actuelle       TEXT DEFAULT 'coruscant',
+        secteur_actuel      TEXT DEFAULT 'ville',
+        etat                TEXT DEFAULT 'libre',
+        created_at          TEXT DEFAULT (datetime('now')),
+        last_seen           TEXT DEFAULT (datetime('now'))
+        );
+    `);
+    
+    console.log('✅ Base de données initialisée');
+};
+
+module.exports = { db, initDB };
