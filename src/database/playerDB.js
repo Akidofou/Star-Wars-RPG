@@ -38,6 +38,9 @@ const playerDB = {
         `).all();
     },
 
+    getCodex(discord_id) {
+        return db.prepare(`SELECT * FROM codex WHERE discord_id = ?`).all(discord_id);
+    },
 };
 
 module.exports = playerDB;

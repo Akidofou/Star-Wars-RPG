@@ -255,6 +255,48 @@ const builder = {
         
     },
 
+    codex(joueur, entrtess) {
+        let description = '';
+
+        if (entrtess.length === 0) {
+            description = '*Votre codex est vide. \nExplorez la galaxie pour découvrir des ennemis, des objets et des ressources !*';
+        } else {
+            const monstres = entrtess.filter(e => e.type === 'monstre');
+            const item = entrtess.filter(e => e.type === 'item');
+            const ressources = entrtess.filter(e => e.type === 'ressource');
+
+            if (monstres.length > 0) {
+                description += '**-- Monstres découverts (${monstres.length}) --**\n';
+                monstres.forEach(e => { description += `• ${e.entree_id}\n`; });
+                description += '\n';
+            }
+            if (item.length > 0) {
+                description += '**-- Items découverts (${item.length}) --**\n';
+                item.forEach(e => { description += `• ${e.entree_id}\n`; });
+                description += '\n';
+            }
+            if (ressources.length > 0) {
+                description += '**-- Ressources découvertes (${ressources.length}) --**\n';
+                ressources.forEach(e => { description += `• ${e.entree_id}\n`; });
+            }
+        }
+
+        const embed = new EmbedBuilder()
+            .setTitle('📚 Codex')
+            .setDescription(description)
+            .setColor(0x1a1a2e);
+        
+        const rowRetour = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('retour_menu')
+                    .setLabel('Retour')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔙')
+            );
+        
+        return { embeds: [embed], components: [rowRetour], flags: 64 };
+    },
 };
 
 module.exports = builder;

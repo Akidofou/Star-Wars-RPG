@@ -18,11 +18,14 @@ module.exports = async (interaction, params) => {
 
     if (action === 'profil') {
         await interaction.update(builder.profil(joueur));
+    } else if (action === 'lieux') {
+        await interaction.update(builder.lieux(joueur));
+    } else if (action === 'codex') {
+        const entrees = playerDB.getCodex(discord_id);
+        await interaction.update(builder.codex(joueur, entrees));
     } else if (action === 'classement') {
         const classement = playerDB.getClassement();
         await interaction.update(builder.classement(classement, joueur));
-    } else if (action === 'lieux') {
-        await interaction.update(builder.lieux(joueur));
     } else if (action === 'repos') {
         await interaction.update(builder.repos(joueur));
     } else {

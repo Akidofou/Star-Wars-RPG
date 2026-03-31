@@ -32,6 +32,15 @@ const initDB = () => {
         created_at          TEXT DEFAULT (datetime('now')),
         last_seen           TEXT DEFAULT (datetime('now'))
         );
+
+        CREATE TABLE IF NOT EXISTS codex (
+        id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+        discord_id          TEXT NOT NULL,
+        type_entree         TEXT NOT NULL,
+        entree_id           TEXT NOT NULL,
+        decouvert_at        TEXT DEFAULT (datetime('now')),
+        FOREIGN KEY (discord_id) REFERENCES players(discord_id)
+        );
     `);
     
     console.log('✅ Base de données initialisée');
