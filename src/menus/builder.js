@@ -186,6 +186,75 @@ const builder = {
 
         return { embeds: [embed], components: [row, rowRetour], flags: 64 };
     },
+
+    classement(joueurs, joueurActuel) {
+        let description = '';
+
+        if (joueurs.length === 0) {
+            description = '*Aucun joueur pour le moment.*';
+        } else {
+            joueurs.forEach((joueur, index) => {
+                const medaille = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}.`;
+                const estMoi = joueur.username === joueurActuel.username ? ' ◄ Vous' : '';
+                description += `${medaille} **${joueur.username}** - ${joueur.classe} - Nv. ${joueur.niveau} - ${joueur.experience} XP${estMoi}\n`;
+            });
+        }
+
+        const embed = new EmbedBuilder()
+            .setTitle('🏆 Classement')
+            .setDescription(description)
+            .setColor(0x1a1a2e);
+
+        const rowRetour = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('retour_menu')
+                    .setLabel('Retour')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔙')
+            );
+        
+        return { embeds: [embed], components: [rowRetour], flags: 64 };
+    },
+
+    repos(joueur) {
+        const barre = this.barreVie(joueur.hp_actuel, joueur.hp_max);
+        const hpManquants = joueur.hp_max - joueur.hp_actuel;
+        const tempsRepos = hpManquants * 5;
+
+        const embed = new EmbedBuilder()
+            .setTitle('💤 Repos')
+            .setDescription(
+                `${barre}\n` +
+                `❤️ **HP :** ${joueur.hp_actuel} / ${joueur.hp_max}\n\n` +
+                (joueur.hp_actuel >= joueur.hp_max
+                    ? '✅ Vous êtes en pleine forme, aucun repos nécessaire !'
+                    : `⏱️ Temps de repos estimé : **${tempsRepos} secondes** pour récupérer complètement votre santé.\n` +
+                      `*(+1HP toutes les 5 secondes)*\n\n` +
+                      `Pendant le repos vous pouvez consulter\n` +
+                      `votre profil ou le classement.`)
+            )
+            .setColor(0x1a1a2e);
+
+        const row = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('repos_start')
+                    .setLabel('Se reposer')
+                    .setStyle(ButtonStyle.Success)
+                    .setEmoji('💤')
+                    .setDisabled(joueur.hp_actuel === joueur.hp_max),
+                new ButtonBuilder()
+                    .setCustomId('retour_menu')
+                    .setLabel('Retour')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔙')
+            );
+        
+        return { embeds: [embed], components: [row], flags: 64 };
+        
+    },
+
 };
 
 module.exports = builder;

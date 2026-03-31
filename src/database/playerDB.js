@@ -29,6 +29,15 @@ const playerDB = {
         `).run(...values);
     },
 
+    getClassement() {
+        return db.prepare(`
+            SELECT username, classe, niveau, experience
+            FROM players
+            ORDER BY niveau DESC, experience DESC
+            LIMIT 10
+        `).all();
+    },
+
 };
 
 module.exports = playerDB;

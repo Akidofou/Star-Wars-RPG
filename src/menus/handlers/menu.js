@@ -18,5 +18,19 @@ module.exports = async (interaction, params) => {
 
     if (action === 'profil') {
         await interaction.update(builder.profil(joueur));
+    } else if (action === 'classement') {
+        const classement = playerDB.getClassement();
+        await interaction.update(builder.classement(classement, joueur));
+    } else if (action === 'lieux') {
+        await interaction.update(builder.lieux(joueur));
+    } else if (action === 'repos') {
+        await interaction.update(builder.repos(joueur));
+    } else {
+        await interaction.update({
+            content: '🚧 Cette section est en cours de construction.',
+            embeds: [],
+            components: [],
+            flags: 64
+        });
     }
 };
