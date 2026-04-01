@@ -22,8 +22,11 @@ module.exports = async (interaction, params) => {
         const zonesHelper = require('../../utils/zonesHelper');
         const duche = zonesHelper.getDuche(joueur.zone_actuelle);
         const comte = zonesHelper.getComte(joueur.zone_actuelle, joueur.secteur_actuel);
+        const secteur = joueur.position === 'ville'
+            ? null
+            : zonesHelper.getSecteur(joueur.zone_actuelle, joueur.secteur_actuel, joueur.position);
         const voyages = zonesHelper.getVoyagesDisponibles(joueur.zone_actuelle, joueur.secteur_actuel);
-        await interaction.update(builder.lieux(joueur, duche, comte, null, voyages));
+        await interaction.update(builder.lieux(joueur, duche, comte, secteur, voyages));
     } else if (action === 'codex') {
         const entrees = playerDB.getCodex(discord_id);
         await interaction.update(builder.codex(joueur, entrees));

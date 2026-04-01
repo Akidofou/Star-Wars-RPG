@@ -28,6 +28,7 @@ const initDB = () => {
         points_competence   INTEGER DEFAULT 0,
         zone_actuelle       TEXT DEFAULT 'asure',
         secteur_actuel      TEXT DEFAULT 'asuria',
+        position            TEXT DEFAULT 'ville',
         etat                TEXT DEFAULT 'libre',
         created_at          TEXT DEFAULT (datetime('now')),
         last_seen           TEXT DEFAULT (datetime('now'))

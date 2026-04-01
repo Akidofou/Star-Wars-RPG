@@ -301,27 +301,33 @@ const builder = {
         const estEnVille = secteurActuel === null;
 
         const embed = new EmbedBuilder()
-            .setTitle(`🗺️ ${comte.villes.nom}`)
+            .setTitle(estEnVille ? `🏰 ${comte.villes.nom}` : `⚔️ ${secteurActuel.nom}`)
             .setDescription(
-                `**${duche.nom}** - ${comte.nom}\n\n` +
-                `${comte.villes.description}\n\n` +
+                `**${duche.nom}** — ${comte.nom}\n\n` +
                 (estEnVille
-                    ? `*Vous êtes en ville. Choisissez votre destination.*`
-                    : `*Vous êtes dans : ${secteurActuel.nom}.*\n${secteurActuel.description}\n\n` +
-                      `*Vous pouvez lancer un combat ici.*`)
+                    ? `${comte.villes.description}\n\n*Vous êtes en ville. Choisissez votre destination.*`
+                    : `${secteurActuel.description}\n\n` +
+                      `📍 Ville la plus proche : **${comte.villes.nom}**\n` +
+                      `⚠️ Niveau recommandé : **${secteurActuel.niveau_recommande}**\n\n` +
+                      `*Lancez un combat ou retournez en ville.*`)
             )
             .setColor(0x1a1a2e);
         
         const rowSecteurs = new ActionRowBuilder()
             .addComponents(
-                ...comte.secteurs.map(s => 
+                new ButtonBuilder()
+                    .setCustomId('lieux_ville')
+                    .setLabel(comte.villes.nom)
+                    .setStyle(estEnVille ? ButtonStyle.Success : ButtonStyle.Secondary)
+                    .setEmoji('🏰'),
+                ...comte.secteurs.map(s =>
                     new ButtonBuilder()
                         .setCustomId(`secteur_${s.id}`)
                         .setLabel(s.nom)
                         .setStyle(secteurActuel && secteurActuel.id === s.id
                             ? ButtonStyle.Success
                             : ButtonStyle.Secondary)
-                        .setEmoji('📍')
+                        .setEmoji('⚔️')
                 )
             );
         
