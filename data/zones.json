@@ -1,0 +1,109 @@
+{
+    "zones": [
+        {
+            "id": "coruscant",
+            "nom": "Coruscant",
+            "description": "Capital galactique entièrement recouverte d'une mégapole tentaculaire. Centre politique et économique de la galaxie.",
+            "emojis": "🏙️",
+            "niveau_recommande": 1,
+            "secteurs": [
+                {
+                    "id": "Ville",
+                    "nom": "District Sénat",
+                    "type": "ville",
+                    "description": "Le coeur politique de Coruscant. Marchands et diplomates se côtoient.",
+                    "combat": false,
+                    "niveau_recommande": 1
+                },
+                {
+                    "id": "niveau1313",
+                    "nom": "Niveau 1313",
+                    "type": "secteur",
+                    "description": "Les bas-fonds de Coruscant, repaire de criminels et de créatures dangereuses.",
+                    "combat": true,
+                    "niveau_recommande": 1
+                },
+                {
+                    "id": "marches",
+                    "nom": "Marches de l'Ombre",
+                    "type": "secteur",
+                    "description": "Zone industrielle abandonnée infestée de créatures mutantes.",
+                    "combat": true,
+                    "niveau_recommande": 3
+                },
+                {
+                    "id": "egouts",
+                    "nom": "Égouts Profonds",
+                    "type": "secteur",
+                    "description": "Les canalisations géantes abritent des créatures cavernicoles.",
+                    "combat": true,
+                    "niveau_recommande": 5
+                },
+                {
+                    "id": "ruines",
+                    "nom": "Ruines Anciennes",
+                    "type": "secteur",
+                    "description": "Vestiges d'une civilisation oubliée sous couches de la mégapole.",
+                    "combat": true,
+                    "niveau_recommande": 7
+                }
+            ]
+        },
+        {
+            "id": "tatooine",
+            "nom": "Tatooine",
+            "description": "Planète désertique avec deux soleils, peuplée de contrebandiers, de chasseurs de primes et de créatures dangereuses.",
+            "emojis": "🏜️",
+            "niveau_recommande": 4,
+            "secteurs": [
+                {
+                    "id": "Ville",
+                    "nom": "Mos Eisley",
+                    "type": "ville",
+                    "description": "La cantina la plus célèbre de la galaxie. Tout s'achète, tout se vend ici.",
+                    "combat": false,
+                    "niveau_recommande": 4
+                },
+                {
+                    "id": "desert",
+                    "nom": "Grande Mer de Sable",
+                    "type": "secteur",
+                    "description": "Dunes infinies peuplées de Banthas et de Raiders Tusken.",
+                    "combat": true,
+                    "niveau_recommande": 4
+                },
+                {
+                    "id": "canyon",
+                    "nom": "Beggar's Canyon",
+                    "type": "secteur",
+                    "description": "Gorges rocheuses infestées de Womp Rats et de prédateurs.",
+                    "combat": true,
+                    "niveau_recommande": 6
+                },
+                {
+                    "id": "ruines_jawa",
+                    "nom": "Ruines Jawa",
+                    "type": "secteur",
+                    "description": "Un Sandcrawler abandonné devenu repaire de créatures et de droïdes fous.",
+                    "combat": true,
+                    "niveau_recommande": 8
+                },
+                {
+                    "id": "grotte",
+                    "nom": "Grotte de la Sarlacc",
+                    "type": "secteur",
+                    "description": "Les abords du Puits de Carkoon, zone extrêmement dangereuse où réside le Sarlacc.",
+                    "combat": true,
+                    "niveau_recommande": 10
+                }
+            ]
+        },
+        {
+            "id": "hoth",
+            "nom": "Hoth",
+            "description": "Planète de glace hostile,
+
+
+
+    ]
+}

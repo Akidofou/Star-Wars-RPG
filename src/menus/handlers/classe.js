@@ -1,7 +1,7 @@
 const playerDB = require('../../database/playerDB');
 const builder = require('../builder');
 
-const CLASSES_VALIDES = ['jedi', 'sith', 'soldat', 'contrebandier', 'chasseur'];
+const CLASSES_VALIDES = ['guerrier', 'gardien', 'archer', 'arcaniste'];
 
 module.exports = async (interaction, params) => {
 

@@ -4,21 +4,21 @@ const builder = {
 
     intro() {
         const embed = new EmbedBuilder()
-            .setTitle('⚔️ Star Wars RPG')
+            .setTitle('⚔️ Royaume d\'Asura')
             .setDescription(
-                '**Bienvenue dans la galaxie lointaine, très lointaine...**\n\n' +
-                'Un univers de conflits, de Force et d\'aventure vous attend. \n' +
-                'Choisissez votre voie : lumière, obscurité ou entre les deux. \n\n' +
-                '© Star Wars RPG Bot'
+                '**Bienvenue dans le Royaume d\'Asura...**\n\n' +
+                'Un monde de chevaliers, de magie et de danger vous attend.\n' +
+                'Forgez votre légende dans les terres du royaume.\n\n' +
+                '© RPG Médiéval Fantasy'
             )
             .setColor(0x1a1a2e);
         const row = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
                     .setCustomId('register_start')
-                    .setLabel('S\'enregistrer')
+                    .setLabel('Commencer l\'aventure')
                     .setStyle(ButtonStyle.Primary)
-                    .setEmoji('🚀')
+                    .setEmoji('⚔️')
             );
 
         return { embeds: [embed], components: [row], flags: 64  };
@@ -30,41 +30,35 @@ const builder = {
             .setDescription(
                 'Votre classe définit votre style de combat et vos compétences.\n' +
                 'Ce choix est définitif - choisissez avec soin !\n\n' +
-                '🔵 **Jedi** - Maître de la Force, équlibré attaque/défense\n' +
-                '🔴 **Sith** - Puissance brute du côté obscur\n' +
-                '⚔️ **Soldat** - Combattant résistant, expert en armes\n' +
-                '🎲 **Contrebandier** - Rusé, taux de critique élevé\n' +
-                '🎯 **Chasseur de primes** - Précis et redoutable à distance'
+                '⚔️ **Guerrier** - Combattant offensif, maître du corps à corps\n' +
+                '🛡️ **Gardien** - Tank résistant, absorbe les dégâts\n' +
+                '🏹 **Archer** - Combattant à distance, précis et agile\n' +
+                '🔮 **Arcaniste** - Mage de soutien, maîtrise des éléments'
             )
             .setColor(0x1a1a2e);
         
         const row = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
-                    .setCustomId('classe_jedi')
-                    .setLabel('Jedi')
+                    .setCustomId('classe_guerrier')
+                    .setLabel('Guerrier')
                     .setStyle(ButtonStyle.Primary)
-                    .setEmoji('🔵'),
-                new ButtonBuilder()
-                    .setCustomId('classe_sith')
-                    .setLabel('Sith')
-                    .setStyle(ButtonStyle.Danger)
-                    .setEmoji('🔴'),
-                new ButtonBuilder()
-                    .setCustomId('classe_soldat')
-                    .setLabel('Soldat')
-                    .setStyle(ButtonStyle.Secondary)
                     .setEmoji('⚔️'),
                 new ButtonBuilder()
-                    .setCustomId('classe_contrebandier')
-                    .setLabel('Contrebandier')
-                    .setStyle(ButtonStyle.Secondary)
-                    .setEmoji('🎲'),
+                    .setCustomId('classe_gardien')
+                    .setLabel('Gardien')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🛡️'),
                 new ButtonBuilder()
-                    .setCustomId('classe_chasseur')
-                    .setLabel('Chasseur de primes')
+                    .setCustomId('classe_archer')
+                    .setLabel('Archer')
                     .setStyle(ButtonStyle.Secondary)
-                    .setEmoji('🎯')
+                    .setEmoji('🏹'),
+                new ButtonBuilder()
+                    .setCustomId('classe_arcaniste')
+                    .setLabel('Arcaniste')
+                    .setStyle(ButtonStyle.Secondary)
+                    .setEmoji('🔮')
             );
 
         return { embeds: [embed], components: [row], flags: 64 };
@@ -81,7 +75,7 @@ const builder = {
                 `HP : ${joueur.hp_actuel} / ${joueur.hp_max}\n` +
                 `Niveau : ${joueur.niveau}\n` +
                 `XP : ${joueur.experience}\n` +
-                `Crédits : ${joueur.credits}\n` +
+                `💰Pièces d'or : ${joueur.pieces_or}\n` +
                 `Zone : ${joueur.zone_actuelle}\n\n` +
                 `*Que souhaitez-vous faire ?*`
             )
@@ -139,12 +133,12 @@ const builder = {
                 `${barre}\n` +
                 `❤️ **HP :** ${joueur.hp_actuel} / ${joueur.hp_max}\n\n` +
                 `** --Statistiques-- **\n` +
-                `🛡️ Endurance : ${joueur.endurance}\n` +
-                `⚔️ Maîtrise : ${joueur.maitrise}\n` +
-                `🎯 Précision : ${joueur.precision_stat}\n` +
-                `✨ Pouvoir : ${joueur.pouvoir}\n` +
-                `💨 Esquive : ${joueur.esquive}\n` +
-                `🎲 Critique : ${joueur.critique}\n\n` +
+                `❤️ Vitalité : ${joueur.vitalite}\n` +
+                `📖 Sagesse : ${joueur.sagesse}\n` +
+                `⚔️ Force : ${joueur.force_stat}\n` +
+                `🔥 Intelligence : ${joueur.intelligence}\n` +
+                `🍀 Chance : ${joueur.chance}\n` +
+                `💨 Agilité : ${joueur.agilite}\n\n` +
                 `** --Points disponibles-- **\n` +
                 `📊 Point de stat : ${joueur.points_stat}\n` +
                 `📚 Point de compétence : ${joueur.points_competence}`
@@ -172,7 +166,7 @@ const builder = {
                     .setCustomId('profil_inventaire')
                     .setLabel('Inventaire')
                     .setStyle(ButtonStyle.Secondary)
-                    .setEmoji('🎒'),
+                    .setEmoji('🎒')
             );
         
         const rowRetour = new ActionRowBuilder()
@@ -255,28 +249,28 @@ const builder = {
         
     },
 
-    codex(joueur, entrtess) {
+    codex(joueur, entrees) {
         let description = '';
 
-        if (entrtess.length === 0) {
-            description = '*Votre codex est vide. \nExplorez la galaxie pour découvrir des ennemis, des objets et des ressources !*';
+        if (entrees.length === 0) {
+            description = '*Votre codex est vide. \nExplorez le royaume pour découvrir des créatures, des objets et des ressources !*';
         } else {
-            const monstres = entrtess.filter(e => e.type === 'monstre');
-            const item = entrtess.filter(e => e.type === 'item');
-            const ressources = entrtess.filter(e => e.type === 'ressource');
+            const monstres = entrees.filter(e => e.type_entree === 'monstre');
+            const item = entrees.filter(e => e.type_entree === 'item');
+            const ressources = entrees.filter(e => e.type_entree === 'ressource');
 
             if (monstres.length > 0) {
-                description += '**-- Monstres découverts (${monstres.length}) --**\n';
+                description += `**-- Monstres découverts (${monstres.length}) --**\n`;
                 monstres.forEach(e => { description += `• ${e.entree_id}\n`; });
                 description += '\n';
             }
             if (item.length > 0) {
-                description += '**-- Items découverts (${item.length}) --**\n';
+                description += `**-- Items découverts (${item.length}) --**\n`;
                 item.forEach(e => { description += `• ${e.entree_id}\n`; });
                 description += '\n';
             }
             if (ressources.length > 0) {
-                description += '**-- Ressources découvertes (${ressources.length}) --**\n';
+                description += `**-- Ressources découvertes (${ressources.length}) --**\n`;
                 ressources.forEach(e => { description += `• ${e.entree_id}\n`; });
             }
         }
