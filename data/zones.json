@@ -204,7 +204,7 @@
             "nom": "Duché de Grismonts",
             "description": "Grande maison noble réputée pour ses chevaliers d'élite. La famille Greyrat entretient des liens étroits avec la couronne et les Vermillion.",
             "dirigeant": "Famille Greyrat",
-            "capital": "greymonts",
+            "capital": "greymont",
             "comtes": [
                 {
                     "id": "greymont",
