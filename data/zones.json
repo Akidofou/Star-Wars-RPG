@@ -1,109 +1,270 @@
 {
-    "zones": [
+    "duchies": [
         {
-            "id": "coruscant",
-            "nom": "Coruscant",
-            "description": "Capital galactique entièrement recouverte d'une mégapole tentaculaire. Centre politique et économique de la galaxie.",
-            "emojis": "🏙️",
-            "niveau_recommande": 1,
-            "secteurs": [
+            "id": "asure",
+            "nom": "Duché d'Asure",
+            "description": "Berceau de la famille royale Asura, ce duché est le coeur politique et culturel du royaume.",
+            "dirigeant": "Famille Asura - Charle II",
+            "capital": "asuria",
+            "comtes": [
                 {
-                    "id": "Ville",
-                    "nom": "District Sénat",
-                    "type": "ville",
-                    "description": "Le coeur politique de Coruscant. Marchands et diplomates se côtoient.",
-                    "combat": false,
-                    "niveau_recommande": 1
+                    "id": "asuria",
+                    "nom": "Comté d'Asuria",
+                    "capitale_ducale": true,
+                    "capitale_royale": true,
+                    "villes": {
+                        "id": "asuria",
+                        "nom": "Asuria",
+                        "description": "Capitale royale du Royaume d'Asura. Ses remparts dorés et ses tours majestueuses dominent les terres environnantes. Centre du pouvoir politique, économique et culturel du royaume. ",
+                        "type": "capitale_royale",
+                        "voyage_inter_duches": true
+                    },
+                    "secteurs": [
+                        {
+                            "id": "foret_sylvane",
+                            "nom": "Forêt de Sylvane",
+                            "description": "Forêt royale protégée aux abords de la capitale. Braconniers et créatures des bois y rôdent.",
+                            "niveau_recommande": 1,
+                            "combat": true
+                        },
+                        {
+                            "id": "collines_valdren",
+                            "nom": "Collines de Valdren",
+                            "description": "Collines venteuses balayées par les vents du nord. Brigands et loups sauvages y font la loi.",
+                            "niveau_recommande": 3,
+                            "combat": true
+                        },
+                        {
+                            "id": "marais_morfen",
+                            "nom": "Marais de Morfen",
+                            "description": "Marais sombres et pestilentiels à l'ouest d'Asuria. Créatures putrides et esprits des marais y errent.",
+                            "niveau_recommande": 5,
+                            "combat": true
+                        }
+                    ]
                 },
                 {
-                    "id": "niveau1313",
-                    "nom": "Niveau 1313",
-                    "type": "secteur",
-                    "description": "Les bas-fonds de Coruscant, repaire de criminels et de créatures dangereuses.",
-                    "combat": true,
-                    "niveau_recommande": 1
+                    "id": "lorne",
+                    "nom": "Comté de Lorne",
+                    "capitale_ducale": false,
+                    "capitale_royale": false,
+                    "villes": {
+                        "id": "lorne",
+                        "nom": "Lorne",
+                        "description": "Paisible ville agricole au cœur des plaines d'Asure. Marché animé et habitants chaleureux.",
+                        "type": "ville",
+                        "voyage_inter_duches": false
+                    },
+                    "secteurs": [
+                        {
+                            "id": "plaines_bletarn",
+                            "nom": "Plaines de Blétarn",
+                            "description": "Vastes plaines agricoles infestées de bandits de grand chemin et de créatures des champs.",
+                            "niveau_recommande": 2,
+                            "combat": true
+                        },
+                        {
+                            "id": "bois_corneval",
+                            "nom": "Bois de Corneval",
+                            "description": "Forêt dense aux arbres centenaires. Sangliers géants et rôdeurs embusqués y guettent les voyageurs.",
+                            "niveau_recommande": 4,
+                            "combat": true
+                        }
+                    ]
                 },
                 {
-                    "id": "marches",
-                    "nom": "Marches de l'Ombre",
-                    "type": "secteur",
-                    "description": "Zone industrielle abandonnée infestée de créatures mutantes.",
-                    "combat": true,
-                    "niveau_recommande": 3
-                },
-                {
-                    "id": "egouts",
-                    "nom": "Égouts Profonds",
-                    "type": "secteur",
-                    "description": "Les canalisations géantes abritent des créatures cavernicoles.",
-                    "combat": true,
-                    "niveau_recommande": 5
-                },
-                {
-                    "id": "ruines",
-                    "nom": "Ruines Anciennes",
-                    "type": "secteur",
-                    "description": "Vestiges d'une civilisation oubliée sous couches de la mégapole.",
-                    "combat": true,
-                    "niveau_recommande": 7
+                    "id": "valdris",
+                    "nom": "Comté de Valdris",
+                    "capitale_ducale": false,
+                    "capitale_royale": false,
+                    "villes": {
+                        "id": "valdris",
+                        "nom": "Valdris",
+                        "description": "Ville nordique austère entourée de forêts denses. Connue pour ses bûcherons et ses chasseurs aguerris.",
+                        "type": "ville",
+                        "voyage_inter_duches": false
+                    },
+                    "secteurs": [
+                        {
+                            "id": "foret_noire_valdris",
+                            "nom": "Forêt Noire de Valdris",
+                            "description": "Forêt sombre et dense où la lumière peine à pénétrer. Créatures nocturnes et chasseurs renégats y sévissent.",
+                            "niveau_recommande": 6,
+                            "combat": true
+                        },
+                        {
+                            "id": "grottes_kelvorn",
+                            "nom": "Grottes de Kelvorn",
+                            "description": "Réseau de grottes humides sous les collines de Valdris. Gobelins et créatures souterraines en ont fait leur repaire.",
+                            "niveau_recommande": 8,
+                            "combat": true
+                        }
+                    ]
                 }
             ]
         },
         {
-            "id": "tatooine",
-            "nom": "Tatooine",
-            "description": "Planète désertique avec deux soleils, peuplée de contrebandiers, de chasseurs de primes et de créatures dangereuses.",
-            "emojis": "🏜️",
-            "niveau_recommande": 4,
-            "secteurs": [
+            "id": "vermillion",
+            "nom": "Duché de Vermillion",
+            "description":"Duché au prestige militaire et politique sans égal. La famille Vermillion en a fait une puissance redoutable.",
+            "dirigeant": "Famille Vermillion",
+            "capital": "vermis",
+            "comtes": [
                 {
-                    "id": "Ville",
-                    "nom": "Mos Eisley",
-                    "type": "ville",
-                    "description": "La cantina la plus célèbre de la galaxie. Tout s'achète, tout se vend ici.",
-                    "combat": false,
-                    "niveau_recommande": 4
+                    "id": "vermis",
+                    "nom": "Comté de Vermis",
+                    "capitale_ducale": true,
+                    "capitale_royale": false,
+                    "villes": {
+                        "id": "vermis",
+                        "nom": "Vermis",
+                        "description": "Capitale militaire du Duché de Vermillion. Ses fortifications impressionnantes et ses garnisons en font la ville la mieux défendue du royaume.",
+                        "type": "capitale_ducale",
+                        "voyage_inter_duches": true
+                    },
+                    "secteurs": [
+                        {
+                            "id": "champs_sangrave",
+                            "nom": "Champs de Sangrave",
+                            "description": "Anciens champs de bataille où le sang a imprégné la terre. Esprits guerriers et charognards hantent ces lieux maudits.",
+                            "niveau_recommande": 10,
+                            "combat": true
+                        },
+                        {
+                            "id": "ruines_drakmor",
+                            "nom": "Forteresse en ruine de Drakmor",
+                            "description": "Ancienne forteresse effondrée. Golems brisés et gardiens corrompus en défendent encore les ruines.",
+                            "niveau_recommande": 13,
+                            "combat": true
+                        }
+                    ]
                 },
                 {
-                    "id": "desert",
-                    "nom": "Grande Mer de Sable",
-                    "type": "secteur",
-                    "description": "Dunes infinies peuplées de Banthas et de Raiders Tusken.",
-                    "combat": true,
-                    "niveau_recommande": 4
+                    "id": "braven",
+                    "nom": "Comté de Braven",
+                    "capitale_ducale": false,
+                    "capitale_royale": false,
+                    "villes": {
+                        "id": "braven",
+                        "nom": "Braven",
+                        "description": "Ville frontalière au caractère rude. Ses habitants sont endurcis par les années de tensions aux frontières du duché.",
+                        "type": "ville",
+                        "voyage_inter_duches": false
+                    },
+                    "secteurs": [
+                        {
+                            "id": "plaines_stervall",
+                            "nom": "Plaines de Stervall",
+                            "description": "Plaines balayées par les vents où d'anciens conflits ont laissé des cicatrices. Mercenaires hostiles et créatures de guerre y rôdent.",
+                            "niveau_recommande": 11,
+                            "combat": true
+                        },
+                        {
+                            "id": "ravins_kettorn",
+                            "nom": "Ravins de Kettorn",
+                            "description": "Ravins escarpés propices aux embuscades. Créatures des ravins et brigands organisés y tendent des pièges.",
+                            "niveau_recommande": 12,
+                            "combat": true
+                        }
+                    ]
                 },
                 {
-                    "id": "canyon",
-                    "nom": "Beggar's Canyon",
-                    "type": "secteur",
-                    "description": "Gorges rocheuses infestées de Womp Rats et de prédateurs.",
-                    "combat": true,
-                    "niveau_recommande": 6
-                },
-                {
-                    "id": "ruines_jawa",
-                    "nom": "Ruines Jawa",
-                    "type": "secteur",
-                    "description": "Un Sandcrawler abandonné devenu repaire de créatures et de droïdes fous.",
-                    "combat": true,
-                    "niveau_recommande": 8
-                },
-                {
-                    "id": "grotte",
-                    "nom": "Grotte de la Sarlacc",
-                    "type": "secteur",
-                    "description": "Les abords du Puits de Carkoon, zone extrêmement dangereuse où réside le Sarlacc.",
-                    "combat": true,
-                    "niveau_recommande": 10
+                    "id": "skareth",
+                    "nom": "Comté de Skareth",
+                    "capitale_ducale": false,
+                    "capitale_royale": false,
+                    "villes": {
+                        "id": "skareth",
+                        "nom": "Skareth",
+                        "description": "Ville isolée à l'est du duché. Connue pour ses marchands d'armes et ses arènes de combat clandestines.",
+                        "type": "ville",
+                        "voyage_inter_duches": false
+                    },
+                    "secteurs": [
+                        {
+                            "id": "landes_morreth",
+                            "nom": "Landes de Morreth",
+                            "description": "Landes désolées où règne un vent glacial. Créatures des landes et sorciers bannis y ont trouvé refuge.",
+                            "niveau_recommande": 14,
+                            "combat": true
+                        },
+                        {
+                            "id": "ruines_askar",
+                            "nom": "Ruines d'Askar",
+                            "description": "Vestiges d'une ancienne cité engloutie par la guerre. Mort-vivants et gardiens spectraux en gardent jalousement les secrets.",
+                            "niveau_recommande": 16,
+                            "combat": true
+                        }
+                    ]
                 }
-            ]
+            ]    
         },
         {
-            "id": "hoth",
-            "nom": "Hoth",
-            "description": "Planète de glace hostile,
-
-
-
+            "id": "grismonts",
+            "nom": "Duché de Grismonts",
+            "description": "Grande maison noble réputée pour ses chevaliers d'élite. La famille Greyrat entretient des liens étroits avec la couronne et les Vermillion.",
+            "dirigeant": "Famille Greyrat",
+            "capital": "greymonts",
+            "comtes": [
+                {
+                    "id": "greymont",
+                    "nom": "Comté de Greymont",
+                    "capitale_ducale": true,
+                    "capitale_royale": false,
+                    "villes": {
+                        "id": "greymont",
+                        "nom": "Greymont",
+                        "description": "Capitale chevaleresque du Duché de Grismonts. Ses tournois légendaires et ses ordres de chevalerie en font un symbole d'honneur et de noblesse.",
+                        "type": "capitale_ducale",
+                        "voyage_inter_duches": true
+                    },
+                    "secteurs": [
+                        {
+                            "id": "foret_greymoor",
+                            "nom": "Forêt de Greymoor",
+                            "description": "Forêt ancestrale giboyeuse où les chevaliers de Grismonts organisent leurs chasses rituelles. Loups géants et créatures nobles y règnent.",
+                            "niveau_recommande": 18,
+                            "combat": true
+                        },
+                        {
+                            "id": "montagnes_grimspire",
+                            "nom": "Montagnes de Grimspire",
+                            "description": "Pics rocheux battus par les tempêtes. Griffons et géants des montagnes défient quiconque ose s'aventurer en altitude.",
+                            "niveau_recommande": 20,
+                            "combat": true
+                        }
+                    ]
+                },
+                {
+                    "id": "valdmoor",
+                    "nom": "Comté de Valdmoor",
+                    "capitale_ducale": false,
+                    "capitale_royale": false,
+                    "villes": {
+                        "id": "valdmoor",
+                        "nom": "Valdmoor",
+                        "description": "Ville isolée nichée dans les contreforts des montagnes. Ses habitants robustes vivent de l'élevage et de l'exploitation minière.",
+                        "type": "ville",
+                        "voyage_inter_duches": false
+                    },
+                    "secteurs": [
+                        {
+                            "id": "landes_valdmoor",
+                            "nom": "Landes de Valdmoor",
+                            "description": "Landes sauvages et venteuses aux confins du duché. Créatures des landes et bandits montagnards y font régner la terreur.",
+                            "niveau_recommande": 19,
+                            "combat": true
+                        },
+                        {
+                            "id": "cavernes_duskhollow",
+                            "nom": "Cavernes de Duskhollow",
+                            "description": "Réseau de cavernes profondes sous les montagnes de Valdmoor. Trolls et créatures cavernicoles en ont fait leur territoire.",
+                            "niveau_recommande": 21,
+                            "combat": true
+                        }
+                    ]
+                }
+            ]    
+        }
     ]
 }
