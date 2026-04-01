@@ -166,7 +166,12 @@ const builder = {
                     .setCustomId('profil_inventaire')
                     .setLabel('Inventaire')
                     .setStyle(ButtonStyle.Secondary)
-                    .setEmoji('🎒')
+                    .setEmoji('🎒'),
+                new ButtonBuilder()
+                    .setCustomId('profil_quetes')
+                    .setLabel('Journal de quêtes')
+                    .setStyle(ButtonStyle.Secondary)
+                    .setEmoji('📖')
             );
         
         const rowRetour = new ActionRowBuilder()
@@ -292,7 +297,7 @@ const builder = {
         return { embeds: [embed], components: [rowRetour], flags: 64 };
     },
 
-    lieux(joueur, duche, comte, secteurActuel) {
+    lieux(joueur, duche, comte, secteurActuel, voyages) {
         const estEnVille = secteurActuel === null;
 
         const embed = new EmbedBuilder()
@@ -302,12 +307,60 @@ const builder = {
                 `${comte.villes.description}\n\n` +
                 (estEnVille
                     ? `*Vous êtes en ville. Choisissez votre destination.*`
-                    : `*Vous êtes dans : ${secteurActuel.nom}.*\n${secteurActuel.description}`)
+                    : `*Vous êtes dans : ${secteurActuel.nom}.*\n${secteurActuel.description}\n\n` +
+                      `*Vous pouvez lancer un combat ici.*`)
             )
             .setColor(0x1a1a2e);
         
-        const rowRetour = new ActionRowBuilder()
+        const rowSecteurs = new ActionRowBuilder()
             .addComponents(
+                ...comte.secteurs.map(s => 
+                    new ButtonBuilder()
+                        .setCustomId(`secteur_${s.id}`)
+                        .setLabel(s.nom)
+                        .setStyle(secteurActuel && secteurActuel.id === s.id
+                            ? ButtonStyle.Success
+                            : ButtonStyle.Secondary)
+                        .setEmoji('📍')
+                )
+            );
+        
+        const rowServices = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('lieux_marchand')
+                    .setLabel('Marchand')
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji('🛒')
+                    .setDisabled(!estEnVille),
+                new ButtonBuilder()
+                    .setCustomId('lieux_pnj')
+                    .setLabel('Quêtes')
+                    .setStyle(ButtonStyle.Secondary)
+                    .setEmoji('📜')
+                    .setDisabled(!estEnVille),
+                new ButtonBuilder()
+                    .setCustomId('lieux_marche')
+                    .setLabel('Marché joueur')
+                    .setStyle(ButtonStyle.Secondary)
+                    .setEmoji('💰')
+                    .setDisabled(!estEnVille)
+            );
+        
+        const rowNavigation = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('lieux_voyages')
+                    .setLabel('Voyages')
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji('🛫')
+                    .setDisabled(!estEnVille),
+                new ButtonBuilder()
+                    .setCustomId('lieux_combat')
+                    .setLabel('Combat !')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('⚔️')
+                    .setDisabled(estEnVille),
                 new ButtonBuilder()
                     .setCustomId('retour_menu')
                     .setLabel('Retour')
@@ -315,7 +368,7 @@ const builder = {
                     .setEmoji('🔙')
             );
         
-        return { embeds: [embed], components: [rowRetour], flags: 64 };
+        return { embeds: [embed], components: [rowSecteurs, rowServices, rowNavigation], flags: 64 };
     },
 };
 
