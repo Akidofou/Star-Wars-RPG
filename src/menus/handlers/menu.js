@@ -19,7 +19,10 @@ module.exports = async (interaction, params) => {
     if (action === 'profil') {
         await interaction.update(builder.profil(joueur));
     } else if (action === 'lieux') {
-        await interaction.update(builder.lieux(joueur));
+        const zonesHelper = require('../../utils/zonesHelper');
+        const duche = zonesHelper.getDuche(joueur.zone_actuelle);
+        const comte = zonesHelper.getComte(joueur.zone_actuelle, joueur.secteur_actuel);
+        await interaction.update(builder.lieux(joueur, duche, comte, null));
     } else if (action === 'codex') {
         const entrees = playerDB.getCodex(discord_id);
         await interaction.update(builder.codex(joueur, entrees));

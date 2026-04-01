@@ -291,6 +291,32 @@ const builder = {
         
         return { embeds: [embed], components: [rowRetour], flags: 64 };
     },
+
+    lieux(joueur, duche, comte, secteurActuel) {
+        const estEnVille = secteurActuel === null;
+
+        const embed = new EmbedBuilder()
+            .setTitle(`🗺️ ${comte.villes.nom}`)
+            .setDescription(
+                `**${duche.nom}** - ${comte.nom}\n\n` +
+                `${comte.villes.description}\n\n` +
+                (estEnVille
+                    ? `*Vous êtes en ville. Choisissez votre destination.*`
+                    : `*Vous êtes dans : ${secteurActuel.nom}.*\n${secteurActuel.description}`)
+            )
+            .setColor(0x1a1a2e);
+        
+        const rowRetour = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('retour_menu')
+                    .setLabel('Retour')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔙')
+            );
+        
+        return { embeds: [embed], components: [rowRetour], flags: 64 };
+    },
 };
 
 module.exports = builder;
