@@ -5,18 +5,15 @@ const builder = require('../menus/builder');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('game')
-        .setDescription('Lancer le jeu Star Wars RPG'),
+        .setDescription('Lancer le jeu - Royaume d\'Asura'),
 
     async execute(interaction) {
 
         const discord_id = interaction.user.id;
-        const username = interaction.user.username;
 
         if (playerDB.exists(discord_id)) {
-            await interaction.reply({
-                content: '✅ Vous êtes déjà enregistré .',
-                flags: 64
-            });
+            const joueur = playerDB.get(discord_id);
+            await interaction.reply(builder.menuPrincipal(joueur));
         } else {
             await interaction.reply(builder.intro());
         }
