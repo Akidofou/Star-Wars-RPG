@@ -1,0 +1,135 @@
+{
+    "sorts": [
+        {
+            "id": 1001,
+            "nom": "Morsure",
+            "description": "Une morsure puissante infligeant des dégâts terre.",
+            "element": "terre",
+            "stat_liee": "force_stat",
+            "type": "attaque",
+            "cible": "ennemi",
+            "niveaux": [
+                { "niveau": 1, "degats_min": 1, "degats_max": 4, "ec": 50, "cc": 0, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 2, "degats_max": 5, "ec": 50, "cc": 0, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 2, "degats_max": 6, "ec": 50, "cc": 0, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 3, "degats_max": 7, "ec": 50, "cc": 0, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 3, "degats_max": 8, "ec": 50, "cc": 0, "cooldown": 0 }
+            ]
+        },
+        {
+            "id": 1002,
+            "nom": "Griffe Sauvage",
+            "description": "Un coup de griffe rapide infligeant des dégâts air.",
+            "element": "air",
+            "stat_liee": "agilite",
+            "type": "attaque",
+            "cible": "ennemi",
+            "niveaux": [
+                { "niveau": 1, "degats_min": 1, "degats_max": 3, "ec": 50, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 1, "degats_max": 4, "ec": 50, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 2, "degats_max": 5, "ec": 50, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 2, "degats_max": 6, "ec": 50, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 3, "degats_max": 7, "ec": 50, "cc": 50, "cooldown": 0 }
+            ]
+        },
+        {
+            "id": 1003,
+            "nom": "Tir à l'Arc",
+            "description": "Un tir précis infligeant des dégâts air.",
+            "element": "air",
+            "stat_liee": "agilite",
+            "type": "attaque",
+            "cible": "ennemi",
+            "niveaux": [
+                { "niveau": 1, "degats_min": 2, "degats_max": 5, "ec": 100, "cc": 30, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 3, "degats_max": 6, "ec": 100, "cc": 30, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 30, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 4, "degats_max": 8, "ec": 100, "cc": 30, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 4, "degats_max": 10, "ec": 100, "cc": 30, "cooldown": 0 }
+            ]
+        },
+        {
+            "id": 1004,
+            "nom": "Coup de Couteau",
+            "description": "Un coup sournois au corps à corps infligeant des dégâts neutres.",
+            "element": "neutre",
+            "stat_liee": "meilleure_stat",
+            "type": "attaque",
+            "cible": "ennemi",
+            "niveaux": [
+                { "niveau": 1, "degats_min": 1, "degats_max": 4, "ec": 50, "cc": 40, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 2, "degats_max": 5, "ec": 50, "cc": 40, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 2, "degats_max": 6, "ec": 50, "cc": 40, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 3, "degats_max": 7, "ec": 50, "cc": 40, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 3, "degats_max": 8, "ec": 50, "cc": 40, "cooldown": 0 }
+            ]
+        },
+        {
+            "id": 1005,
+            "nom": "Piège de Chasse",
+            "description": "Pose un piège qui réduit l'agilité de la cible pendant 2 tours.",
+            "element": "neutre",
+            "stat_liee": "meilleure_stat",
+            "type": "debuff",
+            "cible": "ennemi",
+            "effet": { "stat": "agilite", "valeur": -3, "duree": 2 },
+            "niveaux": [
+                { "niveau": 1, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 4, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "ec": 100, "cc": 0, "cooldown": 3 }
+            ]
+        },
+        {
+            "id": 1006,
+            "nom": "Morsure Venimeuse",
+            "description": "Une morsure qui inflige des dégâts eau et empoisonne la cible pendant 3 tours.",
+            "element": "eau",
+            "stat_liee": "chance",
+            "type": "attaque_effet",
+            "cible": "ennemi",
+            "effet": { "type": "poison", "degats_par_tour": 2, "duree": 3 },
+            "niveaux": [
+                { "niveau": 1, "degats_min": 1, "degats_max": 4, "ec": 100, "cc": 0, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 2, "degats_max": 5, "ec": 100, "cc": 0, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 2, "degats_max": 6, "ec": 100, "cc": 0, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 0, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 3, "degats_max": 8, "ec": 100, "cc": 0, "cooldown": 0 }
+            ]
+        },
+        {
+            "id": 1007,
+            "nom": "Toile Adhésive",
+            "description": "Projette une toile qui réduit l'agilité de la cible pendant 2 tours.",
+            "element": "neutre",
+            "stat_liee": "meilleure_stat",
+            "type": "debuff",
+            "cible": "ennemi",
+            "effet": { "stat": "agilite", "valeur": -4, "duree": 2 },
+            "niveaux": [
+                { "niveau": 1, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 5, "ec": 100, "cc": 0, "cooldown": 4 }
+            ]
+        },
+        {
+            "id": 1008,
+            "nom": "Bond Foudroyant",
+            "description": "L'araignée bondit sur sa proie infligeant de lourds dégâts air.",
+            "element": "air",
+            "stat_liee": "agilite",
+            "type": "attaque",
+            "cible": "ennemi",
+            "niveaux": [
+                { "niveau": 1, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 4, "degats_max": 8, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 4, "degats_max": 9, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 5, "degats_max": 10, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 5, "degats_max": 12, "ec": 100, "cc": 40, "cooldown": 0 }  
+            ]
+        }
+    ]
+}
