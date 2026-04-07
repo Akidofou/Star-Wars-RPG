@@ -2,6 +2,7 @@ const playerDB = require('../../database/playerDB');
 const builder = require('../builder');
 const zonesHelper = require('../../utils/zonesHelper');
 const combatEngine = require('../../game/combat');
+const spellsDB = require('../../database/spellsDB');
 
 module.exports = async (interaction, params) => {
 
@@ -20,9 +21,11 @@ module.exports = async (interaction, params) => {
 
     if (action === 'combat') {
         const combatActif = combatEngine.getCombatActif(discord_id);
+        const sorts = spellsDB.getSortsDisponibles(discord_id, joueur.classe, joueur.niveau);
+        
         if (combatActif) {
             const enemyData = require('../../../data/enemies.json').enemies.find(e => e.id === combatActif.enemy_id);
-            await interaction.update(builder.combat(joueur, combatActif, enemyData));
+            await interaction.update(builder.combat(joueur, combatActif, enemyData, sorts));
             return;
         }
 
@@ -44,7 +47,7 @@ module.exports = async (interaction, params) => {
 
         const nouveauCombat = combatEngine.creerCombat(discord_id, resultat.enemy, resultat.variante);
         const enemyData = require('../../../data/enemies.json').enemies.find(e => e.id === nouveauCombat.enemy_id);
-        await interaction.update(builder.combat(joueur, nouveauCombat, enemyData));
+        await interaction.update(builder.combat(joueur, nouveauCombat, enemyData, sorts));
         return;
     }
 

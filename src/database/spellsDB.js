@@ -27,7 +27,8 @@ const spellsDB = {
                 return {
                     ...s,
                     niveau_actuel: sortJoueur ? sortJoueur.niveau : 1,
-                    debloque: true
+                    debloque: true,
+                    sort_id: s.id
                 };
             });
     },

@@ -427,12 +427,15 @@ const builder = {
         return { embeds: [embed], components: [rowRetour], flags: 64 };
     },
 
-    combat(joueur, combatData, enemyData) {
+    combat(joueur, combatData, enemyData, sorts) {
         const barreJoueur = this.barreVie(joueur.hp_actuel, joueur.hp_max);
         const enemyStats = typeof combatData.enemy_stats === 'string'
             ? JSON.parse(combatData.enemy_stats)
             : combatData.enemy_stats;
         const barreEnemy = this.barreVie(enemyStats.hp, enemyStats.hp_max || enemyStats.hp);
+        const cooldowns = typeof combatData.cooldowns_joueur === 'string'
+            ? JSON.parse(combatData.cooldowns_joueur)
+            : combatData.cooldowns_joueur;
 
         const embed = new EmbedBuilder()
             .setTitle('⚔️ Combat !')
@@ -448,6 +451,21 @@ const builder = {
             )
             .setColor(0x8b0000);
 
+        const rowAttaques = new ActionRowBuilder()
+            .addComponents(
+                ...sorts.slice(0, 4).map(sort => {
+                    const enCooldown = cooldowns[sort.sort_id] > 0;
+                    return new ButtonBuilder()
+                        .setCustomId(`attaque_${sort.sort_id}`)
+                        .setLabel(enCooldown
+                            ? `${sort.nom} (${cooldowns[sort.sort_id]})`
+                            : sort.nom)
+                        .setStyle(ButtonStyle.Primary)
+                        .setEmoji('⚔️')
+                        .setDisabled(enCooldown);
+                })
+            );
+
         const rowFuite = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
@@ -457,7 +475,8 @@ const builder = {
                     .setEmoji('🏃‍♂️')
             );
         
-        return { embeds: [embed], components: [rowFuite], flags: 64 };
+        const components = sorts.length > 0 ? [rowAttaques, rowFuite] : [rowFuite];
+        return { embeds: [embed], components, flags: 64 };
     },
 
 };
