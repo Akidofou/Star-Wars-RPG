@@ -1,5 +1,6 @@
 const playerDB = require('../../database/playerDB');
 const builder = require('../builder');
+const spellsDB = require('../../database/spellsDB');
 
 const CLASSES_VALIDES = ['guerrier', 'gardien', 'archer', 'arcaniste'];
 
@@ -24,6 +25,7 @@ module.exports = async (interaction, params) => {
     }
 
     playerDB.update(discord_id, { classe: classeId });
+    spellsDB.initialiserSortsDepart(discord_id, classeId);
 
     const joueurMisAJour = playerDB.get(discord_id);
     await interaction.update(builder.menuPrincipal(joueurMisAJour));

@@ -43,6 +43,14 @@ const initDB = () => {
         FOREIGN KEY (discord_id) REFERENCES players(discord_id)
         );
 
+        CREATE TABLE IF NOT EXISTS competences_joueur (
+        id            INTEGER PRIMARY KEY AUTOINCREMENT,
+        discord_id    TEXT NOT NULL,
+        competence_id INTEGER NOT NULL,
+        niveau        INTEGER DEFAULT 1,
+        FOREIGN KEY (discord_id) REFERENCES players(discord_id)
+        );
+
         CREATE TABLE IF NOT EXISTS combats (
         id                  INTEGER PRIMARY KEY AUTOINCREMENT,
         discord_id          TEXT NOT NULL,
