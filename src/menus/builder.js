@@ -377,6 +377,56 @@ const builder = {
         return { embeds: [embed], components: [rowSecteurs, rowServices, rowNavigation], flags: 64 };
     },
 
+    competences(joueur, sorts) {
+        let description = '';
+
+        if (sorts.length === 0) {
+            description = '*Aucun sort disponible.*';
+        } else {
+            sorts.forEach(sort => {
+                const niveauData = sort.niveaux.find(n => n.niveau === sort.niveau_actuel);
+                const coutProchain = sort.niveau_actuel < 5 ? sort.niveau_actuel : null;
+                description += `**${sort.nom}** — Nv.${sort.niveau_actuel}/5`;
+                description += sort.niveau_deblocage > 1 ? ` *(débloqué lvl ${sort.niveau_deblocage})*` : '';
+                description += `\n`;
+                description += `*${sort.description}*\n`;
+                if (niveauData.degats_min) {
+                    description += `⚔️ Dégâts : ${niveauData.degats_min} à ${niveauData.degats_max}`;
+                    if (sort.composantes) description += ` (${sort.composantes.map(c => c.element).join(' + ')})`;
+                    description += `\n`;
+                }
+                if (niveauData.valeur) description += `✨ Effet : ${niveauData.valeur}\n`;
+                if (niveauData.duree) description += `⏱️ Durée : ${niveauData.duree} tours\n`;
+                if (niveauData.cooldown > 0) description += `🔄 Cooldown : ${niveauData.cooldown} tours\n`;
+                if (coutProchain) {
+                    description += `💡 Améliorer : ${coutProchain} point(s) de compétence\n`;
+                } else {
+                    description += `✅ Sort au niveau maximum\n`;
+                }
+                description += `\n`;
+            });
+        }
+
+        const embed = new EmbedBuilder()
+            .setTitle(`📚 Compétences de ${joueur.username}`)
+            .setDescription(
+                `📊 Points de compétence disponibles : **${joueur.points_competence}**\n\n` +
+                description
+            )
+            .setColor(0x1a1a2e);
+        
+        const rowRetour = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('retour_profil')
+                    .setLabel('Retour')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔙')
+            );
+        
+        return { embeds: [embed], components: [rowRetour], flags: 64 };
+    },
+
     combat(joueur, combatData, enemyData) {
         const barreJoueur = this.barreVie(joueur.hp_actuel, joueur.hp_max);
         const enemyStats = typeof combatData.enemy_stats === 'string'

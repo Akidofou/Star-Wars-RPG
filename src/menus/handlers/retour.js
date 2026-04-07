@@ -18,5 +18,7 @@ module.exports = async (interaction, params) => {
 
     if (destination === 'menu') {
         await interaction.update(builder.menuPrincipal(joueur));
+    } else if (destination === 'profil') {
+        await interaction.update(builder.profil(joueur));
     }
 };
