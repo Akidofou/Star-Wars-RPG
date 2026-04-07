@@ -376,6 +376,40 @@ const builder = {
         
         return { embeds: [embed], components: [rowSecteurs, rowServices, rowNavigation], flags: 64 };
     },
+
+    combat(joueur, combatData, enemyData) {
+        const barreJoueur = this.barreVie(joueur.hp_actuel, joueur.hp_max);
+        const enemyStats = typeof combatData.enemy_stats === 'string'
+            ? JSON.parse(combatData.enemy_stats)
+            : combatData.enemy_stats;
+        const barreEnemy = this.barreVie(enemyStats.hp, enemyStats.hp_max || enemyStats.hp);
+
+        const embed = new EmbedBuilder()
+            .setTitle('⚔️ Combat !')
+            .setDescription(
+                `**- Vous -**\n` +
+                `${barreJoueur}\n` +
+                `❤️ HP : ${joueur.hp_actuel} / ${joueur.hp_max}\n\n` +
+                `⭐ Niveau : ${joueur.niveau}\n\n` +
+                `**- ${enemyData ? enemyData.nom : 'Ennemi'} (Nv.${combatData.enemy_niveau}) -**\n` +
+                `${barreEnemy}\n` +
+                `❤️ HP : ${enemyStats.hp} / ${enemyStats.hp_max || enemyStats.hp}\n\n` +
+                `*Tour ${combatData.tour} - Choisissez votre action !*`
+            )
+            .setColor(0x8b0000);
+
+        const rowFuite = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('combat_fuir')
+                    .setLabel('Fuir')
+                    .setStyle(ButtonStyle.Secondary)
+                    .setEmoji('🏃‍♂️')
+            );
+        
+        return { embeds: [embed], components: [rowFuite], flags: 64 };
+    },
+
 };
 
 module.exports = builder;

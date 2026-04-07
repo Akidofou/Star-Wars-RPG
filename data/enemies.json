@@ -4,139 +4,64 @@
             "id": 1,
             "nom": "Loup des Bois",
             "description": "Un loup sauvage aux crocs acérés qui chasse dans les forêts royales.",
-            "stats_base": {
-                "vitalite": 10,
-                "force_stat": 8,
-                "intelligence": 0,
-                "chance": 0,
-                "agilite": 6
-            },
-            "scaling_par_niveau": {
-                "vitalite": 3,
-                "force_stat": 2,
-                "agilite": 1
-            },
             "sorts": [1001, 1002],
-            "apparitions": [
-                {
-                    "duche": "asure",
-                    "comte": "asuria",
-                    "secteur": "foret_sylvane",
-                    "niveau_min": 1,
-                    "niveau_max": 5,
-                    "taux_apparition": 40
-                },
-                {
-                    "duche": "grismonts",
-                    "comte": "greymont",
-                    "secteur": "foret_greymoor",
-                    "niveau_min": 16,
-                    "niveau_max": 20,
-                    "taux_apparition": 20
-                }
+            "variantes": [
+                { "niveau": 1, "hp": 10, "force_stat": 8, "intelligence": 0, "chance": 0, "agilite": 6, "xp": 8, "or_min": 2, "or_max": 6 },
+                { "niveau": 2, "hp": 13, "force_stat": 10, "intelligence": 0, "chance": 0, "agilite": 7, "xp": 12, "or_min": 3, "or_max": 7 },
+                { "niveau": 3, "hp": 16, "force_stat": 12, "intelligence": 0, "chance": 0, "agilite": 8, "xp": 16, "or_min": 4, "or_max": 8 },
+                { "niveau": 4, "hp": 19, "force_stat": 14, "intelligence": 0, "chance": 0, "agilite": 9, "xp": 20, "or_min": 5, "or_max": 9 },
+                { "niveau": 5, "hp": 22, "force_stat": 16, "intelligence": 0, "chance": 0, "agilite": 10, "xp": 24, "or_min": 6, "or_max": 10 }
             ],
-            "recompenses": {
-                "xp_min": 8,
-                "xp_max": 15,
-                "or_min": 2,
-                "or_max": 6,
-                "drops": [
-                    { "id": "fourrure_loup", "type": "ressource", "chance": 65, "quantite_min": 1, "quantite_max": 2 },
-                    { "id": "croc_loup", "type": "ressource", "chance": 25, "quantite_min": 1, "quantite_max": 1 }
-                ]
-            }
+            "apparitions": [
+                { "duche": "asure", "comte": "asuria", "secteur": "foret_sylvane", "variantes_disponibles": [1, 2, 3], "taux_apparition": 40 },
+                { "duche": "grismonts", "comte": "greymont", "secteur": "foret_greymoor", "variantes_disponibles": [4, 5], "taux_apparition": 20 }
+            ],
+            "drops": [
+                { "id": "fourrure_loup", "type": "ressource", "chance": 65, "quantite_min": 1, "quantite_max": 2 },
+                { "id": "croc_loup", "type": "ressource", "chance": 25, "quantite_min": 1, "quantite_max": 1 }
+            ]
         },
         {
             "id": 2,
             "nom": "Braconnier",
             "description": "Un chasseur hors-la-loi armé d'un arc et d'un couteau.",
-            "stats_base": {
-                "vitalite": 12,
-                "force_stat": 4,
-                "intelligence": 0,
-                "chance": 6,
-                "agilite": 5
-            },
-            "scaling_par_niveau": {
-                "vitalite": 4,
-                "chance": 2,
-                "agilite": 1
-            },
             "sorts": [1003, 1004, 1005],
-            "apparitions": [
-                {
-                    "duche": "asure",
-                    "comte": "asuria",
-                    "secteur": "foret_sylvane",
-                    "niveau_min": 1,
-                    "niveau_max": 5,
-                    "taux_apparition": 35
-                },
-                {
-                    "duche": "vermillion",
-                    "comte": "braven",
-                    "secteur": "plaines_stervall",
-                    "niveau_min": 10,
-                    "niveau_max": 15,
-                    "taux_apparition": 25
-                }
+            "variantes": [
+                { "niveau": 1, "hp": 15, "force_stat": 4, "intelligence": 0, "chance": 6, "agilite": 5, "xp": 10, "or_min": 5, "or_max": 12 },
+                { "niveau": 2, "hp": 20, "force_stat": 5, "intelligence": 0, "chance": 8, "agilite": 6, "xp": 15, "or_min": 6, "or_max": 14 },
+                { "niveau": 3, "hp": 25, "force_stat": 6, "intelligence": 0, "chance": 10, "agilite": 7, "xp": 20, "or_min": 7, "or_max": 16 },
+                { "niveau": 10, "hp": 80, "force_stat": 20, "intelligence": 0, "chance": 35, "agilite": 15, "xp": 80, "or_min": 20, "or_max": 40 },
+                { "niveau": 15, "hp": 130, "force_stat": 35, "intelligence": 0, "chance": 55, "agilite": 25, "xp": 140, "or_min": 35, "or_max": 60 }
             ],
-            "recompenses": {
-                "xp_min": 10,
-                "xp_max": 18,
-                "or_min": 5,
-                "or_max": 12,
-                "drops": [
-                    { "id": "plume_fleche", "type": "ressource", "chance": 50, "quantite_min": 1, "quantite_max": 3 },
-                    { "id": "arc_abime", "type": "ressource", "chance": 20, "quantite_min": 1, "quantite_max": 1 }
-                ]
-            }
+            "apparitions": [
+                { "duche": "asure", "comte": "asuria", "secteur": "foret_sylvane", "variantes_disponibles": [1, 2, 3], "taux_apparition": 35 },
+                { "duche": "vermillion", "comte": "braven", "secteur": "plaines_stervall", "variantes_disponibles": [4, 5], "taux_apparition": 25 }
+            ],
+            "drops": [
+                { "id": "plume_fleche", "type": "ressource", "chance": 50, "quantite_min": 1, "quantite_max": 3 },
+                { "id": "arc_abime", "type": "ressource", "chance": 20, "quantite_min": 1, "quantite_max": 1 }
+            ]
         },
         {
             "id": 3,
             "nom": "Araignée Géante",
             "description": "Une araignée venimeuse de la taille d'un chien qui tisse ses toiles entre les grands arbres.",
-            "stats_base": {
-                "vitalite": 8,
-                "force_stat": 0,
-                "intelligence": 5,
-                "chance": 4,
-                "agilite": 8
-            },
-            "scaling_par_niveau": {
-                "vitalite": 2,
-                "intelligence": 2,
-                "agilite": 2
-            },
             "sorts": [1006, 1007, 1008],
-            "apparitions": [
-                {
-                    "duche": "asure",
-                    "comte": "asuria",
-                    "secteur": "foret_sylvane",
-                    "niveau_min": 2,
-                    "niveau_max": 6,
-                    "taux_apparition": 25
-                },
-                {
-                    "duche": "asure",
-                    "comte": "valdris",
-                    "secteur": "foret_noire_valdris",
-                    "niveau_min": 6,
-                    "niveau_max": 12,
-                    "taux_apparition": 30
-                }
+            "variantes": [
+                { "niveau": 2, "hp": 12, "force_stat": 0, "intelligence": 5, "chance": 4, "agilite": 8, "xp": 12, "or_min": 3, "or_max": 8 },
+                { "niveau": 3, "hp": 16, "force_stat": 0, "intelligence": 7, "chance": 5, "agilite": 10, "xp": 18, "or_min": 4, "or_max": 10 },
+                { "niveau": 4, "hp": 20, "force_stat": 0, "intelligence": 9, "chance": 6, "agilite": 12, "xp": 24, "or_min": 5, "or_max": 12 },
+                { "niveau": 6, "hp": 30, "force_stat": 0, "intelligence": 14, "chance": 8, "agilite": 16, "xp": 36, "or_min": 7, "or_max": 15 },
+                { "niveau": 12, "hp": 70, "force_stat": 0, "intelligence": 30, "chance": 15, "agilite": 30, "xp": 90, "or_min": 15, "or_max": 30 }
             ],
-            "recompenses": {
-                "xp_min": 12,
-                "xp_max": 22,
-                "or_min": 3,
-                "or_max": 8,
-                "drops": [
-                    { "id": "soie_araignee", "type": "ressource", "chance": 70, "quantite_min": 1, "quantite_max": 3 },
-                    { "id": "venin_araignee", "type": "ressource", "chance": 30, "quantite_min": 1, "quantite_max": 1 }
-                ]
-            }
+            "apparitions": [
+                { "duche": "asure", "comte": "asuria", "secteur": "foret_sylvane", "variantes_disponibles": [1, 2, 3], "taux_apparition": 25 },
+                { "duche": "asure", "comte": "valdris", "secteur": "foret_noire_valdris", "variantes_disponibles": [4, 5], "taux_apparition": 30 }
+            ],
+            "drops": [
+                { "id": "soie_araignee", "type": "ressource", "chance": 70, "quantite_min": 1, "quantite_max": 3 },
+                { "id": "venin_araignee", "type": "ressource", "chance": 30, "quantite_min": 1, "quantite_max": 1 }
+            ]
         }
     ]
 }

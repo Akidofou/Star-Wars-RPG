@@ -1,6 +1,7 @@
 const playerDB = require('../../database/playerDB');
 const builder = require('../builder');
 const zonesHelper = require('../../utils/zonesHelper');
+const combatEngine = require('../../game/combat');
 
 module.exports = async (interaction, params) => {
 
@@ -14,6 +15,36 @@ module.exports = async (interaction, params) => {
         const duche = zonesHelper.getDuche(joueurMisAJour.zone_actuelle);
         const comte = zonesHelper.getComte(joueurMisAJour.zone_actuelle, joueurMisAJour.secteur_actuel);
         await interaction.update(builder.lieux(joueurMisAJour, duche, comte, null, []));
+        return;
+    }
+
+    if (action === 'combat') {
+        const combatActif = combatEngine.getCombatActif(discord_id);
+        if (combatActif) {
+            const enemyData = require('../../../data/enemies.json').enemies.find(e => e.id === combatActif.enemy_id);
+            await interaction.update(builder.combat(joueur, combatActif, enemyData));
+            return;
+        }
+
+        const resultat = combatEngine.choisirEnemyAleatoire(
+            joueur.zone_actuelle,
+            joueur.secteur_actuel,
+            joueur.position
+        );
+
+        if (!resultat) {
+            await interaction.update({
+                content: '❌ Aucun ennemi disponible dans ce secteur.',
+                embeds: [],
+                components: [],
+                flags: 64
+            });
+            return;
+        }
+
+        const nouveauCombat = combatEngine.creerCombat(discord_id, resultat.enemy, resultat.variante);
+        const enemyData = require('../../../data/enemies.json').enemies.find(e => e.id === nouveauCombat.enemy_id);
+        await interaction.update(builder.combat(joueur, nouveauCombat, enemyData));
         return;
     }
 

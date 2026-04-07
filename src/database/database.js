@@ -42,6 +42,25 @@ const initDB = () => {
         decouvert_at        TEXT DEFAULT (datetime('now')),
         FOREIGN KEY (discord_id) REFERENCES players(discord_id)
         );
+
+        CREATE TABLE IF NOT EXISTS combats (
+        id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+        discord_id          TEXT NOT NULL,
+        enemy_id            INTEGER NOT NULL,
+        enemy_niveau        INTEGER NOT NULL,
+        enemy_hp            INTEGER NOT NULL,
+        enemy_hp_max        INTEGER NOT NULL,
+        enemy_stats         INTEGER NOT NULL,
+        effets_joueur       TEXT DEFAULT '[]',
+        effets_ennemi       TEXT DEFAULT '[]',
+        cooldowns_joueur    TEXT DEFAULT '{}',
+        cooldowns_ennemi    TEXT DEFAULT '{}',
+        tour                INTEGER DEFAULT 1,
+        statut              TEXT DEFAULT 'en_cours',
+        created_at          TEXT DEFAULT (datetime('now')),
+        FOREIGN KEY (discord_id) REFERENCES players(discord_id)
+        );
+
     `);
     
     console.log('✅ Base de données initialisée');
