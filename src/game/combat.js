@@ -104,7 +104,7 @@ const combat = {
             variante.niveau,
             variante.hp,
             variante.hp,
-            JSON.stringify(variante),
+            JSON.stringify({ ...variante, hp_depart: variante.hp }),
             JSON.stringify({})
         );
         return db.prepare(`SELECT * FROM combats WHERE discord_id = ? ORDER BY id DESC LIMIT 1`).get(discord_id);
@@ -126,6 +126,13 @@ const combat = {
     terminerCombat(combatId, statut) {
         db.prepare(`UPDATE combats SET statut = ? WHERE id = ?`).run(statut, combatId);
     },
+
+    calculerRecompenses(enemy, niveau) {
+        const variante = enemy.variantes.find(v => v.niveau === niveau) || enemy.variantes[0];
+        const xp = variante.xp || 0;
+        const or = Math.floor(Math.random() * (variante.or_max - variante.or_min + 1)) + variante.or_min;
+        return { xp, or };
+    }
 };
 
 module.exports = combat;

@@ -254,6 +254,38 @@ const builder = {
         
     },
 
+    reposEnCours(joueur, tempsTotal) {
+        const barre = this.barreVie(joueur.hp_actuel, joueur.hp_max);
+
+        const embed = new EmbedBuilder()
+            .setTitle('💤 Repos en cours...')
+            .setDescription(
+                `${barre}\n` +
+                `❤️ **HP :** ${joueur.hp_actuel} / ${joueur.hp_max}\n\n` +
+                `⏱️ Temps estimé : **${tempsTotal} secondes**\n` +
+                `*(+1 HP toutes les 5 secondes)*\n\n` +
+                `Vous pouvez naviguer dans vos menus.\n` +
+                `Cliquez sur **Arrêter** pour récupérer vos HP.`
+            )
+            .setColor(0x1a1a2e);
+
+        const row = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('repos_stop')
+                    .setLabel('Arrêter le repos')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('⏹️'),
+                new ButtonBuilder()
+                    .setCustomId('retour_menu')
+                    .setLabel('Menu principal')
+                    .setStyle(ButtonStyle.Secondary)
+                    .setEmoji('🏠')
+            );
+
+        return { embeds: [embed], components: [row], flags: 64 };
+    },
+
     codex(joueur, entrees) {
         let description = '';
 
@@ -427,12 +459,12 @@ const builder = {
         return { embeds: [embed], components: [rowRetour], flags: 64 };
     },
 
-    combat(joueur, combatData, enemyData, sorts) {
+    combat(joueur, combatData, enemyData, sorts, journal = []) {
         const barreJoueur = this.barreVie(joueur.hp_actuel, joueur.hp_max);
         const enemyStats = typeof combatData.enemy_stats === 'string'
             ? JSON.parse(combatData.enemy_stats)
             : combatData.enemy_stats;
-        const barreEnemy = this.barreVie(enemyStats.hp, enemyStats.hp_max || enemyStats.hp);
+        const barreEnemy = this.barreVie(enemyStats.hp, enemyStats.hp_max || enemyStats.hp_depart || enemyStats.hp);
         const cooldowns = typeof combatData.cooldowns_joueur === 'string'
             ? JSON.parse(combatData.cooldowns_joueur)
             : combatData.cooldowns_joueur;
@@ -446,7 +478,8 @@ const builder = {
                 `⭐ Niveau : ${joueur.niveau}\n\n` +
                 `**- ${enemyData ? enemyData.nom : 'Ennemi'} (Nv.${combatData.enemy_niveau}) -**\n` +
                 `${barreEnemy}\n` +
-                `❤️ HP : ${enemyStats.hp} / ${enemyStats.hp_max || enemyStats.hp}\n\n` +
+                `❤️ HP : ${enemyStats.hp} / ${enemyStats.hp_max || enemyStats.hp_depart || enemyStats.hp}\n\n` +
+                (journal.length > 0 ? journal.join('\n') + '\n\n' : '') +
                 `*Tour ${combatData.tour} - Choisissez votre action !*`
             )
             .setColor(0x8b0000);
@@ -477,6 +510,36 @@ const builder = {
         
         const components = sorts.length > 0 ? [rowAttaques, rowFuite] : [rowFuite];
         return { embeds: [embed], components, flags: 64 };
+    },
+
+    resultatCombat(joueur, journal, resultat) {
+        const estVictoire = resultat === 'victoire';
+        const barre = this.barreVie(joueur.hp_actuel, joueur.hp_max);
+
+        const embed = new EmbedBuilder()
+            .setTitle(estVictoire ? '🏆 Victoire !' : '💀 Défaite !')
+            .setDescription(
+                journal.join('\n') + '\n\n' +
+                `${barre}\n` +
+                `❤️ HP : ${joueur.hp_actuel} / ${joueur.hp_max}`
+            )
+            .setColor(estVictoire ? 0x00ff00 : 0xff0000);
+
+        const row = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('menu_lieux')
+                    .setLabel('Retour aux lieux')
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji('🗺️'),
+                new ButtonBuilder()
+                    .setCustomId('retour_menu')
+                    .setLabel('Menu principal')
+                    .setStyle(ButtonStyle.Secondary)
+                    .setEmoji('🏠')
+            );
+
+        return { embeds: [embed], components: [row], flags: 64 };
     },
 
 };

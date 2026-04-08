@@ -20,9 +20,17 @@ const playerDB = {
     },
 
     update(discord_id, champs) {
-        const keys = Object.keys(champs);
+        const champsSanitises = {};
+        for (const [key,value] of Object.entries(champs)) {
+            if (typeof value === 'number' && isNaN(value)) {
+                champsSanitises[key] = 0;
+            } else {
+                champsSanitises[key] = value;
+            }
+        }
+        const keys = Object.keys(champsSanitises);
         const setClause = keys.map(k => `${k} = ?`).join(', ');
-        const values = [...Object.values(champs), discord_id];
+        const values = [...Object.values(champsSanitises), discord_id];
         db.prepare(`
             UPDATE players SET ${setClause}, last_seen = datetime('now')
             WHERE discord_id = ?

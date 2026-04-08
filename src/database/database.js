@@ -51,6 +51,15 @@ const initDB = () => {
         FOREIGN KEY (discord_id) REFERENCES players(discord_id)
         );
 
+        CREATE TABLE IF NOT EXISTS repos (
+        id          INTEGER PRIMARY KEY AUTOINCREMENT,
+        discord_id  TEXT NOT NULL,
+        debut_repos TEXT NOT NULL,
+        hp_depart   INTEGER NOT NULL,
+        hp_cible    INTEGER NOT NULL,
+        FOREIGN KEY (discord_id) REFERENCES players(discord_id)
+        );
+
         CREATE TABLE IF NOT EXISTS combats (
         id                  INTEGER PRIMARY KEY AUTOINCREMENT,
         discord_id          TEXT NOT NULL,
