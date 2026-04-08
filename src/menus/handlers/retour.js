@@ -1,5 +1,6 @@
 const playerDB = require('../../database/playerDB');
 const builder = require('../builder');
+const levelUp = require('../../game/levelUp');
 
 module.exports = async (interaction, params) => {
 
@@ -19,6 +20,7 @@ module.exports = async (interaction, params) => {
     if (destination === 'menu') {
         await interaction.update(builder.menuPrincipal(joueur));
     } else if (destination === 'profil') {
-        await interaction.update(builder.profil(joueur));
+        const progression = levelUp.getProgression(joueur);
+        await interaction.update(builder.profil(joueur, progression));
     }
 };

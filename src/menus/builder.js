@@ -120,7 +120,7 @@ const builder = {
         return plein.repeat(pct) + vide.repeat(10 - pct);
     },
 
-    profil(joueur) {
+    profil(joueur, progression = null) {
         const barre = this.barreVie(joueur.hp_actuel, joueur.hp_max);
 
         const embed = new EmbedBuilder()
@@ -129,7 +129,7 @@ const builder = {
                 `**Classe :** ${joueur.classe}\n` +
                 `**Faction :** ${joueur.faction}\n` +
                 `**Niveau :** ${joueur.niveau}\n` +
-                `**XP :** ${joueur.experience}\n` +
+                `**XP :** ${progression ? `${progression.xp_actuelle} / ${progression.xp_prochain} (${progression.pct}%)` : joueur.experience}\n` +
                 `${barre}\n` +
                 `❤️ **HP :** ${joueur.hp_actuel} / ${joueur.hp_max}\n\n` +
                 `** --Statistiques-- **\n` +
@@ -254,17 +254,22 @@ const builder = {
         
     },
 
-    reposEnCours(joueur, tempsTotal) {
-        const barre = this.barreVie(joueur.hp_actuel, joueur.hp_max);
+    reposEnCours(joueur, tempsRestant, hpActuelEstime = null) {
+        const hpAffiche = hpActuelEstime || joueur.hp_actuel;
+        const barre = this.barreVie(hpAffiche, joueur.hp_max);
 
         const embed = new EmbedBuilder()
             .setTitle('💤 Repos en cours...')
             .setDescription(
                 `${barre}\n` +
-                `❤️ **HP :** ${joueur.hp_actuel} / ${joueur.hp_max}\n\n` +
-                `⏱️ Temps estimé : **${tempsTotal} secondes**\n` +
+                `❤️ **HP estimés :** ${hpAffiche} / ${joueur.hp_max}\n\n` +
+                `⏱️ Temps restant estimé : **${tempsRestant} secondes**\n` +
                 `*(+1 HP toutes les 5 secondes)*\n\n` +
-                `Vous pouvez naviguer dans vos menus.\n` +
+                `⚠️ **Pendant le repos vous ne pouvez pas :**\n` +
+                `• 🚫 Vous déplacer entre secteurs\n` +
+                `• 🚫 Lancer un combat\n` +
+                `• 🚫 Voyager vers un autre comté\n\n` +
+                `Vous pouvez consulter votre profil, codex et classement.\n` +
                 `Cliquez sur **Arrêter** pour récupérer vos HP.`
             )
             .setColor(0x1a1a2e);
@@ -276,6 +281,30 @@ const builder = {
                     .setLabel('Arrêter le repos')
                     .setStyle(ButtonStyle.Danger)
                     .setEmoji('⏹️'),
+                new ButtonBuilder()
+                    .setCustomId('retour_menu')
+                    .setLabel('Menu principal')
+                    .setStyle(ButtonStyle.Secondary)
+                    .setEmoji('🏠')
+            );
+
+        return { embeds: [embed], components: [row], flags: 64 };
+    },
+
+    reposTermine(joueur, hpRegagnes) {
+        const barre = this.barreVie(joueur.hp_actuel, joueur.hp_max);
+
+        const embed = new EmbedBuilder()
+            .setTitle('✅ Repos terminé')
+            .setDescription(
+                `${barre}\n` +
+                `❤️ **HP :** ${joueur.hp_actuel} / ${joueur.hp_max}\n\n` +
+                `💚 Vous avez récupéré **+${hpRegagnes} HP** pendant votre repos !`
+            )
+            .setColor(0x00ff00);
+
+        const row = new ActionRowBuilder()
+            .addComponents(
                 new ButtonBuilder()
                     .setCustomId('retour_menu')
                     .setLabel('Menu principal')
@@ -351,7 +380,8 @@ const builder = {
                     .setCustomId('lieux_ville')
                     .setLabel(comte.villes.nom)
                     .setStyle(estEnVille ? ButtonStyle.Success : ButtonStyle.Secondary)
-                    .setEmoji('🏰'),
+                    .setEmoji('🏰')
+                    .setDisabled(joueur.etat === 'repos' && !estEnVille),
                 ...comte.secteurs.map(s =>
                     new ButtonBuilder()
                         .setCustomId(`secteur_${s.id}`)
@@ -360,6 +390,7 @@ const builder = {
                             ? ButtonStyle.Success
                             : ButtonStyle.Secondary)
                         .setEmoji('⚔️')
+                        .setDisabled(joueur.etat === 'repos')
                 )
             );
         
@@ -392,13 +423,13 @@ const builder = {
                     .setLabel('Voyages')
                     .setStyle(ButtonStyle.Primary)
                     .setEmoji('🛫')
-                    .setDisabled(!estEnVille),
+                    .setDisabled(!estEnVille || joueur.etat === 'repos'),
                 new ButtonBuilder()
                     .setCustomId('lieux_combat')
                     .setLabel('Combat !')
                     .setStyle(ButtonStyle.Danger)
                     .setEmoji('⚔️')
-                    .setDisabled(estEnVille),
+                    .setDisabled(estEnVille || joueur.etat === 'repos'),
                 new ButtonBuilder()
                     .setCustomId('retour_menu')
                     .setLabel('Retour')

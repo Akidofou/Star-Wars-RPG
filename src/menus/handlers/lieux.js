@@ -11,6 +11,20 @@ module.exports = async (interaction, params) => {
     const action = params[0];
 
     if (action === 'ville') {
+        if (joueur.etat === 'repos') {
+            const { db } = require('../../database/database');
+            const reposActif = db.prepare('SELECT * FROM repos WHERE discord_id = ? ORDER BY id DESC LIMIT 1').get(discord_id);
+            const debut = new Date(reposActif.debut_repos + ' UTC');
+            const maintenant = new Date();
+            const secondesEcoulees = Math.floor((maintenant - debut) / 1000);
+            const hpRegagnes = Math.min(Math.floor(secondesEcoulees / 5), joueur.hp_max - reposActif.hp_depart);
+            const hpActuelEstime = Math.min(reposActif.hp_depart + hpRegagnes, joueur.hp_max);
+            const hpRestants = joueur.hp_max - hpActuelEstime;
+            const tempsRestant = hpRestants * 5;
+            await interaction.update(builder.reposEnCours(joueur, tempsRestant, hpActuelEstime));
+            return;
+        }
+
         playerDB.update(discord_id, { position: 'ville' });
         const joueurMisAJour = playerDB.get(discord_id);
         const duche = zonesHelper.getDuche(joueurMisAJour.zone_actuelle);
@@ -20,6 +34,16 @@ module.exports = async (interaction, params) => {
     }
 
     if (action === 'combat') {
+        if (joueur.etat === 'repos') {
+            await interaction.update({
+                content: '❌ Vous êtes en repos ! Arrêtez le repos avant de combattre.',
+                embeds: [],
+                components: [],
+                flags: 64
+            });
+            return;
+        }
+
         const combatActif = combatEngine.getCombatActif(discord_id);
         const sorts = spellsDB.getSortsDisponibles(discord_id, joueur.classe, joueur.niveau);
         

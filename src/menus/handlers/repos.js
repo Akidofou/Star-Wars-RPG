@@ -49,7 +49,7 @@ module.exports = async (interaction, params) => {
             });
 
             const joueurMisAJour = playerDB.get(discord_id);
-            await interaction.update(builder.repos(joueurMisAJour));
+            await interaction.update(builder.reposTermine(joueurMisAJour, hpRegagnes));
         } else {
             playerDB.update(discord_id, { etat: 'libre' });
             await interaction.update(builder.repos(joueur));
