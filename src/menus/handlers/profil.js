@@ -17,10 +17,7 @@ module.exports = async (interaction, params) => {
     }
 
     if (action === 'stats') {
-        await interaction.update({
-            content: '🚧 Statistiques — bientôt disponible !',
-            embeds: [], components: [], flags: 64
-        });
+        await interaction.update(builder.stats(joueur));
     } else if (action === 'competences') {
         const sorts = spellsDB.getSortsDisponibles(discord_id, joueur.classe, joueur.niveau);
         await interaction.update(builder.competences(joueur, sorts));

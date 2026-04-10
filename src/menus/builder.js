@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, StringSelectMenuBuilder } = require('discord.js');
 
 const builder = {
 
@@ -184,6 +184,83 @@ const builder = {
             );
 
         return { embeds: [embed], components: [row, rowRetour], flags: 64 };
+    },
+
+    stats(joueur) {
+        const embed = new EmbedBuilder()
+            .setTitle(`📊 Statistiques de ${joueur.username}`)
+            .setDescription(
+                `📊 **Points de stat disponibles : ${joueur.points_stat}**\n\n` +
+                `❤️ Vitalité : **${joueur.vitalite}**\n` +
+                `📖 Sagesse : **${joueur.sagesse}**\n` +
+                `⚔️ Force (terre) : **${joueur.force_stat}**\n` +
+                `🔥 Intelligence (feu) : **${joueur.intelligence}**\n` +
+                `🍀 Chance (eau) : **${joueur.chance}**\n` +
+                `💨 Agilité (air) : **${joueur.agilite}**\n\n` +
+                `*1 point de stat = +1 dans la statistique choisie.*\n` +
+                `*La Vitalité augmente vos points de vie maximum.*\n` +
+                `*La Sagesse augmente votre gain d'expérience.*\n` +
+                `*La Force amplifie les dégâts terre.*\n` +
+                `*L'Intelligence amplifie les dégâts feu.*\n` +
+                `*La Chance amplifie les dégâts eau.*\n` +
+                `*L'Agilité amplifie les dégâts air et améliore les critiques.*`
+            )
+            .setColor(0x1a1a2e);
+
+        const row = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('stats_vitalite')
+                    .setLabel('Vitalité +1')
+                    .setStyle(ButtonStyle.Success)
+                    .setEmoji('❤️')
+                    .setDisabled(joueur.points_stat <= 0),
+                new ButtonBuilder()
+                    .setCustomId('stats_sagesse')
+                    .setLabel('Sagesse +1')
+                    .setStyle(ButtonStyle.Success)
+                    .setEmoji('📖')
+                    .setDisabled(joueur.points_stat <= 0),
+                new ButtonBuilder()
+                    .setCustomId('stats_force')
+                    .setLabel(`Force +1`)
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji('⚔️')
+                    .setDisabled(joueur.points_stat <= 0),
+                new ButtonBuilder()
+                    .setCustomId('stats_intelligence')
+                    .setLabel(`Intelligence +1`)
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji('🔥')
+                    .setDisabled(joueur.points_stat <= 0)
+            );
+
+        const row2 = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('stats_chance')
+                    .setLabel(`Chance +1`)
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji('🍀')
+                    .setDisabled(joueur.points_stat <= 0),
+                new ButtonBuilder()
+                    .setCustomId('stats_agilite')
+                    .setLabel(`Agilité +1`)
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji('💨')
+                    .setDisabled(joueur.points_stat <= 0)
+            );
+
+        const rowRetour = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('retour_profil')
+                    .setLabel('Retour')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔙')
+            );
+
+        return { embeds: [embed], components: [row, row2, rowRetour], flags: 64 };
     },
 
     classement(joueurs, joueurActuel) {
@@ -452,7 +529,7 @@ const builder = {
                 description += `**${sort.nom}** — Nv.${sort.niveau_actuel}/5`;
                 description += sort.niveau_deblocage > 1 ? ` *(débloqué lvl ${sort.niveau_deblocage})*` : '';
                 description += `\n`;
-                description += `*${sort.description}*\n`;
+                description += `*${this.genererDescriptionSort(sort, niveauData)}*\n`;
                 if (niveauData.degats_min) {
                     description += `⚔️ Dégâts : ${niveauData.degats_min} à ${niveauData.degats_max}`;
                     if (sort.composantes) description += ` (${sort.composantes.map(c => c.element).join(' + ')})`;
@@ -515,19 +592,31 @@ const builder = {
             )
             .setColor(0x8b0000);
 
-        const rowAttaques = new ActionRowBuilder()
+        const selectSorts = new ActionRowBuilder()
             .addComponents(
-                ...sorts.slice(0, 4).map(sort => {
-                    const enCooldown = cooldowns[sort.sort_id] > 0;
-                    return new ButtonBuilder()
-                        .setCustomId(`attaque_${sort.sort_id}`)
-                        .setLabel(enCooldown
-                            ? `${sort.nom} (${cooldowns[sort.sort_id]})`
-                            : sort.nom)
-                        .setStyle(ButtonStyle.Primary)
-                        .setEmoji('⚔️')
-                        .setDisabled(enCooldown);
-                })
+                new StringSelectMenuBuilder()
+                    .setCustomId('combatselect_sort')
+                    .setPlaceholder('⚔️ Choisissez un sort...')
+                    .addOptions(
+                        sorts.map(sort => {
+                            const enCooldown = cooldowns[sort.sort_id] > 0;
+                            const niveauData = sort.niveaux.find(n => n.niveau === sort.niveau_actuel);
+                            let description = '';
+
+                            if (enCooldown) {
+                                description = `⏳ Cooldown : ${cooldowns[sort.sort_id]} tour(s)`;
+                            } else {
+                                description = this.genererDescriptionSort(sort, niveauData);
+                            }
+
+                            return {
+                                label: `${sort.nom} (Nv.${sort.niveau_actuel})`,
+                                description: description.substring(0, 100),
+                                value: `${sort.sort_id}`,
+                                emoji: enCooldown ? '⏳' : '⚔️'
+                            };
+                        })
+                    )
             );
 
         const rowFuite = new ActionRowBuilder()
@@ -536,10 +625,10 @@ const builder = {
                     .setCustomId('combat_fuir')
                     .setLabel('Fuir')
                     .setStyle(ButtonStyle.Secondary)
-                    .setEmoji('🏃‍♂️')
+                    .setEmoji('🏃')
             );
         
-        const components = sorts.length > 0 ? [rowAttaques, rowFuite] : [rowFuite];
+        const components = sorts.length > 0 ? [selectSorts, rowFuite] : [rowFuite];
         return { embeds: [embed], components, flags: 64 };
     },
 
@@ -572,6 +661,93 @@ const builder = {
 
         return { embeds: [embed], components: [row], flags: 64 };
     },
+
+    genererDescriptionSort(sort, niveauData) {
+        const NOMS_STATS = {
+            force_stat: 'Force',
+            intelligence: 'Intelligence',
+            chance: 'Chance',
+            agilite: 'Agilité',
+            vitalite: 'Vitalité'
+        };
+
+        if (sort.type === 'attaque' || sort.type === 'attaque_multiple') {
+            const element = sort.composantes ? sort.composantes[0].element : sort.element || 'neutre';
+            if (niveauData.composantes_degats) {
+                const parties = niveauData.composantes_degats.map(c => `${c.degats_min} à ${c.degats_max} (${c.element})`);
+                return `Inflige ${parties.join(' + ')} dégâts.`;
+            }
+            return `Inflige ${niveauData.degats_min} à ${niveauData.degats_max} dégâts ${element}.`;
+        }
+
+        if (sort.type === 'attaque_effet') {
+            const element = sort.composantes ? sort.composantes[0].element : sort.element || 'neutre';
+            let desc = '';
+            if (niveauData.composantes_degats) {
+                const parties = niveauData.composantes_degats.map(c => `${c.degats_min} à ${c.degats_max} (${c.element})`);
+                desc = `Inflige ${parties.join(' + ')} dégâts`;
+            } else {
+                desc = `Inflige ${niveauData.degats_min} à ${niveauData.degats_max} dégâts ${element}`;
+            }
+            if (sort.effets) {
+                sort.effets.forEach(effet => {
+                    switch (effet.type) {
+                        case 'brulure': desc += ` + brûlure de ${niveauData.brulure_par_tour} dégâts/tour pendant ${effet.duree} tours`; break;
+                        case 'poison': desc += ` + poison de ${niveauData.poison_par_tour} dégâts/tour pendant ${effet.duree} tours`; break;
+                        case 'saignement': desc += ` + saignement de ${niveauData.saignement_par_tour} dégâts/tour pendant ${effet.duree} tours`; break;
+                        case 'debuff_stat': desc += ` + réduit ${NOMS_STATS[effet.stat] || effet.stat} de ${Math.abs(niveauData.valeur_effet)} pendant ${effet.duree} tours`; break;
+                        case 'debuff_toutes_stats': desc += ` + réduit toutes les stats de ${Math.abs(niveauData.valeur_effet)} pendant ${effet.duree} tours`; break;
+                    }
+                });
+            }
+            return desc + '.';
+        }
+
+        if (sort.type === 'buff') {
+            const parties = [];
+            sort.effets.forEach(effet => {
+                switch (effet.type) {
+                    case 'bonus_degats_pct': parties.push(`+${niveauData.valeur || niveauData.valeur_degats}% dégâts`); break;
+                    case 'bonus_stat': parties.push(`+${niveauData.valeur_stat || niveauData[`valeur_${effet.stat}`]} ${NOMS_STATS[effet.stat] || effet.stat}`); break;
+                    case 'bonus_vitalite': parties.push(`+${niveauData.valeur_min} à ${niveauData.valeur_max} vitalité`); break;
+                    case 'bonus_cc': parties.push(`+${niveauData.valeur_cc} CC`); break;
+                    case 'resistance_element': parties.push(`-${Math.abs(niveauData.valeur)} dégâts ${effet.element} reçus`); break;
+                    case 'resistance_tous': parties.push(`-${Math.abs(niveauData.valeur || niveauData.valeur_resistance)} dégâts reçus`); break;
+                    case 'resistance_tous_pct': parties.push(`-${niveauData.valeur}% dégâts reçus`); break;
+                    case 'absorption_degats': parties.push(`absorbe ${niveauData.valeur} dégâts`); break;
+                    case 'perte_hp_immediate': parties.push(`-${niveauData.perte_hp} HP immédiat`); break;
+                    case 'perte_hp_par_tour': parties.push(`-${niveauData.perte_hp} HP/tour`); break;
+                    case 'soin_par_tour': parties.push(`+${niveauData.soin_par_tour} HP/tour`); break;
+                    case 'soin_fin_effet': parties.push(`+${niveauData.soin_fin} HP en fin d'effet`); break;
+                    case 'immunite_degats': parties.push(`immunité aux dégâts`); break;
+                    case 'esquive_attaques': parties.push(`esquive ${niveauData.nb_esquives} attaque(s)`); break;
+                    case 'multiplicateur_effets': parties.push(`×${niveauData.valeur} effets`); break;
+                    case 'reduction_ec': parties.push(`-${niveauData.valeur_ec} EC`); break;
+                    case 'bonus_degats_element_pct': parties.push(`+${niveauData.valeur}% dégâts ${effet.element}`); break;
+                    case 'bonus_degats_hp_manquants': parties.push(`+${niveauData.valeur}% dégâts par % HP manquant`); break;
+                    case 'vol_stat': parties.push(`vole ${niveauData.valeur_effet} ${effet.stat}`); break;
+                }
+            });
+            return `${parties.join(', ')} pendant ${niveauData.duree} tours.`;
+        }
+
+        if (sort.type === 'soin') {
+            return `Soigne ${niveauData.valeur_min} à ${niveauData.valeur_max} HP.`;
+        }
+
+        if (sort.type === 'debuff') {
+            const parties = [];
+            sort.effets.forEach(effet => {
+                switch (effet.type) {
+                    case 'debuff_stat': parties.push(`-${Math.abs(niveauData.valeur_effet)} ${effet.stat}`); break;
+                    case 'debuff_toutes_stats': parties.push(`-${Math.abs(niveauData.valeur)} à toutes les stats`); break;
+                }
+            });
+            return `${parties.join(', ')} pendant ${niveauData.duree || sort.effets[0].duree} tours.`;
+        }
+
+        return sort.description;
+    } 
 
 };
 

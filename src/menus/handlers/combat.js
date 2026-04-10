@@ -1,7 +1,6 @@
 const playerDB = require('../../database/playerDB');
 const combatEngine = require('../../game/combat');
 const builder = require('../builder');
-const spellsDB = require('../../database/spellsDB');
 const zonesHelper = require('../../utils/zonesHelper');
 
 module.exports = async (interaction, params) => {

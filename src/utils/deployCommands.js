@@ -2,8 +2,9 @@ const { REST, Routes } = require('discord.js');
 require('dotenv').config();
 
 const commands = [
-    require('../commands/game.js').data.toJSON()
-];
+    require('../commands/game.js').data.toJSON(),
+    require('../commands/admin.js').data.toJSON()
+];  
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
 

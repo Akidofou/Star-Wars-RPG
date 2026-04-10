@@ -4,92 +4,9 @@
             "id": 1001,
             "nom": "Morsure",
             "description": "Une morsure puissante infligeant des dégâts terre.",
-            "element": "terre",
-            "stat_liee": "force_stat",
             "type": "attaque",
             "cible": "ennemi",
-            "niveaux": [
-                { "niveau": 1, "degats_min": 1, "degats_max": 4, "ec": 50, "cc": 0, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 2, "degats_max": 5, "ec": 50, "cc": 0, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 2, "degats_max": 6, "ec": 50, "cc": 0, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 3, "degats_max": 7, "ec": 50, "cc": 0, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 3, "degats_max": 8, "ec": 50, "cc": 0, "cooldown": 0 }
-            ]
-        },
-        {
-            "id": 1002,
-            "nom": "Griffe Sauvage",
-            "description": "Un coup de griffe rapide infligeant des dégâts air.",
-            "element": "air",
-            "stat_liee": "agilite",
-            "type": "attaque",
-            "cible": "ennemi",
-            "niveaux": [
-                { "niveau": 1, "degats_min": 1, "degats_max": 3, "ec": 50, "cc": 50, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 1, "degats_max": 4, "ec": 50, "cc": 50, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 2, "degats_max": 5, "ec": 50, "cc": 50, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 2, "degats_max": 6, "ec": 50, "cc": 50, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 3, "degats_max": 7, "ec": 50, "cc": 50, "cooldown": 0 }
-            ]
-        },
-        {
-            "id": 1003,
-            "nom": "Tir à l'Arc",
-            "description": "Un tir précis infligeant des dégâts air.",
-            "element": "air",
-            "stat_liee": "agilite",
-            "type": "attaque",
-            "cible": "ennemi",
-            "niveaux": [
-                { "niveau": 1, "degats_min": 2, "degats_max": 5, "ec": 100, "cc": 30, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 3, "degats_max": 6, "ec": 100, "cc": 30, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 30, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 4, "degats_max": 8, "ec": 100, "cc": 30, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 4, "degats_max": 10, "ec": 100, "cc": 30, "cooldown": 0 }
-            ]
-        },
-        {
-            "id": 1004,
-            "nom": "Coup de Couteau",
-            "description": "Un coup sournois au corps à corps infligeant des dégâts neutres.",
-            "element": "neutre",
-            "stat_liee": "meilleure_stat",
-            "type": "attaque",
-            "cible": "ennemi",
-            "niveaux": [
-                { "niveau": 1, "degats_min": 1, "degats_max": 4, "ec": 50, "cc": 40, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 2, "degats_max": 5, "ec": 50, "cc": 40, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 2, "degats_max": 6, "ec": 50, "cc": 40, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 3, "degats_max": 7, "ec": 50, "cc": 40, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 3, "degats_max": 8, "ec": 50, "cc": 40, "cooldown": 0 }
-            ]
-        },
-        {
-            "id": 1005,
-            "nom": "Piège de Chasse",
-            "description": "Pose un piège qui réduit l'agilité de la cible pendant 2 tours.",
-            "element": "neutre",
-            "stat_liee": "meilleure_stat",
-            "type": "debuff",
-            "cible": "ennemi",
-            "effet": { "stat": "agilite", "valeur": -3, "duree": 2 },
-            "niveaux": [
-                { "niveau": 1, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "ec": 100, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "ec": 100, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "ec": 100, "cc": 0, "cooldown": 3 }
-            ]
-        },
-        {
-            "id": 1006,
-            "nom": "Morsure Venimeuse",
-            "description": "Une morsure qui inflige des dégâts eau et empoisonne la cible pendant 3 tours.",
-            "element": "eau",
-            "stat_liee": "chance",
-            "type": "attaque_effet",
-            "cible": "ennemi",
-            "effet": { "type": "poison", "degats_par_tour": 2, "duree": 3 },
+            "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 1, "degats_max": 4, "ec": 100, "cc": 0, "cooldown": 0 },
                 { "niveau": 2, "degats_min": 2, "degats_max": 5, "ec": 100, "cc": 0, "cooldown": 0 },
@@ -99,36 +16,110 @@
             ]
         },
         {
+            "id": 1002,
+            "nom": "Griffe Sauvage",
+            "description": "Un coup de griffe rapide infligeant des dégâts air.",
+            "type": "attaque",
+            "cible": "ennemi",
+            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "niveaux": [
+                { "niveau": 1, "degats_min": 1, "degats_max": 3, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 1, "degats_max": 4, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 2, "degats_max": 5, "ec": 100, "cc": 35, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 2, "degats_max": 6, "ec": 100, "cc": 35, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 30, "cooldown": 0 }
+            ]
+        },
+        {
+            "id": 1003,
+            "nom": "Tir à l'Arc",
+            "description": "Un tir précis infligeant des dégâts air.",
+            "type": "attaque",
+            "cible": "ennemi",
+            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "niveaux": [
+                { "niveau": 1, "degats_min": 2, "degats_max": 5, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 3, "degats_max": 6, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 4, "degats_max": 8, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 4, "degats_max": 10, "ec": 100, "cc": 40, "cooldown": 0 }
+            ]
+        },
+        {
+            "id": 1004,
+            "nom": "Coup de Couteau",
+            "description": "Un coup sournois infligeant des dégâts neutres.",
+            "type": "attaque",
+            "cible": "ennemi",
+            "composantes": [{ "element": "neutre", "stat_liee": "meilleure_stat" }],
+            "niveaux": [
+                { "niveau": 1, "degats_min": 1, "degats_max": 4, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 2, "degats_max": 5, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 2, "degats_max": 6, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 3, "degats_max": 8, "ec": 100, "cc": 50, "cooldown": 0 }
+            ]
+        },
+        {
+            "id": 1005,
+            "nom": "Piège de Chasse",
+            "description": "Pose un piège qui réduit l'agilité de la cible pendant 2 tours.",
+            "type": "attaque_effet",
+            "cible": "ennemi",
+            "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
+            "effets": [{ "type": "debuff_stat", "stat": "agilite", "duree": 2 }],
+            "niveaux": [
+                { "niveau": 1, "degats_min": 2, "degats_max": 4, "valeur_effet": -3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "degats_min": 2, "degats_max": 5, "valeur_effet": -4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "degats_min": 3, "degats_max": 6, "valeur_effet": -5, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 4, "degats_min": 3, "degats_max": 7, "valeur_effet": -6, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "degats_min": 4, "degats_max": 8, "valeur_effet": -7, "ec": 100, "cc": 0, "cooldown": 3 }
+            ]
+        },
+        {
+            "id": 1006,
+            "nom": "Morsure Venimeuse",
+            "description": "Une morsure qui inflige des dégâts eau et empoisonne la cible pendant 3 tours.",
+            "type": "attaque_effet",
+            "cible": "ennemi",
+            "composantes": [{ "element": "eau", "stat_liee": "chance" }],
+            "effets": [{ "type": "poison", "duree": 3 }],
+            "niveaux": [
+                { "niveau": 1, "degats_min": 1, "degats_max": 4, "poison_par_tour": 2, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 2, "degats_min": 2, "degats_max": 5, "poison_par_tour": 2, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 3, "degats_min": 2, "degats_max": 6, "poison_par_tour": 3, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 4, "degats_min": 3, "degats_max": 7, "poison_par_tour": 3, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 5, "degats_min": 3, "degats_max": 8, "poison_par_tour": 4, "ec": 100, "cc": 50, "cooldown": 5 }
+            ]
+        },
+        {
             "id": 1007,
             "nom": "Toile Adhésive",
             "description": "Projette une toile qui réduit l'agilité de la cible pendant 2 tours.",
-            "element": "neutre",
-            "stat_liee": "meilleure_stat",
             "type": "debuff",
             "cible": "ennemi",
-            "effet": { "stat": "agilite", "valeur": -4, "duree": 2 },
+            "effets": [{ "type": "debuff_stat", "stat": "agilite", "duree": 2 }],
             "niveaux": [
-                { "niveau": 1, "ec": 100, "cc": 0, "cooldown": 6 },
-                { "niveau": 2, "ec": 100, "cc": 0, "cooldown": 6 },
-                { "niveau": 3, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 4, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 5, "ec": 100, "cc": 0, "cooldown": 4 }
+                { "niveau": 1, "valeur_effet": -4, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "valeur_effet": -5, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 3, "valeur_effet": -6, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "valeur_effet": -7, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 5, "valeur_effet": -8, "ec": 100, "cc": 0, "cooldown": 4 }
             ]
         },
         {
             "id": 1008,
             "nom": "Bond Foudroyant",
             "description": "L'araignée bondit sur sa proie infligeant de lourds dégâts air.",
-            "element": "air",
-            "stat_liee": "agilite",
             "type": "attaque",
             "cible": "ennemi",
+            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 4, "degats_max": 8, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 4, "degats_max": 9, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 5, "degats_max": 10, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 5, "degats_max": 12, "ec": 100, "cc": 40, "cooldown": 0 }  
+                { "niveau": 1, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 4, "degats_max": 8, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 4, "degats_max": 9, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 5, "degats_max": 10, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 5, "degats_max": 12, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -141,11 +132,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 8, "degats_max": 12, "ec": 50, "cc": 0, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 10, "degats_max": 14, "ec": 50, "cc": 0, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 12, "degats_max": 16, "ec": 50, "cc": 50, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 14, "degats_max": 19, "ec": 50, "cc": 50, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 17, "degats_max": 23, "ec": 100, "cc": 30, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 8, "degats_max": 12, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 10, "degats_max": 14, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 12, "degats_max": 16, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 14, "degats_max": 19, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 17, "degats_max": 23, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -158,28 +149,28 @@
             "cible": "ennemi",
             "composantes": [{ "element": "air", "stat_liee": "agilite" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 5, "degats_max": 9, "ec": 30, "cc": 20, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 7, "degats_max": 11, "ec": 30, "cc": 20, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 9, "degats_max": 13, "ec": 40, "cc": 15, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 11, "degats_max": 15, "ec": 40, "cc": 15, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 13, "degats_max": 18, "ec": 50, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 5, "degats_max": 9, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 7, "degats_max": 11, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 9, "degats_max": 13, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 11, "degats_max": 15, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 13, "degats_max": 18, "ec": 100, "cc": 40, "cooldown": 0 }
             ]
         },
         {
             "id": 2003,
             "nom": "Cri de Guerre",
-            "description": "Augmente les dégâts de X% pendant 2 tours.",
+            "description": "Augmente les dégâts de X%.",
             "classe": "guerrier",
             "niveau_deblocage": 1,
             "type": "buff",
             "cible": "soi",
             "effets": [{ "type": "bonus_degats_pct" }],
             "niveaux": [
-                { "niveau": 1, "valeur": 20, "duree": 2, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "valeur": 32, "duree": 2, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "valeur": 45, "duree": 2, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 4, "valeur": 55, "duree": 2, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 5, "valeur": 70, "duree": 2, "ec": 0, "cc": 0, "cooldown": 2 }
+                { "niveau": 1, "valeur": 20, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "valeur": 32, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "valeur": 45, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "valeur": 55, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 5, "valeur": 70, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 }
             ]
         },
         {
@@ -192,11 +183,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 15, "degats_max": 20, "ec": 50, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "degats_min": 18, "degats_max": 24, "ec": 50, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "degats_min": 21, "degats_max": 28, "ec": 50, "cc": 50, "cooldown": 3 },
-                { "niveau": 4, "degats_min": 25, "degats_max": 32, "ec": 50, "cc": 50, "cooldown": 3 },
-                { "niveau": 5, "degats_min": 30, "degats_max": 38, "ec": 100, "cc": 30, "cooldown": 2 }
+                { "niveau": 1, "degats_min": 15, "degats_max": 20, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 2, "degats_min": 18, "degats_max": 24, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 3, "degats_min": 21, "degats_max": 28, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "degats_min": 25, "degats_max": 32, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 5, "degats_min": 30, "degats_max": 38, "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
@@ -209,11 +200,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 7, "degats_max": 11, "ec": 50, "cc": 0, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 9, "degats_max": 13, "ec": 50, "cc": 0, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 11, "degats_max": 15, "ec": 50, "cc": 50, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 13, "degats_max": 18, "ec": 50, "cc": 50, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 15, "degats_max": 21, "ec": 100, "cc": 30, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 7, "degats_max": 11, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 9, "degats_max": 13, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 11, "degats_max": 15, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 13, "degats_max": 18, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 15, "degats_max": 21, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -226,11 +217,11 @@
             "cible": "soi",
             "effets": [{ "type": "bonus_vitalite" }],
             "niveaux": [
-                { "niveau": 1, "valeur_min": 40, "valeur_max": 50, "duree": 5, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur_min": 55, "valeur_max": 70, "duree": 5, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur_min": 70, "valeur_max": 90, "duree": 5, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur_min": 90, "valeur_max": 110, "duree": 5, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur_min": 110, "valeur_max": 140, "duree": 5, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur_min": 40, "valeur_max": 50, "duree": 5, "ec": 100, "cc": 45, "cooldown": 5 },
+                { "niveau": 2, "valeur_min": 55, "valeur_max": 70, "duree": 5, "ec": 100, "cc": 45, "cooldown": 5 },
+                { "niveau": 3, "valeur_min": 70, "valeur_max": 90, "duree": 5, "ec": 100, "cc": 45, "cooldown": 5 },
+                { "niveau": 4, "valeur_min": 90, "valeur_max": 110, "duree": 5, "ec": 100, "cc": 45, "cooldown": 5 },
+                { "niveau": 5, "valeur_min": 110, "valeur_max": 140, "duree": 5, "ec": 100, "cc": 45, "cooldown": 5 }
             ]
         },
         {
@@ -244,11 +235,11 @@
             "nb_coups": 3,
             "composantes": [{ "element": "air", "stat_liee": "agilite" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 3, "degats_max": 5, "ec": 30, "cc": 20, "cooldown": 2 },
-                { "niveau": 2, "degats_min": 4, "degats_max": 6, "ec": 30, "cc": 20, "cooldown": 2 },
-                { "niveau": 3, "degats_min": 5, "degats_max": 7, "ec": 40, "cc": 15, "cooldown": 1 },
-                { "niveau": 4, "degats_min": 6, "degats_max": 8, "ec": 40, "cc": 15, "cooldown": 1 },
-                { "niveau": 5, "degats_min": 7, "degats_max": 10, "ec": 50, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 3, "degats_max": 5, "ec": 100, "cc": 40, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 4, "degats_max": 6, "ec": 100, "cc": 40, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 5, "degats_max": 7, "ec": 100, "cc": 40, "cooldown": 2 },
+                { "niveau": 4, "degats_min": 6, "degats_max": 8, "ec": 100, "cc": 40, "cooldown": 2 },
+                { "niveau": 5, "degats_min": 7, "degats_max": 10, "ec": 100, "cc": 40, "cooldown": 2 }
             ]
         },
         {
@@ -262,11 +253,11 @@
             "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
             "effets": [{ "type": "brulure", "duree": 3 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 8, "degats_max": 12, "brulure_par_tour": 3, "ec": 50, "cc": 0, "cooldown": 2 },
-                { "niveau": 2, "degats_min": 10, "degats_max": 14, "brulure_par_tour": 4, "ec": 50, "cc": 0, "cooldown": 2 },
-                { "niveau": 3, "degats_min": 12, "degats_max": 16, "brulure_par_tour": 5, "ec": 50, "cc": 50, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 14, "degats_max": 18, "brulure_par_tour": 6, "ec": 50, "cc": 50, "cooldown": 1 },
-                { "niveau": 5, "degats_min": 17, "degats_max": 22, "brulure_par_tour": 8, "ec": 100, "cc": 30, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 8, "degats_max": 12, "brulure_par_tour": 3, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 2, "degats_min": 10, "degats_max": 14, "brulure_par_tour": 4, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 3, "degats_min": 12, "degats_max": 16, "brulure_par_tour": 5, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 4, "degats_min": 14, "degats_max": 18, "brulure_par_tour": 6, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 5, "degats_min": 17, "degats_max": 22, "brulure_par_tour": 8, "ec": 100, "cc": 50, "cooldown": 5 }
             ]
         },
         {
@@ -279,11 +270,11 @@
             "cible": "soi",
             "effets": [{ "type": "bonus_degats_pct" }],
             "niveaux": [
-                { "niveau": 1, "valeur": 25, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur": 35, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur": 45, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur": 55, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur": 70, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur": 25, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "valeur": 35, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "valeur": 45, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 4, "valeur": 55, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "valeur": 70, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 }
             ]
         },
         {
@@ -297,11 +288,11 @@
             "composantes": [{ "element": "eau", "stat_liee": "chance" }],
             "effets": [{ "type": "saignement", "duree": 2 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 9, "degats_max": 13, "saignement_par_tour": 4, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 11, "degats_max": 15, "saignement_par_tour": 5, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 13, "degats_max": 17, "saignement_par_tour": 6, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 15, "degats_max": 20, "saignement_par_tour": 7, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 18, "degats_max": 24, "saignement_par_tour": 9, "ec": 100, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 9, "degats_max": 13, "saignement_par_tour": 4, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 2, "degats_min": 11, "degats_max": 15, "saignement_par_tour": 5, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 3, "degats_min": 13, "degats_max": 17, "saignement_par_tour": 6, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 4, "degats_min": 15, "degats_max": 20, "saignement_par_tour": 7, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 5, "degats_min": 18, "degats_max": 24, "saignement_par_tour": 9, "ec": 100, "cc": 50, "cooldown": 4 }
             ]
         },
         {
@@ -315,11 +306,11 @@
             "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
             "effets": [{ "type": "debuff_stat", "stat": "force_stat", "duree": 2 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 10, "degats_max": 14, "valeur_effet": -10, "ec": 50, "cc": 0, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 12, "degats_max": 16, "valeur_effet": -15, "ec": 50, "cc": 0, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 14, "degats_max": 18, "valeur_effet": -20, "ec": 50, "cc": 50, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 17, "degats_max": 21, "valeur_effet": -25, "ec": 50, "cc": 50, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 20, "degats_max": 26, "valeur_effet": -30, "ec": 100, "cc": 30, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 10, "degats_max": 14, "valeur_effet": -10, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 2, "degats_min": 12, "degats_max": 16, "valeur_effet": -15, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 14, "degats_max": 18, "valeur_effet": -20, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "degats_min": 17, "degats_max": 21, "valeur_effet": -25, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "degats_min": 20, "degats_max": 26, "valeur_effet": -30, "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
@@ -332,11 +323,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "eau", "stat_liee": "chance" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 16, "degats_max": 22, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 19, "degats_max": 26, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 22, "degats_max": 30, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 26, "degats_max": 34, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 30, "degats_max": 40, "ec": 100, "cc": 10, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 16, "degats_max": 22, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 19, "degats_max": 26, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 22, "degats_max": 30, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 4, "degats_min": 26, "degats_max": 34, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "degats_min": 30, "degats_max": 40, "ec": 100, "cc": 50, "cooldown": 1 }
             ]
         },
         {
@@ -349,11 +340,11 @@
             "cible": "soi",
             "effets": [{ "type": "resistance_element", "element": "feu" }],
             "niveaux": [
-                { "niveau": 1, "valeur": -10, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "valeur": -13, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "valeur": -16, "duree": 4, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 4, "valeur": -19, "duree": 4, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 5, "valeur": -23, "duree": 4, "ec": 0, "cc": 0, "cooldown": 2 }
+                { "niveau": 1, "valeur": -10, "duree": 4, "ec": 100, "cc": 0, "cooldown": 8 },
+                { "niveau": 2, "valeur": -13, "duree": 4, "ec": 100, "cc": 0, "cooldown": 8 },
+                { "niveau": 3, "valeur": -16, "duree": 4, "ec": 100, "cc": 0, "cooldown": 8 },
+                { "niveau": 4, "valeur": -19, "duree": 4, "ec": 100, "cc": 0, "cooldown": 7 },
+                { "niveau": 5, "valeur": -23, "duree": 4, "ec": 100, "cc": 0, "cooldown": 7 }
             ]
         },
         {
@@ -369,11 +360,11 @@
                 { "element": "air", "stat_liee": "agilite" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 10, "degats_max": 14 }, { "element": "air", "degats_min": 5, "degats_max": 8 }], "ec": 50, "cc": 30, "cooldown": 2 },
-                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 16 }, { "element": "air", "degats_min": 6, "degats_max": 10 }], "ec": 50, "cc": 30, "cooldown": 2 },
-                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 19 }, { "element": "air", "degats_min": 7, "degats_max": 12 }], "ec": 50, "cc": 20, "cooldown": 1 },
-                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 17, "degats_max": 22 }, { "element": "air", "degats_min": 9, "degats_max": 14 }], "ec": 50, "cc": 20, "cooldown": 1 },
-                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 20, "degats_max": 27 }, { "element": "air", "degats_min": 11, "degats_max": 17 }], "ec": 100, "cc": 15, "cooldown": 0 }
+                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 10, "degats_max": 14 }, { "element": "air", "degats_min": 5, "degats_max": 8 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 16 }, { "element": "air", "degats_min": 6, "degats_max": 10 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 19 }, { "element": "air", "degats_min": 7, "degats_max": 12 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 17, "degats_max": 22 }, { "element": "air", "degats_min": 9, "degats_max": 14 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 20, "degats_max": 27 }, { "element": "air", "degats_min": 11, "degats_max": 17 }], "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -389,11 +380,11 @@
                 { "type": "bonus_stat", "stat": "agilite" }
             ],
             "niveaux": [
-                { "niveau": 1, "valeur_cc": 20, "valeur_stat": 15, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "valeur_cc": 15, "valeur_stat": 20, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "valeur_cc": 12, "valeur_stat": 25, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 4, "valeur_cc": 10, "valeur_stat": 30, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 5, "valeur_cc": 8, "valeur_stat": 40, "duree": 3, "ec": 0, "cc": 0, "cooldown": 2 }
+                { "niveau": 1, "valeur_cc": 5, "valeur_stat": 15, "duree": 3, "ec": 100, "cc": 0, "cooldown": 7 },
+                { "niveau": 2, "valeur_cc": 8, "valeur_stat": 20, "duree": 3, "ec": 100, "cc": 0, "cooldown": 7 },
+                { "niveau": 3, "valeur_cc": 10, "valeur_stat": 25, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 4, "valeur_cc": 12, "valeur_stat": 30, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 5, "valeur_cc": 15, "valeur_stat": 40, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 }
             ]
         },
         {
@@ -406,11 +397,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "air", "stat_liee": "agilite" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 21, "degats_max": 25, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 24, "degats_max": 28, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 27, "degats_max": 31, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 31, "degats_max": 35, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 36, "degats_max": 40, "ec": 100, "cc": 10, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 21, "degats_max": 25, "ec": 100, "cc": 40, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 24, "degats_max": 28, "ec": 100, "cc": 40, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 27, "degats_max": 31, "ec": 100, "cc": 40, "cooldown": 2 },
+                { "niveau": 4, "degats_min": 31, "degats_max": 35, "ec": 100, "cc": 40, "cooldown": 2 },
+                { "niveau": 5, "degats_min": 36, "degats_max": 40, "ec": 100, "cc": 40, "cooldown": 1 }
             ]
         },
         {
@@ -426,11 +417,11 @@
                 { "element": "eau", "stat_liee": "chance" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "feu", "degats_min": 14, "degats_max": 18 }, { "element": "eau", "degats_min": 8, "degats_max": 12 }], "ec": 50, "cc": 30, "cooldown": 2 },
-                { "niveau": 2, "composantes_degats": [{ "element": "feu", "degats_min": 17, "degats_max": 21 }, { "element": "eau", "degats_min": 10, "degats_max": 14 }], "ec": 50, "cc": 30, "cooldown": 2 },
-                { "niveau": 3, "composantes_degats": [{ "element": "feu", "degats_min": 20, "degats_max": 25 }, { "element": "eau", "degats_min": 12, "degats_max": 16 }], "ec": 50, "cc": 20, "cooldown": 1 },
-                { "niveau": 4, "composantes_degats": [{ "element": "feu", "degats_min": 24, "degats_max": 29 }, { "element": "eau", "degats_min": 14, "degats_max": 19 }], "ec": 50, "cc": 20, "cooldown": 1 },
-                { "niveau": 5, "composantes_degats": [{ "element": "feu", "degats_min": 28, "degats_max": 34 }, { "element": "eau", "degats_min": 17, "degats_max": 23 }], "ec": 100, "cc": 15, "cooldown": 0 }
+                { "niveau": 1, "composantes_degats": [{ "element": "feu", "degats_min": 14, "degats_max": 18 }, { "element": "eau", "degats_min": 8, "degats_max": 12 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 2, "composantes_degats": [{ "element": "feu", "degats_min": 17, "degats_max": 21 }, { "element": "eau", "degats_min": 10, "degats_max": 14 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 3, "composantes_degats": [{ "element": "feu", "degats_min": 20, "degats_max": 25 }, { "element": "eau", "degats_min": 12, "degats_max": 16 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 4, "composantes_degats": [{ "element": "feu", "degats_min": 24, "degats_max": 29 }, { "element": "eau", "degats_min": 14, "degats_max": 19 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 5, "composantes_degats": [{ "element": "feu", "degats_min": 28, "degats_max": 34 }, { "element": "eau", "degats_min": 17, "degats_max": 23 }], "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -446,11 +437,11 @@
                 { "type": "perte_hp_par_tour" }
             ],
             "niveaux": [
-                { "niveau": 1, "valeur_degats": 80, "perte_hp": 15, "duree": 3, "ec": 0, "cc": 0, "cooldown": 6 },
-                { "niveau": 2, "valeur_degats": 100, "perte_hp": 18, "duree": 3, "ec": 0, "cc": 0, "cooldown": 6 },
-                { "niveau": 3, "valeur_degats": 120, "perte_hp": 20, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 4, "valeur_degats": 140, "perte_hp": 22, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 5, "valeur_degats": 170, "perte_hp": 25, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 }
+                { "niveau": 1, "valeur_degats": 80, "perte_hp": 15, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "valeur_degats": 100, "perte_hp": 18, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 3, "valeur_degats": 120, "perte_hp": 20, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "valeur_degats": 140, "perte_hp": 22, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 5, "valeur_degats": 170, "perte_hp": 25, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 }
             ]
         },
         {
@@ -467,11 +458,11 @@
                 { "element": "air", "stat_liee": "agilite" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 16 }, { "element": "feu", "degats_min": 8, "degats_max": 11 }, { "element": "air", "degats_min": 5, "degats_max": 8 }], "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 19 }, { "element": "feu", "degats_min": 10, "degats_max": 13 }, { "element": "air", "degats_min": 6, "degats_max": 9 }], "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 17, "degats_max": 22 }, { "element": "feu", "degats_min": 12, "degats_max": 15 }, { "element": "air", "degats_min": 7, "degats_max": 11 }], "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 20, "degats_max": 26 }, { "element": "feu", "degats_min": 14, "degats_max": 18 }, { "element": "air", "degats_min": 9, "degats_max": 13 }], "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 24, "degats_max": 31 }, { "element": "feu", "degats_min": 17, "degats_max": 22 }, { "element": "air", "degats_min": 11, "degats_max": 16 }], "ec": 100, "cc": 10, "cooldown": 1 }
+                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 16 }, { "element": "feu", "degats_min": 8, "degats_max": 11 }, { "element": "air", "degats_min": 5, "degats_max": 8 }], "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 19 }, { "element": "feu", "degats_min": 10, "degats_max": 13 }, { "element": "air", "degats_min": 6, "degats_max": 9 }], "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 17, "degats_max": 22 }, { "element": "feu", "degats_min": 12, "degats_max": 15 }, { "element": "air", "degats_min": 7, "degats_max": 11 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 20, "degats_max": 26 }, { "element": "feu", "degats_min": 14, "degats_max": 18 }, { "element": "air", "degats_min": 9, "degats_max": 13 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 24, "degats_max": 31 }, { "element": "feu", "degats_min": 17, "degats_max": 22 }, { "element": "air", "degats_min": 11, "degats_max": 16 }], "ec": 100, "cc": 50, "cooldown": 1 }
             ]
         },
         {
@@ -490,11 +481,11 @@
             ],
             "effets": [{ "type": "debuff_toutes_stats", "duree": 2 }],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 10, "degats_max": 14 }, { "element": "feu", "degats_min": 10, "degats_max": 14 }, { "element": "eau", "degats_min": 10, "degats_max": 14 }, { "element": "air", "degats_min": 10, "degats_max": 14 }], "valeur_effet": -10, "ec": 50, "cc": 20, "cooldown": 5 },
-                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 17 }, { "element": "feu", "degats_min": 12, "degats_max": 17 }, { "element": "eau", "degats_min": 12, "degats_max": 17 }, { "element": "air", "degats_min": 12, "degats_max": 17 }], "valeur_effet": -15, "ec": 50, "cc": 20, "cooldown": 5 },
-                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 15, "degats_max": 20 }, { "element": "feu", "degats_min": 15, "degats_max": 20 }, { "element": "eau", "degats_min": 15, "degats_max": 20 }, { "element": "air", "degats_min": 15, "degats_max": 20 }], "valeur_effet": -20, "ec": 50, "cc": 15, "cooldown": 4 },
-                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 18, "degats_max": 24 }, { "element": "feu", "degats_min": 18, "degats_max": 24 }, { "element": "eau", "degats_min": 18, "degats_max": 24 }, { "element": "air", "degats_min": 18, "degats_max": 24 }], "valeur_effet": -25, "ec": 50, "cc": 15, "cooldown": 4 },
-                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 22, "degats_max": 28 }, { "element": "feu", "degats_min": 22, "degats_max": 28 }, { "element": "eau", "degats_min": 22, "degats_max": 28 }, { "element": "air", "degats_min": 22, "degats_max": 28 }], "valeur_effet": -30, "ec": 100, "cc": 10, "cooldown": 3 }
+                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 10, "degats_max": 14 }, { "element": "feu", "degats_min": 10, "degats_max": 14 }, { "element": "eau", "degats_min": 10, "degats_max": 14 }, { "element": "air", "degats_min": 10, "degats_max": 14 }], "valeur_effet": -10, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 17 }, { "element": "feu", "degats_min": 12, "degats_max": 17 }, { "element": "eau", "degats_min": 12, "degats_max": 17 }, { "element": "air", "degats_min": 12, "degats_max": 17 }], "valeur_effet": -15, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 15, "degats_max": 20 }, { "element": "feu", "degats_min": 15, "degats_max": 20 }, { "element": "eau", "degats_min": 15, "degats_max": 20 }, { "element": "air", "degats_min": 15, "degats_max": 20 }], "valeur_effet": -20, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 18, "degats_max": 24 }, { "element": "feu", "degats_min": 18, "degats_max": 24 }, { "element": "eau", "degats_min": 18, "degats_max": 24 }, { "element": "air", "degats_min": 18, "degats_max": 24 }], "valeur_effet": -25, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 22, "degats_max": 28 }, { "element": "feu", "degats_min": 22, "degats_max": 28 }, { "element": "eau", "degats_min": 22, "degats_max": 28 }, { "element": "air", "degats_min": 22, "degats_max": 28 }], "valeur_effet": -30, "ec": 100, "cc": 50, "cooldown": 3 }
             ]
         },
         {
@@ -507,11 +498,11 @@
             "cible": "soi",
             "effets": [{ "type": "resistance_element", "element": "terre" }],
             "niveaux": [
-                { "niveau": 1, "valeur": -10, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "valeur": -13, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "valeur": -16, "duree": 4, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 4, "valeur": -20, "duree": 4, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 5, "valeur": -25, "duree": 4, "ec": 0, "cc": 0, "cooldown": 2 }
+                { "niveau": 1, "valeur": -10, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "valeur": -13, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 3, "valeur": -16, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "valeur": -20, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 5, "valeur": -25, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 }
             ]
         },
         {
@@ -524,11 +515,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 7, "degats_max": 11, "ec": 50, "cc": 0, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 9, "degats_max": 13, "ec": 50, "cc": 0, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 11, "degats_max": 15, "ec": 50, "cc": 50, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 13, "degats_max": 18, "ec": 50, "cc": 50, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 16, "degats_max": 22, "ec": 100, "cc": 30, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 7, "degats_max": 11, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 9, "degats_max": 13, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 11, "degats_max": 15, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 13, "degats_max": 18, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 16, "degats_max": 22, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -544,11 +535,11 @@
                 { "type": "bonus_stat", "stat": "force_stat" }
             ],
             "niveaux": [
-                { "niveau": 1, "perte_hp": 10, "valeur_stat": 20, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "perte_hp": 12, "valeur_stat": 28, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "perte_hp": 14, "valeur_stat": 36, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 4, "perte_hp": 16, "valeur_stat": 45, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 5, "perte_hp": 18, "valeur_stat": 55, "duree": 3, "ec": 0, "cc": 0, "cooldown": 2 }
+                { "niveau": 1, "perte_hp": 10, "valeur_stat": 20, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "perte_hp": 12, "valeur_stat": 28, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "perte_hp": 14, "valeur_stat": 36, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "perte_hp": 16, "valeur_stat": 45, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "perte_hp": 18, "valeur_stat": 55, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 }
             ]
         },
         {
@@ -561,11 +552,11 @@
             "cible": "soi",
             "effets": [{ "type": "resistance_element", "element": "feu" }],
             "niveaux": [
-                { "niveau": 1, "valeur": -8, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "valeur": -11, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "valeur": -14, "duree": 4, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 4, "valeur": -17, "duree": 4, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 5, "valeur": -21, "duree": 4, "ec": 0, "cc": 0, "cooldown": 2 }
+                { "niveau": 1, "valeur": -8, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 2, "valeur": -11, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 3, "valeur": -14, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 4, "valeur": -17, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "valeur": -21, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 }
             ]
         },
         {
@@ -579,11 +570,11 @@
             "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
             "effets": [{ "type": "debuff_stat", "stat": "agilite", "duree": 2 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 8, "degats_max": 12, "valeur_effet": -10, "ec": 50, "cc": 0, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 10, "degats_max": 14, "valeur_effet": -14, "ec": 50, "cc": 0, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 12, "degats_max": 16, "valeur_effet": -18, "ec": 50, "cc": 50, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 14, "degats_max": 19, "valeur_effet": -22, "ec": 50, "cc": 50, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 17, "degats_max": 23, "valeur_effet": -27, "ec": 100, "cc": 30, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 8, "degats_max": 12, "valeur_effet": -10, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 2, "degats_min": 10, "degats_max": 14, "valeur_effet": -14, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 3, "degats_min": 12, "degats_max": 16, "valeur_effet": -18, "ec": 100, "cc": 0, "cooldown": 3 },
+                { "niveau": 4, "degats_min": 14, "degats_max": 19, "valeur_effet": -22, "ec": 100, "cc": 0, "cooldown": 3 },
+                { "niveau": 5, "degats_min": 17, "degats_max": 23, "valeur_effet": -27, "ec": 100, "cc": 0, "cooldown": 3 }
             ]
         },
         {
@@ -596,11 +587,11 @@
             "cible": "soi",
             "effets": [{ "type": "absorption_degats" }],
             "niveaux": [
-                { "niveau": 1, "valeur": 20, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur": 30, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur": 40, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur": 55, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur": 70, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur": 20, "duree": 3, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 2, "valeur": 30, "duree": 3, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 3, "valeur": 40, "duree": 3, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 4, "valeur": 55, "duree": 3, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 5, "valeur": 70, "duree": 3, "ec": 100, "cc": 50, "cooldown": 3 }
             ]
         },
         {
@@ -613,11 +604,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 10, "degats_max": 14, "ec": 50, "cc": 0, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 12, "degats_max": 16, "ec": 50, "cc": 0, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 14, "degats_max": 19, "ec": 50, "cc": 50, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 17, "degats_max": 22, "ec": 50, "cc": 50, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 20, "degats_max": 26, "ec": 100, "cc": 30, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 10, "degats_max": 14, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 12, "degats_max": 16, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 14, "degats_max": 19, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 17, "degats_max": 22, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 20, "degats_max": 26, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -633,11 +624,11 @@
                 { "type": "perte_hp_par_tour" }
             ],
             "niveaux": [
-                { "niveau": 1, "valeur_degats": 40, "perte_hp": 12, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur_degats": 55, "perte_hp": 14, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur_degats": 70, "perte_hp": 16, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur_degats": 85, "perte_hp": 18, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur_degats": 100, "perte_hp": 20, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur_degats": 40, "perte_hp": 12, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "valeur_degats": 55, "perte_hp": 14, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 3, "valeur_degats": 70, "perte_hp": 16, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 4, "valeur_degats": 85, "perte_hp": 18, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 5, "valeur_degats": 100, "perte_hp": 20, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 }
             ]
         },
         {
@@ -651,11 +642,11 @@
             "composantes": [{ "element": "eau", "stat_liee": "chance" }],
             "effets": [{ "type": "debuff_stat", "stat": "agilite", "duree": 2 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 10, "degats_max": 14, "valeur_effet": -12, "ec": 50, "cc": 20, "cooldown": 2 },
-                { "niveau": 2, "degats_min": 12, "degats_max": 16, "valeur_effet": -16, "ec": 50, "cc": 20, "cooldown": 2 },
-                { "niveau": 3, "degats_min": 14, "degats_max": 19, "valeur_effet": -20, "ec": 50, "cc": 15, "cooldown": 1 },
-                { "niveau": 4, "degats_min": 17, "degats_max": 22, "valeur_effet": -24, "ec": 50, "cc": 15, "cooldown": 1 },
-                { "niveau": 5, "degats_min": 20, "degats_max": 26, "valeur_effet": -30, "ec": 100, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 10, "degats_max": 14, "valeur_effet": -12, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 12, "degats_max": 16, "valeur_effet": -16, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 14, "degats_max": 19, "valeur_effet": -20, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "degats_min": 17, "degats_max": 22, "valeur_effet": -24, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "degats_min": 20, "degats_max": 26, "valeur_effet": -30, "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
@@ -668,11 +659,11 @@
             "cible": "soi",
             "effets": [{ "type": "resistance_tous" }],
             "niveaux": [
-                { "niveau": 1, "valeur": -8, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur": -12, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur": -16, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur": -20, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur": -25, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur": -8, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "valeur": -12, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "valeur": -16, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 4, "valeur": -20, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "valeur": -25, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 }
             ]
         },
         {
@@ -685,11 +676,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 18, "degats_max": 24, "ec": 50, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "degats_min": 21, "degats_max": 28, "ec": 50, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "degats_min": 25, "degats_max": 32, "ec": 50, "cc": 50, "cooldown": 3 },
-                { "niveau": 4, "degats_min": 29, "degats_max": 37, "ec": 50, "cc": 50, "cooldown": 3 },
-                { "niveau": 5, "degats_min": 34, "degats_max": 43, "ec": 100, "cc": 30, "cooldown": 2 }
+                { "niveau": 1, "degats_min": 18, "degats_max": 24, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 2, "degats_min": 21, "degats_max": 28, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 3, "degats_min": 25, "degats_max": 32, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "degats_min": 29, "degats_max": 37, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 5, "degats_min": 34, "degats_max": 43, "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
@@ -703,11 +694,11 @@
             "composantes": [{ "element": "eau", "stat_liee": "chance" }],
             "effets": [{ "type": "vol_stat", "stat": "force_stat", "duree": 2 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 10, "degats_max": 14, "valeur_effet": 10, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 12, "degats_max": 16, "valeur_effet": 15, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 14, "degats_max": 19, "valeur_effet": 20, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 17, "degats_max": 22, "valeur_effet": 25, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 20, "degats_max": 26, "valeur_effet": 30, "ec": 100, "cc": 10, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 10, "degats_max": 14, "valeur_effet": 10, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 12, "degats_max": 16, "valeur_effet": 15, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 14, "degats_max": 19, "valeur_effet": 20, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 4, "degats_min": 17, "degats_max": 22, "valeur_effet": 25, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "degats_min": 20, "degats_max": 26, "valeur_effet": 30, "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
@@ -720,11 +711,11 @@
             "cible": "soi",
             "effets": [{ "type": "resistance_tous_pct" }],
             "niveaux": [
-                { "niveau": 1, "valeur": 15, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur": 20, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur": 25, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur": 30, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur": 40, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur": 15, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "valeur": 20, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "valeur": 25, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 4, "valeur": 30, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "valeur": 40, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 }
             ]
         },
         {
@@ -740,11 +731,11 @@
                 { "element": "air", "stat_liee": "agilite" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 16 }, { "element": "air", "degats_min": 6, "degats_max": 9 }], "ec": 50, "cc": 30, "cooldown": 2 },
-                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 19 }, { "element": "air", "degats_min": 8, "degats_max": 11 }], "ec": 50, "cc": 30, "cooldown": 2 },
-                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 17, "degats_max": 22 }, { "element": "air", "degats_min": 10, "degats_max": 13 }], "ec": 50, "cc": 20, "cooldown": 1 },
-                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 20, "degats_max": 26 }, { "element": "air", "degats_min": 12, "degats_max": 16 }], "ec": 50, "cc": 20, "cooldown": 1 },
-                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 24, "degats_max": 31 }, { "element": "air", "degats_min": 14, "degats_max": 19 }], "ec": 100, "cc": 15, "cooldown": 0 }
+                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 16 }, { "element": "air", "degats_min": 6, "degats_max": 9 }], "ec": 100, "cc": 40, "cooldown": 2 },
+                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 19 }, { "element": "air", "degats_min": 8, "degats_max": 11 }], "ec": 100, "cc": 40, "cooldown": 2 },
+                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 17, "degats_max": 22 }, { "element": "air", "degats_min": 10, "degats_max": 13 }], "ec": 100, "cc": 40, "cooldown": 1 },
+                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 20, "degats_max": 26 }, { "element": "air", "degats_min": 12, "degats_max": 16 }], "ec": 100, "cc": 40, "cooldown": 1 },
+                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 24, "degats_max": 31 }, { "element": "air", "degats_min": 14, "degats_max": 19 }], "ec": 100, "cc": 40, "cooldown": 0 }
             ]
         },
         {
@@ -757,11 +748,11 @@
             "cible": "soi",
             "effets": [{ "type": "bonus_degats_hp_manquants" }],
             "niveaux": [
-                { "niveau": 1, "valeur": 1.0, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur": 1.5, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur": 2.0, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur": 2.5, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur": 3.0, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur": 1.0, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "valeur": 1.5, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "valeur": 2.0, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 4, "valeur": 2.5, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "valeur": 3.0, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 }
             ]
         },
         {
@@ -774,11 +765,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "eau", "stat_liee": "chance" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 21, "degats_max": 25, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 24, "degats_max": 28, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 27, "degats_max": 31, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 31, "degats_max": 35, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 36, "degats_max": 40, "ec": 100, "cc": 10, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 21, "degats_max": 25, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 24, "degats_max": 28, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 27, "degats_max": 31, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 4, "degats_min": 31, "degats_max": 35, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "degats_min": 36, "degats_max": 40, "ec": 100, "cc": 50, "cooldown": 1 }
             ]
         },
         {
@@ -794,11 +785,11 @@
                 { "element": "feu", "stat_liee": "intelligence" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 15, "degats_max": 19 }, { "element": "feu", "degats_min": 9, "degats_max": 13 }], "ec": 50, "cc": 30, "cooldown": 2 },
-                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 18, "degats_max": 22 }, { "element": "feu", "degats_min": 11, "degats_max": 15 }], "ec": 50, "cc": 30, "cooldown": 2 },
-                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 21, "degats_max": 26 }, { "element": "feu", "degats_min": 13, "degats_max": 18 }], "ec": 50, "cc": 20, "cooldown": 1 },
-                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 25, "degats_max": 30 }, { "element": "feu", "degats_min": 16, "degats_max": 21 }], "ec": 50, "cc": 20, "cooldown": 1 },
-                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 29, "degats_max": 36 }, { "element": "feu", "degats_min": 19, "degats_max": 25 }], "ec": 100, "cc": 15, "cooldown": 0 }
+                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 15, "degats_max": 19 }, { "element": "feu", "degats_min": 9, "degats_max": 13 }], "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 18, "degats_max": 22 }, { "element": "feu", "degats_min": 11, "degats_max": 15 }], "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 21, "degats_max": 26 }, { "element": "feu", "degats_min": 13, "degats_max": 18 }], "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 25, "degats_max": 30 }, { "element": "feu", "degats_min": 16, "degats_max": 21 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 29, "degats_max": 36 }, { "element": "feu", "degats_min": 19, "degats_max": 25 }], "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
@@ -811,11 +802,11 @@
             "cible": "soi",
             "effets": [{ "type": "soin" }],
             "niveaux": [
-                { "niveau": 1, "valeur_min": 40, "valeur_max": 55, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur_min": 55, "valeur_max": 75, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur_min": 70, "valeur_max": 95, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur_min": 90, "valeur_max": 120, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur_min": 115, "valeur_max": 150, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur_min": 40, "valeur_max": 55, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "valeur_min": 55, "valeur_max": 75, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "valeur_min": 70, "valeur_max": 95, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "valeur_min": 90, "valeur_max": 120, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 5, "valeur_min": 115, "valeur_max": 150, "ec": 100, "cc": 0, "cooldown": 5 }
             ]
         },
         {
@@ -832,11 +823,11 @@
                 { "element": "air", "stat_liee": "agilite" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 13, "degats_max": 17 }, { "element": "eau", "degats_min": 9, "degats_max": 12 }, { "element": "air", "degats_min": 6, "degats_max": 9 }], "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 16, "degats_max": 20 }, { "element": "eau", "degats_min": 11, "degats_max": 14 }, { "element": "air", "degats_min": 7, "degats_max": 11 }], "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 19, "degats_max": 24 }, { "element": "eau", "degats_min": 13, "degats_max": 17 }, { "element": "air", "degats_min": 9, "degats_max": 13 }], "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 22, "degats_max": 28 }, { "element": "eau", "degats_min": 15, "degats_max": 20 }, { "element": "air", "degats_min": 11, "degats_max": 15 }], "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 26, "degats_max": 33 }, { "element": "eau", "degats_min": 18, "degats_max": 24 }, { "element": "air", "degats_min": 13, "degats_max": 18 }], "ec": 100, "cc": 10, "cooldown": 1 }
+                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 13, "degats_max": 17 }, { "element": "eau", "degats_min": 9, "degats_max": 12 }, { "element": "air", "degats_min": 6, "degats_max": 9 }], "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 16, "degats_max": 20 }, { "element": "eau", "degats_min": 11, "degats_max": 14 }, { "element": "air", "degats_min": 7, "degats_max": 11 }], "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 19, "degats_max": 24 }, { "element": "eau", "degats_min": 13, "degats_max": 17 }, { "element": "air", "degats_min": 9, "degats_max": 13 }], "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 22, "degats_max": 28 }, { "element": "eau", "degats_min": 15, "degats_max": 20 }, { "element": "air", "degats_min": 11, "degats_max": 15 }], "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 26, "degats_max": 33 }, { "element": "eau", "degats_min": 18, "degats_max": 24 }, { "element": "air", "degats_min": 13, "degats_max": 18 }], "ec": 100, "cc": 50, "cooldown": 4 }
             ]
         },
         {
@@ -852,11 +843,11 @@
                 { "type": "soin_fin_effet" }
             ],
             "niveaux": [
-                { "niveau": 1, "duree": 2, "soin_fin": 30, "ec": 0, "cc": 0, "cooldown": 8 },
-                { "niveau": 2, "duree": 2, "soin_fin": 45, "ec": 0, "cc": 0, "cooldown": 8 },
-                { "niveau": 3, "duree": 2, "soin_fin": 60, "ec": 0, "cc": 0, "cooldown": 7 },
-                { "niveau": 4, "duree": 2, "soin_fin": 80, "ec": 0, "cc": 0, "cooldown": 7 },
-                { "niveau": 5, "duree": 2, "soin_fin": 100, "ec": 0, "cc": 0, "cooldown": 6 }
+                { "niveau": 1, "duree": 2, "soin_fin": 30, "ec": 100, "cc": 0, "cooldown": 8 },
+                { "niveau": 2, "duree": 2, "soin_fin": 45, "ec": 100, "cc": 0, "cooldown": 8 },
+                { "niveau": 3, "duree": 2, "soin_fin": 60, "ec": 100, "cc": 0, "cooldown": 7 },
+                { "niveau": 4, "duree": 2, "soin_fin": 80, "ec": 100, "cc": 0, "cooldown": 7 },
+                { "niveau": 5, "duree": 2, "soin_fin": 100, "ec": 100, "cc": 0, "cooldown": 6 }
             ]
         },
         {
@@ -869,11 +860,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "air", "stat_liee": "agilite" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 7, "degats_max": 11, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 9, "degats_max": 13, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 11, "degats_max": 15, "ec": 50, "cc": 12, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 13, "degats_max": 18, "ec": 50, "cc": 12, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 16, "degats_max": 22, "ec": 100, "cc": 8, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 7, "degats_max": 11, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 9, "degats_max": 13, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 11, "degats_max": 15, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 13, "degats_max": 18, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 16, "degats_max": 22, "ec": 100, "cc": 40, "cooldown": 0 }
             ]
         },
         {
@@ -887,11 +878,11 @@
             "composantes": [{ "element": "eau", "stat_liee": "chance" }],
             "effets": [{ "type": "poison", "duree": 3 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 5, "degats_max": 9, "poison_par_tour": 3, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 7, "degats_max": 11, "poison_par_tour": 4, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 9, "degats_max": 13, "poison_par_tour": 5, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 11, "degats_max": 15, "poison_par_tour": 6, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 13, "degats_max": 18, "poison_par_tour": 8, "ec": 100, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 5, "degats_max": 9, "poison_par_tour": 3, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 7, "degats_max": 11, "poison_par_tour": 4, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 9, "degats_max": 13, "poison_par_tour": 5, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "degats_min": 11, "degats_max": 15, "poison_par_tour": 6, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 5, "degats_min": 13, "degats_max": 18, "poison_par_tour": 8, "ec": 100, "cc": 50, "cooldown": 3 }
             ]
         },
         {
@@ -907,11 +898,11 @@
                 { "type": "bonus_stat", "stat": "agilite" }
             ],
             "niveaux": [
-                { "niveau": 1, "valeur_cc": 20, "valeur_stat": 10, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "valeur_cc": 15, "valeur_stat": 15, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "valeur_cc": 12, "valeur_stat": 20, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 4, "valeur_cc": 10, "valeur_stat": 25, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 5, "valeur_cc": 8, "valeur_stat": 35, "duree": 3, "ec": 0, "cc": 0, "cooldown": 2 }
+                { "niveau": 1, "valeur_cc": 20, "valeur_stat": 10, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 2, "valeur_cc": 15, "valeur_stat": 15, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 3, "valeur_cc": 12, "valeur_stat": 20, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 4, "valeur_cc": 10, "valeur_stat": 25, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 },
+                { "niveau": 5, "valeur_cc": 8, "valeur_stat": 35, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 }
             ]
         },
         {
@@ -925,11 +916,11 @@
             "nb_coups": 3,
             "composantes": [{ "element": "air", "stat_liee": "agilite" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 3, "degats_max": 5, "ec": 30, "cc": 15, "cooldown": 2 },
-                { "niveau": 2, "degats_min": 4, "degats_max": 6, "ec": 30, "cc": 15, "cooldown": 2 },
-                { "niveau": 3, "degats_min": 5, "degats_max": 7, "ec": 40, "cc": 12, "cooldown": 1 },
-                { "niveau": 4, "degats_min": 6, "degats_max": 8, "ec": 40, "cc": 12, "cooldown": 1 },
-                { "niveau": 5, "degats_min": 7, "degats_max": 10, "ec": 50, "cc": 8, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 3, "degats_max": 5, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 4, "degats_max": 6, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 5, "degats_max": 7, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "degats_min": 6, "degats_max": 8, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "degats_min": 7, "degats_max": 10, "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
@@ -942,11 +933,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 8, "degats_max": 12, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 10, "degats_max": 14, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 12, "degats_max": 16, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 14, "degats_max": 19, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 17, "degats_max": 23, "ec": 100, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 8, "degats_max": 12, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 10, "degats_max": 14, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 12, "degats_max": 16, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 14, "degats_max": 19, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 17, "degats_max": 23, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -962,11 +953,11 @@
                 { "type": "resistance_tous" }
             ],
             "niveaux": [
-                { "niveau": 1, "valeur_stat": 20, "valeur_resistance": -8, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "valeur_stat": 28, "valeur_resistance": -11, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "valeur_stat": 36, "valeur_resistance": -14, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 4, "valeur_stat": 45, "valeur_resistance": -17, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 5, "valeur_stat": 55, "valeur_resistance": -21, "duree": 3, "ec": 0, "cc": 0, "cooldown": 2 }
+                { "niveau": 1, "valeur_stat": 20, "valeur_resistance": -8, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 2, "valeur_stat": 28, "valeur_resistance": -11, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 3, "valeur_stat": 36, "valeur_resistance": -14, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 4, "valeur_stat": 45, "valeur_resistance": -17, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 },
+                { "niveau": 5, "valeur_stat": 55, "valeur_resistance": -21, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 }
             ]
         },
         {
@@ -979,11 +970,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "air", "stat_liee": "agilite" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 16, "degats_max": 22, "ec": 50, "cc": 15, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 19, "degats_max": 26, "ec": 50, "cc": 15, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 22, "degats_max": 30, "ec": 50, "cc": 12, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 26, "degats_max": 34, "ec": 50, "cc": 12, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 30, "degats_max": 40, "ec": 100, "cc": 8, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 16, "degats_max": 22, "ec": 100, "cc": 35, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 19, "degats_max": 26, "ec": 100, "cc": 35, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 22, "degats_max": 30, "ec": 100, "cc": 35, "cooldown": 2 },
+                { "niveau": 4, "degats_min": 26, "degats_max": 34, "ec": 100, "cc": 35, "cooldown": 2 },
+                { "niveau": 5, "degats_min": 30, "degats_max": 40, "ec": 100, "cc": 35, "cooldown": 1 }
             ]
         },
         {
@@ -997,11 +988,11 @@
             "composantes": [{ "element": "eau", "stat_liee": "chance" }],
             "effets": [{ "type": "debuff_stat", "stat": "agilite", "duree": 2 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 9, "degats_max": 13, "valeur_effet": -15, "ec": 50, "cc": 20, "cooldown": 2 },
-                { "niveau": 2, "degats_min": 11, "degats_max": 15, "valeur_effet": -20, "ec": 50, "cc": 20, "cooldown": 2 },
-                { "niveau": 3, "degats_min": 13, "degats_max": 17, "valeur_effet": -25, "ec": 50, "cc": 15, "cooldown": 1 },
-                { "niveau": 4, "degats_min": 15, "degats_max": 20, "valeur_effet": -30, "ec": 50, "cc": 15, "cooldown": 1 },
-                { "niveau": 5, "degats_min": 18, "degats_max": 24, "valeur_effet": -38, "ec": 100, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 9, "degats_max": 13, "valeur_effet": -15, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 2, "degats_min": 11, "degats_max": 15, "valeur_effet": -20, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 3, "degats_min": 13, "degats_max": 17, "valeur_effet": -25, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 4, "degats_min": 15, "degats_max": 20, "valeur_effet": -30, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 5, "degats_min": 18, "degats_max": 24, "valeur_effet": -38, "ec": 100, "cc": 50, "cooldown": 4 }
             ]
         },
         {
@@ -1017,11 +1008,11 @@
                 { "type": "bonus_cc" }
             ],
             "niveaux": [
-                { "niveau": 1, "valeur_ec": 10, "valeur_cc": 15, "duree": 4, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur_ec": 8, "valeur_cc": 12, "duree": 4, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur_ec": 6, "valeur_cc": 10, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur_ec": 5, "valeur_cc": 8, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur_ec": 0, "valeur_cc": 6, "duree": 4, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur_ec": 10, "valeur_cc": 15, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "valeur_ec": 8, "valeur_cc": 12, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 3, "valeur_ec": 6, "valeur_cc": 10, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "valeur_ec": 5, "valeur_cc": 8, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 5, "valeur_ec": 0, "valeur_cc": 6, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 }
             ]
         },
         {
@@ -1038,11 +1029,11 @@
                 { "type": "debuff_stat", "stat": "chance", "duree": 2 }
             ],
             "niveaux": [
-                { "niveau": 1, "degats_min": 11, "degats_max": 15, "valeur_effet": -10, "ec": 50, "cc": 15, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 13, "degats_max": 17, "valeur_effet": -14, "ec": 50, "cc": 15, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 15, "degats_max": 20, "valeur_effet": -18, "ec": 50, "cc": 12, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 18, "degats_max": 23, "valeur_effet": -22, "ec": 50, "cc": 12, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 21, "degats_max": 28, "valeur_effet": -28, "ec": 100, "cc": 8, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 11, "degats_max": 15, "valeur_effet": -10, "ec": 100, "cc": 5, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 13, "degats_max": 17, "valeur_effet": -14, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 15, "degats_max": 20, "valeur_effet": -18, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "degats_min": 18, "degats_max": 23, "valeur_effet": -22, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "degats_min": 21, "degats_max": 28, "valeur_effet": -28, "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
@@ -1055,11 +1046,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 12, "degats_max": 16, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 14, "degats_max": 19, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 17, "degats_max": 22, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 20, "degats_max": 26, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 24, "degats_max": 31, "ec": 100, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 12, "degats_max": 16, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 14, "degats_max": 19, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 17, "degats_max": 22, "ec": 100, "cc": 55, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 20, "degats_max": 26, "ec": 100, "cc": 55, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 24, "degats_max": 31, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -1073,11 +1064,11 @@
             "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
             "effets": [{ "type": "brulure", "duree": 3 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 10, "degats_max": 14, "brulure_par_tour": 4, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 12, "degats_max": 16, "brulure_par_tour": 5, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 14, "degats_max": 19, "brulure_par_tour": 6, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 17, "degats_max": 22, "brulure_par_tour": 8, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 20, "degats_max": 26, "brulure_par_tour": 10, "ec": 100, "cc": 10, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 10, "degats_max": 14, "brulure_par_tour": 4, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 2, "degats_min": 12, "degats_max": 16, "brulure_par_tour": 5, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 3, "degats_min": 14, "degats_max": 19, "brulure_par_tour": 6, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 4, "degats_min": 17, "degats_max": 22, "brulure_par_tour": 8, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 5, "degats_min": 20, "degats_max": 26, "brulure_par_tour": 10, "ec": 100, "cc": 50, "cooldown": 3 }
             ]
         },
         {
@@ -1090,11 +1081,11 @@
             "cible": "soi",
             "effets": [{ "type": "bonus_degats_element_pct", "element": "air" }],
             "niveaux": [
-                { "niveau": 1, "valeur": 25, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "valeur": 35, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "valeur": 45, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 4, "valeur": 55, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 5, "valeur": 70, "duree": 3, "ec": 0, "cc": 0, "cooldown": 2 }
+                { "niveau": 1, "valeur": 25, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "valeur": 35, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 3, "valeur": 45, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 4, "valeur": 55, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 },
+                { "niveau": 5, "valeur": 70, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 }
             ]
         },
         {
@@ -1110,11 +1101,11 @@
                 { "element": "eau", "stat_liee": "chance" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "air", "degats_min": 11, "degats_max": 15 }, { "element": "eau", "degats_min": 7, "degats_max": 10 }], "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 2, "composantes_degats": [{ "element": "air", "degats_min": 13, "degats_max": 17 }, { "element": "eau", "degats_min": 9, "degats_max": 12 }], "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 3, "composantes_degats": [{ "element": "air", "degats_min": 15, "degats_max": 20 }, { "element": "eau", "degats_min": 11, "degats_max": 14 }], "ec": 50, "cc": 12, "cooldown": 1 },
-                { "niveau": 4, "composantes_degats": [{ "element": "air", "degats_min": 18, "degats_max": 23 }, { "element": "eau", "degats_min": 13, "degats_max": 17 }], "ec": 50, "cc": 12, "cooldown": 1 },
-                { "niveau": 5, "composantes_degats": [{ "element": "air", "degats_min": 21, "degats_max": 28 }, { "element": "eau", "degats_min": 15, "degats_max": 20 }], "ec": 100, "cc": 8, "cooldown": 0 }
+                { "niveau": 1, "composantes_degats": [{ "element": "air", "degats_min": 11, "degats_max": 15 }, { "element": "eau", "degats_min": 7, "degats_max": 10 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 2, "composantes_degats": [{ "element": "air", "degats_min": 13, "degats_max": 17 }, { "element": "eau", "degats_min": 9, "degats_max": 12 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 3, "composantes_degats": [{ "element": "air", "degats_min": 15, "degats_max": 20 }, { "element": "eau", "degats_min": 11, "degats_max": 14 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 4, "composantes_degats": [{ "element": "air", "degats_min": 18, "degats_max": 23 }, { "element": "eau", "degats_min": 13, "degats_max": 17 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 5, "composantes_degats": [{ "element": "air", "degats_min": 21, "degats_max": 28 }, { "element": "eau", "degats_min": 15, "degats_max": 20 }], "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -1130,11 +1121,11 @@
                 { "type": "reduction_ec" }
             ],
             "niveaux": [
-                { "niveau": 1, "valeur_degats": 20, "valeur_ec": 2, "duree": 4, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur_degats": 30, "valeur_ec": 2, "duree": 4, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur_degats": 40, "valeur_ec": 0, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur_degats": 50, "valeur_ec": 0, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur_degats": 65, "valeur_ec": 0, "duree": 4, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur_degats": 20, "valeur_ec": 2, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "valeur_degats": 30, "valeur_ec": 2, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "valeur_degats": 40, "valeur_ec": 0, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "valeur_degats": 50, "valeur_ec": 0, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "valeur_degats": 65, "valeur_ec": 0, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 }
             ]
         },
         {
@@ -1147,11 +1138,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "air", "stat_liee": "agilite" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 21, "degats_max": 25, "ec": 50, "cc": 6, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 24, "degats_max": 28, "ec": 50, "cc": 6, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 27, "degats_max": 31, "ec": 50, "cc": 5, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 31, "degats_max": 35, "ec": 50, "cc": 5, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 36, "degats_max": 40, "ec": 100, "cc": 4, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 21, "degats_max": 25, "ec": 100, "cc": 35, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 24, "degats_max": 28, "ec": 100, "cc": 35, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 27, "degats_max": 31, "ec": 100, "cc": 35, "cooldown": 2 },
+                { "niveau": 4, "degats_min": 31, "degats_max": 35, "ec": 100, "cc": 35, "cooldown": 2 },
+                { "niveau": 5, "degats_min": 36, "degats_max": 40, "ec": 100, "cc": 35, "cooldown": 1 }
             ]
         },
         {
@@ -1167,11 +1158,11 @@
                 { "element": "feu", "stat_liee": "intelligence" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "air", "degats_min": 14, "degats_max": 18 }, { "element": "feu", "degats_min": 9, "degats_max": 13 }], "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 2, "composantes_degats": [{ "element": "air", "degats_min": 17, "degats_max": 21 }, { "element": "feu", "degats_min": 11, "degats_max": 15 }], "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 3, "composantes_degats": [{ "element": "air", "degats_min": 20, "degats_max": 25 }, { "element": "feu", "degats_min": 13, "degats_max": 18 }], "ec": 50, "cc": 12, "cooldown": 1 },
-                { "niveau": 4, "composantes_degats": [{ "element": "air", "degats_min": 24, "degats_max": 29 }, { "element": "feu", "degats_min": 16, "degats_max": 21 }], "ec": 50, "cc": 12, "cooldown": 1 },
-                { "niveau": 5, "composantes_degats": [{ "element": "air", "degats_min": 28, "degats_max": 34 }, { "element": "feu", "degats_min": 19, "degats_max": 25 }], "ec": 100, "cc": 8, "cooldown": 0 }
+                { "niveau": 1, "composantes_degats": [{ "element": "air", "degats_min": 14, "degats_max": 18 }, { "element": "feu", "degats_min": 9, "degats_max": 13 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 2, "composantes_degats": [{ "element": "air", "degats_min": 17, "degats_max": 21 }, { "element": "feu", "degats_min": 11, "degats_max": 15 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 3, "composantes_degats": [{ "element": "air", "degats_min": 20, "degats_max": 25 }, { "element": "feu", "degats_min": 13, "degats_max": 18 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 4, "composantes_degats": [{ "element": "air", "degats_min": 24, "degats_max": 29 }, { "element": "feu", "degats_min": 16, "degats_max": 21 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 5, "composantes_degats": [{ "element": "air", "degats_min": 28, "degats_max": 34 }, { "element": "feu", "degats_min": 19, "degats_max": 25 }], "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -1187,11 +1178,11 @@
                 { "type": "bonus_cc" }
             ],
             "niveaux": [
-                { "niveau": 1, "nb_esquives": 1, "valeur_cc": 15, "duree": 2, "ec": 0, "cc": 0, "cooldown": 6 },
-                { "niveau": 2, "nb_esquives": 1, "valeur_cc": 12, "duree": 2, "ec": 0, "cc": 0, "cooldown": 6 },
-                { "niveau": 3, "nb_esquives": 1, "valeur_cc": 10, "duree": 2, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 4, "nb_esquives": 2, "valeur_cc": 8, "duree": 2, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 5, "nb_esquives": 2, "valeur_cc": 6, "duree": 2, "ec": 0, "cc": 0, "cooldown": 4 }
+                { "niveau": 1, "nb_esquives": 1, "valeur_cc": 15, "duree": 2, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "nb_esquives": 1, "valeur_cc": 12, "duree": 2, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 3, "nb_esquives": 1, "valeur_cc": 10, "duree": 2, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "nb_esquives": 2, "valeur_cc": 8, "duree": 2, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 5, "nb_esquives": 2, "valeur_cc": 6, "duree": 2, "ec": 100, "cc": 0, "cooldown": 4 }
             ]
         },
         {
@@ -1208,11 +1199,11 @@
                 { "element": "eau", "stat_liee": "chance" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "air", "degats_min": 14, "degats_max": 18 }, { "element": "terre", "degats_min": 9, "degats_max": 12 }, { "element": "eau", "degats_min": 6, "degats_max": 9 }], "ec": 50, "cc": 12, "cooldown": 3 },
-                { "niveau": 2, "composantes_degats": [{ "element": "air", "degats_min": 17, "degats_max": 21 }, { "element": "terre", "degats_min": 11, "degats_max": 14 }, { "element": "eau", "degats_min": 7, "degats_max": 11 }], "ec": 50, "cc": 12, "cooldown": 3 },
-                { "niveau": 3, "composantes_degats": [{ "element": "air", "degats_min": 20, "degats_max": 25 }, { "element": "terre", "degats_min": 13, "degats_max": 17 }, { "element": "eau", "degats_min": 9, "degats_max": 13 }], "ec": 50, "cc": 10, "cooldown": 2 },
-                { "niveau": 4, "composantes_degats": [{ "element": "air", "degats_min": 24, "degats_max": 29 }, { "element": "terre", "degats_min": 16, "degats_max": 20 }, { "element": "eau", "degats_min": 11, "degats_max": 15 }], "ec": 50, "cc": 10, "cooldown": 2 },
-                { "niveau": 5, "composantes_degats": [{ "element": "air", "degats_min": 28, "degats_max": 35 }, { "element": "terre", "degats_min": 19, "degats_max": 24 }, { "element": "eau", "degats_min": 13, "degats_max": 18 }], "ec": 100, "cc": 8, "cooldown": 1 }
+                { "niveau": 1, "composantes_degats": [{ "element": "air", "degats_min": 14, "degats_max": 18 }, { "element": "terre", "degats_min": 9, "degats_max": 12 }, { "element": "eau", "degats_min": 6, "degats_max": 9 }], "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 2, "composantes_degats": [{ "element": "air", "degats_min": 17, "degats_max": 21 }, { "element": "terre", "degats_min": 11, "degats_max": 14 }, { "element": "eau", "degats_min": 7, "degats_max": 11 }], "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "composantes_degats": [{ "element": "air", "degats_min": 20, "degats_max": 25 }, { "element": "terre", "degats_min": 13, "degats_max": 17 }, { "element": "eau", "degats_min": 9, "degats_max": 13 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 4, "composantes_degats": [{ "element": "air", "degats_min": 24, "degats_max": 29 }, { "element": "terre", "degats_min": 16, "degats_max": 20 }, { "element": "eau", "degats_min": 11, "degats_max": 15 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "composantes_degats": [{ "element": "air", "degats_min": 28, "degats_max": 35 }, { "element": "terre", "degats_min": 19, "degats_max": 24 }, { "element": "eau", "degats_min": 13, "degats_max": 18 }], "ec": 100, "cc": 50, "cooldown": 1 }
             ]
         },
         {
@@ -1234,11 +1225,11 @@
                 { "type": "debuff_stat", "stat": "chance", "duree": 2 }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "air", "degats_min": 12, "degats_max": 16 }, { "element": "terre", "degats_min": 10, "degats_max": 14 }, { "element": "feu", "degats_min": 8, "degats_max": 12 }, { "element": "eau", "degats_min": 8, "degats_max": 12 }], "valeur_effet": -20, "ec": 50, "cc": 10, "cooldown": 5 },
-                { "niveau": 2, "composantes_degats": [{ "element": "air", "degats_min": 14, "degats_max": 19 }, { "element": "terre", "degats_min": 12, "degats_max": 17 }, { "element": "feu", "degats_min": 10, "degats_max": 14 }, { "element": "eau", "degats_min": 10, "degats_max": 14 }], "valeur_effet": -28, "ec": 50, "cc": 10, "cooldown": 5 },
-                { "niveau": 3, "composantes_degats": [{ "element": "air", "degats_min": 17, "degats_max": 22 }, { "element": "terre", "degats_min": 15, "degats_max": 20 }, { "element": "feu", "degats_min": 12, "degats_max": 17 }, { "element": "eau", "degats_min": 12, "degats_max": 17 }], "valeur_effet": -36, "ec": 50, "cc": 8, "cooldown": 4 },
-                { "niveau": 4, "composantes_degats": [{ "element": "air", "degats_min": 20, "degats_max": 26 }, { "element": "terre", "degats_min": 18, "degats_max": 24 }, { "element": "feu", "degats_min": 15, "degats_max": 20 }, { "element": "eau", "degats_min": 15, "degats_max": 20 }], "valeur_effet": -45, "ec": 50, "cc": 8, "cooldown": 4 },
-                { "niveau": 5, "composantes_degats": [{ "element": "air", "degats_min": 24, "degats_max": 31 }, { "element": "terre", "degats_min": 22, "degats_max": 29 }, { "element": "feu", "degats_min": 18, "degats_max": 24 }, { "element": "eau", "degats_min": 18, "degats_max": 24 }], "valeur_effet": -55, "ec": 100, "cc": 6, "cooldown": 3 }
+                { "niveau": 1, "composantes_degats": [{ "element": "air", "degats_min": 12, "degats_max": 16 }, { "element": "terre", "degats_min": 10, "degats_max": 14 }, { "element": "feu", "degats_min": 8, "degats_max": 12 }, { "element": "eau", "degats_min": 8, "degats_max": 12 }], "valeur_effet": -20, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 2, "composantes_degats": [{ "element": "air", "degats_min": 14, "degats_max": 19 }, { "element": "terre", "degats_min": 12, "degats_max": 17 }, { "element": "feu", "degats_min": 10, "degats_max": 14 }, { "element": "eau", "degats_min": 10, "degats_max": 14 }], "valeur_effet": -28, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 3, "composantes_degats": [{ "element": "air", "degats_min": 17, "degats_max": 22 }, { "element": "terre", "degats_min": 15, "degats_max": 20 }, { "element": "feu", "degats_min": 12, "degats_max": 17 }, { "element": "eau", "degats_min": 12, "degats_max": 17 }], "valeur_effet": -36, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 4, "composantes_degats": [{ "element": "air", "degats_min": 20, "degats_max": 26 }, { "element": "terre", "degats_min": 18, "degats_max": 24 }, { "element": "feu", "degats_min": 15, "degats_max": 20 }, { "element": "eau", "degats_min": 15, "degats_max": 20 }], "valeur_effet": -45, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 5, "composantes_degats": [{ "element": "air", "degats_min": 24, "degats_max": 31 }, { "element": "terre", "degats_min": 22, "degats_max": 29 }, { "element": "feu", "degats_min": 18, "degats_max": 24 }, { "element": "eau", "degats_min": 18, "degats_max": 24 }], "valeur_effet": -55, "ec": 100, "cc": 50, "cooldown": 5 }
             ]
         },
         {
@@ -1251,11 +1242,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 7, "degats_max": 11, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 9, "degats_max": 13, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 11, "degats_max": 15, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 13, "degats_max": 18, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 16, "degats_max": 22, "ec": 100, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 7, "degats_max": 11, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 9, "degats_max": 13, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 11, "degats_max": 15, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 13, "degats_max": 18, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 16, "degats_max": 22, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -1268,11 +1259,11 @@
             "cible": "soi",
             "effets": [{ "type": "resistance_tous" }],
             "niveaux": [
-                { "niveau": 1, "valeur": -8, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "valeur": -11, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "valeur": -14, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 4, "valeur": -18, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 5, "valeur": -23, "duree": 3, "ec": 0, "cc": 0, "cooldown": 2 }
+                { "niveau": 1, "valeur": -8, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 2, "valeur": -11, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 3, "valeur": -14, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 4, "valeur": -18, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 },
+                { "niveau": 5, "valeur": -23, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 }
             ]
         },
         {
@@ -1286,11 +1277,11 @@
             "composantes": [{ "element": "eau", "stat_liee": "chance" }],
             "effets": [{ "type": "debuff_stat", "stat": "intelligence", "duree": 2 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 5, "degats_max": 9, "valeur_effet": -10, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 7, "degats_max": 11, "valeur_effet": -14, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 9, "degats_max": 13, "valeur_effet": -18, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 11, "degats_max": 15, "valeur_effet": -22, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 13, "degats_max": 18, "valeur_effet": -28, "ec": 100, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 5, "degats_max": 9, "valeur_effet": -10, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 2, "degats_min": 7, "degats_max": 11, "valeur_effet": -14, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 3, "degats_min": 9, "degats_max": 13, "valeur_effet": -18, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "degats_min": 11, "degats_max": 15, "valeur_effet": -22, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 5, "degats_min": 13, "degats_max": 18, "valeur_effet": -28, "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
@@ -1303,11 +1294,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 14, "degats_max": 19, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 17, "degats_max": 22, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 20, "degats_max": 26, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 24, "degats_max": 30, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 28, "degats_max": 36, "ec": 100, "cc": 10, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 14, "degats_max": 19, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 17, "degats_max": 22, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 20, "degats_max": 26, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 24, "degats_max": 30, "ec": 10, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 28, "degats_max": 36, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -1320,11 +1311,11 @@
             "cible": "soi",
             "effets": [{ "type": "resistance_element", "element": "eau" }],
             "niveaux": [
-                { "niveau": 1, "valeur": -10, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "valeur": -13, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "valeur": -16, "duree": 4, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 4, "valeur": -20, "duree": 4, "ec": 0, "cc": 0, "cooldown": 3 },
-                { "niveau": 5, "valeur": -25, "duree": 4, "ec": 0, "cc": 0, "cooldown": 2 }
+                { "niveau": 1, "valeur": -10, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "valeur": -13, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "valeur": -16, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "valeur": -20, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "valeur": -25, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 }
             ]
         },
         {
@@ -1337,11 +1328,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "eau", "stat_liee": "chance" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 9, "degats_max": 13, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 11, "degats_max": 15, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 13, "degats_max": 17, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 15, "degats_max": 20, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 18, "degats_max": 24, "ec": 100, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 9, "degats_max": 13, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 11, "degats_max": 15, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 13, "degats_max": 17, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 15, "degats_max": 20, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 18, "degats_max": 24, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -1355,11 +1346,11 @@
             "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
             "effets": [{ "type": "brulure", "duree": 3 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 9, "degats_max": 13, "brulure_par_tour": 4, "ec": 50, "cc": 20, "cooldown": 2 },
-                { "niveau": 2, "degats_min": 11, "degats_max": 15, "brulure_par_tour": 5, "ec": 50, "cc": 20, "cooldown": 2 },
-                { "niveau": 3, "degats_min": 13, "degats_max": 17, "brulure_par_tour": 6, "ec": 50, "cc": 15, "cooldown": 1 },
-                { "niveau": 4, "degats_min": 15, "degats_max": 20, "brulure_par_tour": 8, "ec": 50, "cc": 15, "cooldown": 1 },
-                { "niveau": 5, "degats_min": 18, "degats_max": 24, "brulure_par_tour": 10, "ec": 100, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 9, "degats_max": 13, "brulure_par_tour": 4, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 11, "degats_max": 15, "brulure_par_tour": 5, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 13, "degats_max": 17, "brulure_par_tour": 6, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "degats_min": 15, "degats_max": 20, "brulure_par_tour": 8, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 5, "degats_min": 18, "degats_max": 24, "brulure_par_tour": 10, "ec": 100, "cc": 50, "cooldown": 3 }
             ]
         },
         {
@@ -1372,11 +1363,11 @@
             "cible": "soi",
             "effets": [{ "type": "absorption_degats" }],
             "niveaux": [
-                { "niveau": 1, "valeur": 25, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur": 35, "duree": 3, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur": 48, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur": 62, "duree": 3, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur": 80, "duree": 3, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur": 25, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "valeur": 35, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "valeur": 48, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 4, "valeur": 62, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "valeur": 80, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 }
             ]
         },
         {
@@ -1389,11 +1380,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 11, "degats_max": 15, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 13, "degats_max": 17, "ec": 50, "cc": 20, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 15, "degats_max": 20, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 18, "degats_max": 23, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 21, "degats_max": 28, "ec": 100, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 11, "degats_max": 15, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 13, "degats_max": 17, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 15, "degats_max": 20, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 18, "degats_max": 23, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 21, "degats_max": 28, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -1406,11 +1397,11 @@
             "cible": "ennemi",
             "effets": [{ "type": "debuff_toutes_stats", "duree": 3 }],
             "niveaux": [
-                { "niveau": 1, "valeur": -8, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur": -12, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur": -16, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur": -20, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur": -25, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur": -8, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "valeur": -12, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "valeur": -16, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 4, "valeur": -20, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "valeur": -25, "ec": 100, "cc": 0, "cooldown": 3 }
             ]
         },
         {
@@ -1423,11 +1414,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "air", "stat_liee": "agilite" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 12, "degats_max": 16, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 14, "degats_max": 19, "ec": 50, "cc": 15, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 17, "degats_max": 22, "ec": 50, "cc": 12, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 20, "degats_max": 26, "ec": 50, "cc": 12, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 24, "degats_max": 31, "ec": 100, "cc": 8, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 12, "degats_max": 16, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 14, "degats_max": 19, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 17, "degats_max": 22, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "degats_min": 20, "degats_max": 26, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "degats_min": 24, "degats_max": 31, "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
@@ -1443,11 +1434,11 @@
                 { "element": "terre", "stat_liee": "force_stat" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "feu", "degats_min": 12, "degats_max": 16 }, { "element": "terre", "degats_min": 7, "degats_max": 10 }], "ec": 50, "cc": 20, "cooldown": 2 },
-                { "niveau": 2, "composantes_degats": [{ "element": "feu", "degats_min": 14, "degats_max": 19 }, { "element": "terre", "degats_min": 9, "degats_max": 12 }], "ec": 50, "cc": 20, "cooldown": 2 },
-                { "niveau": 3, "composantes_degats": [{ "element": "feu", "degats_min": 17, "degats_max": 22 }, { "element": "terre", "degats_min": 11, "degats_max": 14 }], "ec": 50, "cc": 15, "cooldown": 1 },
-                { "niveau": 4, "composantes_degats": [{ "element": "feu", "degats_min": 20, "degats_max": 26 }, { "element": "terre", "degats_min": 13, "degats_max": 17 }], "ec": 50, "cc": 15, "cooldown": 1 },
-                { "niveau": 5, "composantes_degats": [{ "element": "feu", "degats_min": 24, "degats_max": 31 }, { "element": "terre", "degats_min": 15, "degats_max": 20 }], "ec": 100, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "composantes_degats": [{ "element": "feu", "degats_min": 12, "degats_max": 16 }, { "element": "terre", "degats_min": 7, "degats_max": 10 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 2, "composantes_degats": [{ "element": "feu", "degats_min": 14, "degats_max": 19 }, { "element": "terre", "degats_min": 9, "degats_max": 12 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 3, "composantes_degats": [{ "element": "feu", "degats_min": 17, "degats_max": 22 }, { "element": "terre", "degats_min": 11, "degats_max": 14 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 4, "composantes_degats": [{ "element": "feu", "degats_min": 20, "degats_max": 26 }, { "element": "terre", "degats_min": 13, "degats_max": 17 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 5, "composantes_degats": [{ "element": "feu", "degats_min": 24, "degats_max": 31 }, { "element": "terre", "degats_min": 15, "degats_max": 20 }], "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -1463,11 +1454,11 @@
                 { "type": "bonus_stat", "stat": "chance" }
             ],
             "niveaux": [
-                { "niveau": 1, "valeur_intelligence": 20, "valeur_chance": 20, "duree": 4, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur_intelligence": 30, "valeur_chance": 30, "duree": 4, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur_intelligence": 40, "valeur_chance": 40, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur_intelligence": 55, "valeur_chance": 55, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur_intelligence": 70, "valeur_chance": 70, "duree": 4, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur_intelligence": 20, "valeur_chance": 20, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 2, "valeur_intelligence": 30, "valeur_chance": 30, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "valeur_intelligence": 40, "valeur_chance": 40, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "valeur_intelligence": 55, "valeur_chance": 55, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "valeur_intelligence": 70, "valeur_chance": 70, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 }
             ]
         },
         {
@@ -1483,11 +1474,11 @@
                 { "element": "eau", "stat_liee": "chance" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "feu", "degats_min": 13, "degats_max": 17 }, { "element": "eau", "degats_min": 8, "degats_max": 12 }], "ec": 50, "cc": 20, "cooldown": 2 },
-                { "niveau": 2, "composantes_degats": [{ "element": "feu", "degats_min": 15, "degats_max": 20 }, { "element": "eau", "degats_min": 10, "degats_max": 14 }], "ec": 50, "cc": 20, "cooldown": 2 },
-                { "niveau": 3, "composantes_degats": [{ "element": "feu", "degats_min": 18, "degats_max": 23 }, { "element": "eau", "degats_min": 12, "degats_max": 16 }], "ec": 50, "cc": 15, "cooldown": 1 },
-                { "niveau": 4, "composantes_degats": [{ "element": "feu", "degats_min": 21, "degats_max": 27 }, { "element": "eau", "degats_min": 14, "degats_max": 19 }], "ec": 50, "cc": 15, "cooldown": 1 },
-                { "niveau": 5, "composantes_degats": [{ "element": "feu", "degats_min": 25, "degats_max": 32 }, { "element": "eau", "degats_min": 17, "degats_max": 23 }], "ec": 100, "cc": 10, "cooldown": 0 }
+                { "niveau": 1, "composantes_degats": [{ "element": "feu", "degats_min": 13, "degats_max": 17 }, { "element": "eau", "degats_min": 8, "degats_max": 12 }], "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 2, "composantes_degats": [{ "element": "feu", "degats_min": 15, "degats_max": 20 }, { "element": "eau", "degats_min": 10, "degats_max": 14 }], "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "composantes_degats": [{ "element": "feu", "degats_min": 18, "degats_max": 23 }, { "element": "eau", "degats_min": 12, "degats_max": 16 }], "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "composantes_degats": [{ "element": "feu", "degats_min": 21, "degats_max": 27 }, { "element": "eau", "degats_min": 14, "degats_max": 19 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "composantes_degats": [{ "element": "feu", "degats_min": 25, "degats_max": 32 }, { "element": "eau", "degats_min": 17, "degats_max": 23 }], "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
@@ -1503,11 +1494,11 @@
                 { "type": "soin_par_tour" }
             ],
             "niveaux": [
-                { "niveau": 1, "valeur_resistance": -12, "soin_par_tour": 8, "duree": 4, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur_resistance": -16, "soin_par_tour": 12, "duree": 4, "ec": 0, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur_resistance": -20, "soin_par_tour": 16, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur_resistance": -25, "soin_par_tour": 21, "duree": 4, "ec": 0, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur_resistance": -32, "soin_par_tour": 28, "duree": 4, "ec": 0, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "valeur_resistance": -12, "soin_par_tour": 8, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "valeur_resistance": -16, "soin_par_tour": 12, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 3, "valeur_resistance": -20, "soin_par_tour": 16, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "valeur_resistance": -25, "soin_par_tour": 21, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 },
+                { "niveau": 5, "valeur_resistance": -32, "soin_par_tour": 28, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 }
             ]
         },
         {
@@ -1521,11 +1512,11 @@
             "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
             "effets": [{ "type": "debuff_stat", "stat": "intelligence", "duree": 2 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 21, "degats_max": 25, "valeur_effet": -20, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 24, "degats_max": 28, "valeur_effet": -28, "ec": 50, "cc": 20, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 27, "degats_max": 31, "valeur_effet": -36, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 31, "degats_max": 35, "valeur_effet": -45, "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 36, "degats_max": 40, "valeur_effet": -55, "ec": 100, "cc": 10, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 21, "degats_max": 25, "valeur_effet": -20, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 2, "degats_min": 24, "degats_max": 28, "valeur_effet": -28, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 3, "degats_min": 27, "degats_max": 31, "valeur_effet": -36, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 4, "degats_min": 31, "degats_max": 35, "valeur_effet": -45, "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 5, "degats_min": 36, "degats_max": 40, "valeur_effet": -55, "ec": 100, "cc": 50, "cooldown": 4 }
             ]
         },
         {
@@ -1542,11 +1533,11 @@
                 { "element": "air", "stat_liee": "agilite" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "feu", "degats_min": 13, "degats_max": 17 }, { "element": "eau", "degats_min": 9, "degats_max": 12 }, { "element": "air", "degats_min": 6, "degats_max": 9 }], "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 2, "composantes_degats": [{ "element": "feu", "degats_min": 15, "degats_max": 20 }, { "element": "eau", "degats_min": 11, "degats_max": 14 }, { "element": "air", "degats_min": 7, "degats_max": 11 }], "ec": 50, "cc": 15, "cooldown": 2 },
-                { "niveau": 3, "composantes_degats": [{ "element": "feu", "degats_min": 18, "degats_max": 23 }, { "element": "eau", "degats_min": 13, "degats_max": 17 }, { "element": "air", "degats_min": 9, "degats_max": 13 }], "ec": 50, "cc": 12, "cooldown": 1 },
-                { "niveau": 4, "composantes_degats": [{ "element": "feu", "degats_min": 21, "degats_max": 27 }, { "element": "eau", "degats_min": 15, "degats_max": 20 }, { "element": "air", "degats_min": 11, "degats_max": 15 }], "ec": 50, "cc": 12, "cooldown": 1 },
-                { "niveau": 5, "composantes_degats": [{ "element": "feu", "degats_min": 25, "degats_max": 32 }, { "element": "eau", "degats_min": 18, "degats_max": 24 }, { "element": "air", "degats_min": 13, "degats_max": 18 }], "ec": 100, "cc": 8, "cooldown": 0 }
+                { "niveau": 1, "composantes_degats": [{ "element": "feu", "degats_min": 13, "degats_max": 17 }, { "element": "eau", "degats_min": 9, "degats_max": 12 }, { "element": "air", "degats_min": 6, "degats_max": 9 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 2, "composantes_degats": [{ "element": "feu", "degats_min": 15, "degats_max": 20 }, { "element": "eau", "degats_min": 11, "degats_max": 14 }, { "element": "air", "degats_min": 7, "degats_max": 11 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 3, "composantes_degats": [{ "element": "feu", "degats_min": 18, "degats_max": 23 }, { "element": "eau", "degats_min": 13, "degats_max": 17 }, { "element": "air", "degats_min": 9, "degats_max": 13 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 4, "composantes_degats": [{ "element": "feu", "degats_min": 21, "degats_max": 27 }, { "element": "eau", "degats_min": 15, "degats_max": 20 }, { "element": "air", "degats_min": 11, "degats_max": 15 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "composantes_degats": [{ "element": "feu", "degats_min": 25, "degats_max": 32 }, { "element": "eau", "degats_min": 18, "degats_max": 24 }, { "element": "air", "degats_min": 13, "degats_max": 18 }], "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
@@ -1559,11 +1550,11 @@
             "cible": "soi",
             "effets": [{ "type": "multiplicateur_effets" }],
             "niveaux": [
-                { "niveau": 1, "valeur": 1.5, "duree": 2, "ec": 0, "cc": 0, "cooldown": 7 },
-                { "niveau": 2, "valeur": 1.7, "duree": 2, "ec": 0, "cc": 0, "cooldown": 7 },
-                { "niveau": 3, "valeur": 1.9, "duree": 2, "ec": 0, "cc": 0, "cooldown": 6 },
-                { "niveau": 4, "valeur": 2.1, "duree": 2, "ec": 0, "cc": 0, "cooldown": 6 },
-                { "niveau": 5, "valeur": 2.5, "duree": 2, "ec": 0, "cc": 0, "cooldown": 5 }
+                { "niveau": 1, "valeur": 1.5, "duree": 2, "ec": 100, "cc": 0, "cooldown": 8 },
+                { "niveau": 2, "valeur": 1.7, "duree": 2, "ec": 100, "cc": 0, "cooldown": 7 },
+                { "niveau": 3, "valeur": 1.9, "duree": 2, "ec": 100, "cc": 0, "cooldown": 7 },
+                { "niveau": 4, "valeur": 2.1, "duree": 2, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 5, "valeur": 2.5, "duree": 2, "ec": 100, "cc": 0, "cooldown": 6 }
             ]
         },
         {
@@ -1581,11 +1572,11 @@
                 { "element": "air", "stat_liee": "agilite" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 16 }, { "element": "feu", "degats_min": 12, "degats_max": 16 }, { "element": "eau", "degats_min": 10, "degats_max": 13 }, { "element": "air", "degats_min": 8, "degats_max": 11 }], "ec": 50, "cc": 15, "cooldown": 4 },
-                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 19 }, { "element": "feu", "degats_min": 14, "degats_max": 19 }, { "element": "eau", "degats_min": 12, "degats_max": 15 }, { "element": "air", "degats_min": 10, "degats_max": 13 }], "ec": 50, "cc": 15, "cooldown": 4 },
-                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 17, "degats_max": 22 }, { "element": "feu", "degats_min": 17, "degats_max": 22 }, { "element": "eau", "degats_min": 14, "degats_max": 18 }, { "element": "air", "degats_min": 12, "degats_max": 15 }], "ec": 50, "cc": 12, "cooldown": 3 },
-                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 20, "degats_max": 26 }, { "element": "feu", "degats_min": 20, "degats_max": 26 }, { "element": "eau", "degats_min": 16, "degats_max": 21 }, { "element": "air", "degats_min": 14, "degats_max": 18 }], "ec": 50, "cc": 12, "cooldown": 3 },
-                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 24, "degats_max": 31 }, { "element": "feu", "degats_min": 24, "degats_max": 31 }, { "element": "eau", "degats_min": 19, "degats_max": 25 }, { "element": "air", "degats_min": 17, "degats_max": 22 }], "ec": 100, "cc": 8, "cooldown": 2 }
+                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 16 }, { "element": "feu", "degats_min": 12, "degats_max": 16 }, { "element": "eau", "degats_min": 10, "degats_max": 13 }, { "element": "air", "degats_min": 8, "degats_max": 11 }], "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 19 }, { "element": "feu", "degats_min": 14, "degats_max": 19 }, { "element": "eau", "degats_min": 12, "degats_max": 15 }, { "element": "air", "degats_min": 10, "degats_max": 13 }], "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 17, "degats_max": 22 }, { "element": "feu", "degats_min": 17, "degats_max": 22 }, { "element": "eau", "degats_min": 14, "degats_max": 18 }, { "element": "air", "degats_min": 12, "degats_max": 15 }], "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 20, "degats_max": 26 }, { "element": "feu", "degats_min": 20, "degats_max": 26 }, { "element": "eau", "degats_min": 16, "degats_max": 21 }, { "element": "air", "degats_min": 14, "degats_max": 18 }], "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 24, "degats_max": 31 }, { "element": "feu", "degats_min": 24, "degats_max": 31 }, { "element": "eau", "degats_min": 19, "degats_max": 25 }, { "element": "air", "degats_min": 17, "degats_max": 22 }], "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
@@ -1607,11 +1598,11 @@
                 { "type": "brulure", "duree": 3 }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 18 }, { "element": "feu", "degats_min": 14, "degats_max": 18 }, { "element": "eau", "degats_min": 12, "degats_max": 16 }, { "element": "air", "degats_min": 10, "degats_max": 14 }], "valeur_effet": -15, "brulure_par_tour": 5, "ec": 50, "cc": 12, "cooldown": 6 },
-                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 17, "degats_max": 21 }, { "element": "feu", "degats_min": 17, "degats_max": 21 }, { "element": "eau", "degats_min": 14, "degats_max": 19 }, { "element": "air", "degats_min": 12, "degats_max": 17 }], "valeur_effet": -20, "brulure_par_tour": 7, "ec": 50, "cc": 12, "cooldown": 6 },
-                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 20, "degats_max": 25 }, { "element": "feu", "degats_min": 20, "degats_max": 25 }, { "element": "eau", "degats_min": 17, "degats_max": 22 }, { "element": "air", "degats_min": 15, "degats_max": 20 }], "valeur_effet": -25, "brulure_par_tour": 9, "ec": 50, "cc": 10, "cooldown": 5 },
-                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 24, "degats_max": 30 }, { "element": "feu", "degats_min": 24, "degats_max": 30 }, { "element": "eau", "degats_min": 20, "degats_max": 26 }, { "element": "air", "degats_min": 18, "degats_max": 24 }], "valeur_effet": -30, "brulure_par_tour": 12, "ec": 50, "cc": 10, "cooldown": 5 },
-                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 28, "degats_max": 36 }, { "element": "feu", "degats_min": 28, "degats_max": 36 }, { "element": "eau", "degats_min": 24, "degats_max": 31 }, { "element": "air", "degats_min": 22, "degats_max": 29 }], "valeur_effet": -38, "brulure_par_tour": 15, "ec": 100, "cc": 8, "cooldown": 4 }
+                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 18 }, { "element": "feu", "degats_min": 14, "degats_max": 18 }, { "element": "eau", "degats_min": 12, "degats_max": 16 }, { "element": "air", "degats_min": 10, "degats_max": 14 }], "valeur_effet": -15, "brulure_par_tour": 5, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 17, "degats_max": 21 }, { "element": "feu", "degats_min": 17, "degats_max": 21 }, { "element": "eau", "degats_min": 14, "degats_max": 19 }, { "element": "air", "degats_min": 12, "degats_max": 17 }], "valeur_effet": -20, "brulure_par_tour": 7, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 20, "degats_max": 25 }, { "element": "feu", "degats_min": 20, "degats_max": 25 }, { "element": "eau", "degats_min": 17, "degats_max": 22 }, { "element": "air", "degats_min": 15, "degats_max": 20 }], "valeur_effet": -25, "brulure_par_tour": 9, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 24, "degats_max": 30 }, { "element": "feu", "degats_min": 24, "degats_max": 30 }, { "element": "eau", "degats_min": 20, "degats_max": 26 }, { "element": "air", "degats_min": 18, "degats_max": 24 }], "valeur_effet": -30, "brulure_par_tour": 12, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 28, "degats_max": 36 }, { "element": "feu", "degats_min": 28, "degats_max": 36 }, { "element": "eau", "degats_min": 24, "degats_max": 31 }, { "element": "air", "degats_min": 22, "degats_max": 29 }], "valeur_effet": -38, "brulure_par_tour": 15, "ec": 100, "cc": 50, "cooldown": 6 }
             ]
         }
     ]

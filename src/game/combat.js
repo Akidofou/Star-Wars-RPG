@@ -65,33 +65,65 @@ const combat = {
     calculerDegats(sort, niveauSort, statsAttaquand) {
         const niveauData = sort.niveaux.find(n => n.niveau === niveauSort) || sort.niveaux[0];
 
-        if (!niveauData.degats_min) return { degats: 0, critique: false, echec: false};
+        const aDegatsDirects = niveauData.degats_min || niveauData.composantes_degats;
+        if (!aDegatsDirects) return { degats: 0, critique: false, echec: false };
 
-        const echecRoll = Math.floor(Math.random() * niveauData.ec) === 0;
+        const echecRoll = niveauData.ec > 0 && Math.floor(Math.random() * niveauData.ec) === 0;
         if (echecRoll) return { degats: 0, critique: false, echec: true };
 
-        const critiqueRoll = niveauData.cc > 0 && Math.floor(Math.random()*niveauData.cc) === 0;
+        const bonusCC = statsAttaquand.bonus_cc || 0;
+        const ccApresBonus = Math.max(2, niveauData.cc - bonusCC);
+        const agilite = statsAttaquand.agilite || 0;
+        const ccEffectif = agilite >= 8
+            ? Math.max(2, Math.floor(ccApresBonus * 2.9901 / Math.log(agilite + 12)))
+            : ccApresBonus;
+        const critiqueRoll = niveauData.cc > 0 && Math.floor(Math.random() * ccEffectif) === 0;
 
-        const degatsBase = Math.floor(
-            Math.random() * (niveauData.degats_max - niveauData.degats_min + 1)
-        ) + niveauData.degats_min;
+        let degatsTotal = 0;
+        let detailDegats = [];
 
-        let stat = 0;
-        if (sort.stat_liee === 'meilleure_stat') {
-            stat = Math.max(
-                statsAttaquand.force || 0,
-                statsAttaquand.intelligence || 0,
-                statsAttaquand.chance || 0,
-                statsAttaquand.agilite || 0
-            );
+        if (niveauData.composantes_degats) {
+            niveauData.composantes_degats.forEach(composante => {
+                const statComposante = sort.composantes?.find(c => c.element === composante.element)?.stat_liee;
+                let statValeur = 0;
+                if (statComposante === 'meilleure_stat') {
+                    statValeur = Math.max(
+                        statsAttaquand.force_stat || 0,
+                        statsAttaquand.intelligence || 0,
+                        statsAttaquand.chance || 0,
+                        statsAttaquand.agilite || 0
+                    );
+                } else if (statComposante) {
+                    statValeur = statsAttaquand[statComposante] || 0;
+                }
+                const degatsBase = Math.floor(
+                    Math.random() * (composante.degats_max - composante.degats_min + 1)
+                ) + composante.degats_min;
+                const degatsComposante = Math.round(degatsBase * (1 + statValeur / 100));
+                degatsTotal += degatsComposante;
+                detailDegats.push({ element: composante.element, degats: degatsComposante });
+            });
         } else {
-            stat = statsAttaquand[sort.stat_liee] || 0;
+            const statLiee = sort.stat_liee || (sort.composantes && sort.composantes[0]?.stat_liee);
+            let stat = 0;
+            if (statLiee === 'meilleure_stat') {
+                stat = Math.max(
+                    statsAttaquand.force_stat || 0,
+                    statsAttaquand.intelligence || 0,
+                    statsAttaquand.chance || 0,
+                    statsAttaquand.agilite || 0
+                );
+            } else if (statLiee) {
+                stat = statsAttaquand[statLiee] || 0;
+            }
+            const degatsBase = Math.floor(
+                Math.random() * (niveauData.degats_max - niveauData.degats_min + 1)
+            ) + niveauData.degats_min;
+            degatsTotal = Math.round(degatsBase * (1 + stat / 100));
         }
 
-        let degats = Math.round(degatsBase * (1 + stat / 100));
-        if (critiqueRoll) degats = Math.round(degats * 1.5);
-
-        return { degats, critique: critiqueRoll, echec: false };
+        if (critiqueRoll) degatsTotal = Math.round(degatsTotal * 1.5);
+        return { degats: degatsTotal, critique: critiqueRoll, echec: false, detail: detailDegats };
     },
 
     creerCombat(discord_id, enemy, variante) {

@@ -27,7 +27,7 @@ const levelUp = {
             niveau: nouveauNiveau,
             hp_max: nouveauHpMax,
             hp_actuel: nouveauHpMax,
-            points_stat: joueur.points_stat + 1,
+            points_stat: joueur.points_stat + 5,
             points_competence: joueur.points_competence + 1
         });
 
@@ -40,7 +40,7 @@ const levelUp = {
             nouveauNiveau,
             hpBonus,
             sortsDebloques,
-            pointsStat: 1,
+            pointsStat: 5,
             pointsCompetence: 1
         };
     },
