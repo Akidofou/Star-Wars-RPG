@@ -539,7 +539,7 @@ const builder = {
                 if (niveauData.duree) description += `⏱️ Durée : ${niveauData.duree} tours\n`;
                 if (niveauData.cooldown > 0) description += `🔄 Cooldown : ${niveauData.cooldown} tours\n`;
                 if (coutProchain) {
-                    description += `💡 Améliorer : ${coutProchain} point(s) de compétence\n`;
+                    description += `💡 Améliorer : **${coutProchain}** point(s) de compétence *(vous avez ${joueur.points_competence})*\n`;
                 } else {
                     description += `✅ Sort au niveau maximum\n`;
                 }
@@ -555,6 +555,35 @@ const builder = {
             )
             .setColor(0x1a1a2e);
         
+        const sortsAmeliorables = sorts.filter(s => s.niveau_actuel < 5);
+
+        const components = [];
+
+        if (sortsAmeliorables.length > 0) {
+            const selectAmeliorer = new ActionRowBuilder()
+                .addComponents(
+                    new StringSelectMenuBuilder()
+                        .setCustomId('ameliorer_sort')
+                        .setPlaceholder('⬆️ Choisissez un sort à améliorer...')
+                        .setDisabled(joueur.points_competence <= 0)
+                        .addOptions(
+                            sortsAmeliorables.map(sort => {
+                                const cout = sort.niveau_actuel;
+                                const peutAmeliorer = joueur.points_competence >= cout;
+                                return {
+                                    label: `${sort.nom} Nv.${sort.niveau_actuel} → Nv.${sort.niveau_actuel + 1}`,
+                                    description: peutAmeliorer
+                                        ? `Coût : ${cout} point(s) — Vous avez ${joueur.points_competence} point(s)`
+                                        : `Coût : ${cout} point(s) — Pas assez de points !`,
+                                    value: `${sort.sort_id}`,
+                                    emoji: peutAmeliorer ? '⬆️' : '❌'
+                                };
+                            })
+                        )
+                );
+            components.push(selectAmeliorer);
+        }
+
         const rowRetour = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
@@ -563,8 +592,9 @@ const builder = {
                     .setStyle(ButtonStyle.Danger)
                     .setEmoji('🔙')
             );
-        
-        return { embeds: [embed], components: [rowRetour], flags: 64 };
+
+        components.push(rowRetour);
+        return { embeds: [embed], components, flags: 64 };
     },
 
     combat(joueur, combatData, enemyData, sorts, journal = []) {
@@ -725,7 +755,7 @@ const builder = {
                     case 'reduction_ec': parties.push(`-${niveauData.valeur_ec} EC`); break;
                     case 'bonus_degats_element_pct': parties.push(`+${niveauData.valeur}% dégâts ${effet.element}`); break;
                     case 'bonus_degats_hp_manquants': parties.push(`+${niveauData.valeur}% dégâts par % HP manquant`); break;
-                    case 'vol_stat': parties.push(`vole ${niveauData.valeur_effet} ${effet.stat}`); break;
+                    case 'vol_stat': parties.push(`vole ${niveauData.valeur_effet} ${NOMS_STATS[effet.stat] || effet.stat}`); break;
                 }
             });
             return `${parties.join(', ')} pendant ${niveauData.duree} tours.`;
@@ -739,7 +769,7 @@ const builder = {
             const parties = [];
             sort.effets.forEach(effet => {
                 switch (effet.type) {
-                    case 'debuff_stat': parties.push(`-${Math.abs(niveauData.valeur_effet)} ${effet.stat}`); break;
+                    case 'debuff_stat': parties.push(`-${Math.abs(niveauData.valeur_effet)} ${NOMS_STATS[effet.stat] || effet.stat}`); break;
                     case 'debuff_toutes_stats': parties.push(`-${Math.abs(niveauData.valeur)} à toutes les stats`); break;
                 }
             });
