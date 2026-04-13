@@ -1,6 +1,7 @@
 const playerDB = require('../../database/playerDB');
 const spellsDB = require('../../database/spellsDB');
 const combatEngine = require('../../game/combat');
+const codexDB = require('../../database/codexDB');
 const effects = require('../../game/effects');
 const builder = require('../builder');
 
@@ -42,6 +43,12 @@ module.exports = async (interaction, params) => {
     }
 
     const enemyData = require('../../../data/enemies.json').enemies.find(e => e.id === combatActif.enemy_id);
+
+    const nouvelleDecouverte = codexDB.decouvrir(discord_id, 'monstre', combatActif.enemy_id);
+    if (nouvelleDecouverte) {
+        journal.push(`📚 **Nouveau !** ${enemyData.nom} ajouté à votre Codex !`);
+    }
+    
     const { effetsRestants: effetsEnnemiRestants, hpChange: hpChangeEnnemi } =
         effects.traiterEffetsDebutTour(effetsEnnemi, enemyStats, journal, enemyData.nom, effetsEnnemi);
     effetsEnnemi = effetsEnnemiRestants;

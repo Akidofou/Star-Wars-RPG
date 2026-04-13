@@ -30,8 +30,14 @@ module.exports = async (interaction, params) => {
         const voyages = zonesHelper.getVoyagesDisponibles(joueur.zone_actuelle, joueur.secteur_actuel);
         await interaction.update(builder.lieux(joueur, duche, comte, secteur, voyages));
     } else if (action === 'codex') {
-        const entrees = playerDB.getCodex(discord_id);
-        await interaction.update(builder.codex(joueur, entrees));
+        const codexDB = require('../../database/codexDB');
+        const counts = codexDB.compterEntrees(discord_id);
+        const sortsClasse = codexDB.getSortsClasse(joueur.classe);
+        sortsClasse.forEach(s => {
+            codexDB.decouvrir(discord_id, 'sort', s.id);
+        });
+        const countsMisAJour = codexDB.compterEntrees(discord_id);
+        await interaction.update(builder.codex(joueur, countsMisAJour));
     } else if (action === 'classement') {
         const classement = playerDB.getClassement();
         await interaction.update(builder.classement(classement, joueur));

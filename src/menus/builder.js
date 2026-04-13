@@ -392,37 +392,59 @@ const builder = {
         return { embeds: [embed], components: [row], flags: 64 };
     },
 
-    codex(joueur, entrees) {
-        let description = '';
-
-        if (entrees.length === 0) {
-            description = '*Votre codex est vide. \nExplorez le royaume pour découvrir des créatures, des objets et des ressources !*';
-        } else {
-            const monstres = entrees.filter(e => e.type_entree === 'monstre');
-            const item = entrees.filter(e => e.type_entree === 'item');
-            const ressources = entrees.filter(e => e.type_entree === 'ressource');
-
-            if (monstres.length > 0) {
-                description += `**-- Monstres découverts (${monstres.length}) --**\n`;
-                monstres.forEach(e => { description += `• ${e.entree_id}\n`; });
-                description += '\n';
-            }
-            if (item.length > 0) {
-                description += `**-- Items découverts (${item.length}) --**\n`;
-                item.forEach(e => { description += `• ${e.entree_id}\n`; });
-                description += '\n';
-            }
-            if (ressources.length > 0) {
-                description += `**-- Ressources découvertes (${ressources.length}) --**\n`;
-                ressources.forEach(e => { description += `• ${e.entree_id}\n`; });
-            }
-        }
-
+    codex(joueur, counts) {
         const embed = new EmbedBuilder()
             .setTitle('📚 Codex')
-            .setDescription(description)
+            .setDescription(
+                `*Le Codex recense tout ce que vous avez découvert dans le Royaume d'Asura.*\n\n` +
+                `👹 **Monstres** : ${counts.monstre} découvert(s)\n` +
+                `✨ **Sorts** : ${counts.sort} sort(s)\n` +
+                `🪨 **Ressources** : ${counts.ressource} découverte(s)\n` +
+                `⚔️ **Items** : ${counts.item} découvert(s)\n` +
+                `🧪 **Consommables** : ${counts.consommable} découvert(s)\n\n` +
+                `*Choisissez une catégorie pour consulter vos découvertes.*`
+            )
             .setColor(0x1a1a2e);
-        
+
+        const selectCategorie = new ActionRowBuilder()
+            .addComponents(
+                new StringSelectMenuBuilder()
+                    .setCustomId('codex_categorie')
+                    .setPlaceholder('📚 Choisissez une catégorie...')
+                    .addOptions([
+                        {
+                            label: `Monstres (${counts.monstre})`,
+                            description: 'Créatures rencontrées dans le royaume',
+                            value: 'monstre',
+                            emoji: '👹'
+                        },
+                        {
+                            label: `Sorts (${counts.sort})`,
+                            description: 'Sorts de votre classe',
+                            value: 'sort',
+                            emoji: '✨'
+                        },
+                        {
+                            label: `Ressources (${counts.ressource})`,
+                            description: 'Ressources découvertes',
+                            value: 'ressource',
+                            emoji: '🪨'
+                        },
+                        {
+                            label: `Items (${counts.item})`,
+                            description: 'Équipements découverts',
+                            value: 'item',
+                            emoji: '⚔️'
+                        },
+                        {
+                            label: `Consommables (${counts.consommable})`,
+                            description: 'Consommables découverts',
+                            value: 'consommable',
+                            emoji: '🧪'
+                        }
+                    ])
+            );
+
         const rowRetour = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
@@ -431,8 +453,173 @@ const builder = {
                     .setStyle(ButtonStyle.Danger)
                     .setEmoji('🔙')
             );
-        
-        return { embeds: [embed], components: [rowRetour], flags: 64 };
+
+        return { embeds: [embed], components: [selectCategorie, rowRetour], flags: 64 };
+    },
+
+    codexListe(joueur, categorie, entrees, page = 0) {
+        const EMOJIS = { monstre: '👹', sort: '✨', ressource: '🪨', item: '⚔️', consommable: '🧪' };
+        const NOMS = { monstre: 'Monstres', sort: 'Sorts', ressource: 'Ressources', item: 'Items', consommable: 'Consommables' };
+
+        const parPage = 20;
+        const totalPages = Math.ceil(entrees.length / parPage);
+        const entreesPage = entrees.slice(page * parPage, (page * parPage) + parPage);
+
+        const embed = new EmbedBuilder()
+            .setTitle(`${EMOJIS[categorie]} Codex — ${NOMS[categorie]}`)
+            .setDescription(
+                entrees.length === 0
+                    ? `*Aucune découverte dans cette catégorie.*`
+                    : `*${entrees.length} entrée(s) découverte(s). Choisissez une entrée pour la consulter.*` +
+                      (totalPages > 1 ? `\n*Page ${page + 1}/${totalPages}*` : '')
+            )
+            .setColor(0x1a1a2e);
+
+        const components = [];
+
+        if (entreesPage.length > 0) {
+            const selectEntree = new ActionRowBuilder()
+                .addComponents(
+                    new StringSelectMenuBuilder()
+                        .setCustomId(`codex_fiche_${categorie}`)
+                        .setPlaceholder(`Choisissez une entrée...`)
+                        .addOptions(
+                            entreesPage.map(entree => ({
+                                label: entree.nom,
+                                description: entree.description_courte || ' ',
+                                value: entree.id.toString(),
+                                emoji: EMOJIS[categorie]
+                            }))
+                        )
+                );
+            components.push(selectEntree);
+        }
+
+        if (totalPages > 1) {
+            const rowPagination = new ActionRowBuilder()
+                .addComponents(
+                    new ButtonBuilder()
+                        .setCustomId(`codexpagination_${categorie}_${page - 1}`)
+                        .setLabel('◀ Précédent')
+                        .setStyle(ButtonStyle.Secondary)
+                        .setDisabled(page === 0),
+                    new ButtonBuilder()
+                        .setCustomId(`codexpagination_${categorie}_${page + 1}`)
+                        .setLabel('Suivant ▶')
+                        .setStyle(ButtonStyle.Secondary)
+                        .setDisabled(page >= totalPages - 1)
+                );
+            components.push(rowPagination);
+        }
+
+        const rowRetour = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('menu_codex')
+                    .setLabel('Retour')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔙')
+            );
+        components.push(rowRetour);
+
+        return { embeds: [embed], components, flags: 64 };
+    },
+
+    codexFicheMonstre(joueur, enemy, varianteIndex = 0) {
+        const variante = enemy.variantes[varianteIndex];
+        const zonesHelper = require('../utils/zonesHelper');
+
+        // Construire la liste des zones
+        let zonesText = '';
+        enemy.apparitions.forEach(a => {
+            const duche = zonesHelper.getDuche(a.duche);
+            const comte = zonesHelper.getComte(a.duche, a.comte);
+            const secteur = zonesHelper.getSecteur(a.duche, a.comte, a.secteur);
+            if (duche && comte && secteur) {
+                zonesText += `• ${secteur.nom} — ${comte.nom}\n`;
+            }
+        });
+
+        const embed = new EmbedBuilder()
+            .setTitle(`👹 ${enemy.nom}`)
+            .setDescription(
+                `*${enemy.description || 'Aucune description disponible.'}*\n\n` +
+                `**— Variante ${varianteIndex + 1}/5 (Niveau ${variante.niveau}) —**\n` +
+                `❤️ HP : ${variante.hp}\n` +
+                `⚔️ Force : ${variante.force_stat || 0}\n` +
+                `🔥 Intelligence : ${variante.intelligence || 0}\n` +
+                `🍀 Chance : ${variante.chance || 0}\n` +
+                `💨 Agilité : ${variante.agilite || 0}\n\n` +
+                `**— Zones —**\n${zonesText || '*Zone inconnue*'}\n\n` +
+                `**— Récompenses —**\n` +
+                `✨ XP : ${variante.xp}\n` +
+                `💰 Or : ${variante.or_min} à ${variante.or_max}`
+            )
+            .setColor(0x8b0000);
+
+        const rowVariantes = new ActionRowBuilder()
+            .addComponents(
+                enemy.variantes.map((v, i) =>
+                    new ButtonBuilder()
+                        .setCustomId(`codexvariante_${enemy.id}_${i}`)
+                        .setLabel(`Nv.${v.niveau}`)
+                        .setStyle(i === varianteIndex ? ButtonStyle.Success : ButtonStyle.Secondary)
+                )
+            );
+
+        const rowRetour = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('codex_retourliste_monstre')
+                    .setLabel('Retour à la liste')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔙')
+            );
+
+        return { embeds: [embed], components: [rowVariantes, rowRetour], flags: 64 };
+    },
+
+    codexFicheSort(joueur, sort, niveauAffiche = 1) {
+        const niveauData = sort.niveaux.find(n => n.niveau === niveauAffiche) || sort.niveaux[0];
+        const sortJoueurNiveau = joueur.niveau_sort || 1;
+
+        const embed = new EmbedBuilder()
+            .setTitle(`✨ ${sort.nom}`)
+            .setDescription(
+                `*${sort.description}*\n\n` +
+                `**Classe :** ${sort.classe}\n` +
+                `**Débloqué :** Niveau ${sort.niveau_deblocage}\n` +
+                `**Type :** ${sort.type}\n` +
+                `**Élément :** ${sort.composantes ? sort.composantes.map(c => c.element).join(' + ') : 'neutre'}\n\n` +
+                `**— Niveau ${niveauAffiche}/5 —**\n` +
+                `${this.genererDescriptionSort(sort, niveauData)}\n` +
+                (niveauData.degats_min ? `⚔️ Dégâts : ${niveauData.degats_min} à ${niveauData.degats_max}\n` : '') +
+                (niveauData.duree ? `⏱️ Durée : ${niveauData.duree} tours\n` : '') +
+                (niveauData.cooldown > 0 ? `🔄 Cooldown : ${niveauData.cooldown} tours\n` : '') +
+                `🎯 EC : 1/${niveauData.ec || 0} | CC : 1/${niveauData.cc || 0}`
+            )
+            .setColor(0x1a1a2e);
+
+        const rowNiveaux = new ActionRowBuilder()
+            .addComponents(
+                [1, 2, 3, 4, 5].map(n =>
+                    new ButtonBuilder()
+                        .setCustomId(`codexniveausort_${sort.id}_${n}`)
+                        .setLabel(`Nv.${n}`)
+                        .setStyle(n === niveauAffiche ? ButtonStyle.Success : ButtonStyle.Secondary)
+                )
+            );
+
+        const rowRetour = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('codex_retourliste_sort')
+                    .setLabel('Retour à la liste')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔙')
+            );
+
+        return { embeds: [embed], components: [rowNiveaux, rowRetour], flags: 64 };
     },
 
     lieux(joueur, duche, comte, secteurActuel, voyages) {
