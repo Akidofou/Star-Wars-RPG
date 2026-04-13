@@ -512,6 +512,16 @@ const builder = {
             components.push(rowPagination);
         }
 
+        const rowRecherche = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId(`codexrecherche_${categorie}`)
+                    .setLabel('Rechercher')
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji('🔍')
+            );
+        components.push(rowRecherche);
+
         const rowRetour = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
