@@ -78,6 +78,16 @@ const initDB = () => {
         FOREIGN KEY (discord_id) REFERENCES players(discord_id)
         );
 
+        CREATE TABLE IF NOT EXISTS inventaire (
+        id              INTEGER PRIMARY KEY AUTOINCREMENT,
+        discord_id      TEXT NOT NULL,
+        item_type       TEXT NOT NULL,
+        item_id         TEXT NOT NULL,
+        quantite        INTEGER DEFAULT 1,
+        created_at      TEXT DEFAULT (datetime('now')),
+        FOREIGN KEY (discord_id) REFERENCES players(discord_id)
+        );
+
     `);
     
     console.log('✅ Base de données initialisée');

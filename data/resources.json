@@ -1,0 +1,46 @@
+{
+    "resources": [
+        {
+            "id": "fourrure_loup",
+            "nom": "Fourrure de Loup",
+            "description": "Une fourrure épaisse prélevée sur un loup des bois.",
+            "categorie": "cuir",
+            "drops_par": [1],
+            "craft_vers": "fourrure_loup_raffinee"
+        },
+        {
+            "id": "fourrure_loup_raffinee",
+            "nom": "Fourrure de Loup Raffinée",
+            "description": "Une fourrure de loup soigneusement traitée et apprêtée.",
+            "categorie": "cuir_raffine",
+            "drops_par": [],
+            "craft_vers": null,
+            "obtenu_par_craft": {
+                "ressource_id": "fourrure_loup",
+                "quantite_requise": 3,
+                "quantite_produite": 1
+            }
+        },
+        {
+            "id": "croc_loup",
+            "nom": "Croc de Loup",
+            "description": "Un croc pointu prélevé sur un loup des bois.",
+            "categorie": "os",
+            "drops_par": [1]
+        },
+        {
+            "id": "oeil_loup",
+            "nom": "Oeil de Loup",
+            "description": "Un oeil brillant prélevé sur un loup des bois.",
+            "categorie": "oeil",
+            "drops_par": [1]
+        },
+        {
+            "id": "patte_loup",
+            "nom": "Patte de Loup",
+            "description": "Une patte robuste prélevée sur un loup des bois.",
+            "categorie": "patte",
+            "drops_par": [1]
+        }
+    ]
+}

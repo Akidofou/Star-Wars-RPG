@@ -4,6 +4,7 @@ const combatEngine = require('../../game/combat');
 const codexDB = require('../../database/codexDB');
 const effects = require('../../game/effects');
 const builder = require('../builder');
+const dropsEngine = require('../../game/drops');
 
 module.exports = async (interaction, params) => {
 
@@ -66,6 +67,7 @@ module.exports = async (interaction, params) => {
         });
         journal.push(`\n🏆 **Victoire !** ${enemyData.nom} est vaincu par les effets !`);
         journal.push(`✨ +${recompenses.xp} XP | 💰 +${recompenses.or} pièces d'or`);
+        dropsEngine.appliquerDrops(discord_id, enemyData, journal);
         const joueurMisAJour = playerDB.get(discord_id);
         const levelUp = require('../../game/levelUp');
         const resultatLevelUp = levelUp.appliquerLevelUp(playerDB, discord_id, joueurMisAJour);
@@ -192,6 +194,7 @@ module.exports = async (interaction, params) => {
         });
         journal.push(`\n🏆 **Victoire !** ${enemyData.nom} est vaincu !`);
         journal.push(`✨ +${recompenses.xp} XP | 💰 +${recompenses.or} pièces d'or`);
+        dropsEngine.appliquerDrops(discord_id, enemyData, journal);
         const joueurMisAJour = playerDB.get(discord_id);
         const levelUp = require('../../game/levelUp');
         const resultatLevelUp = levelUp.appliquerLevelUp(playerDB, discord_id, joueurMisAJour);

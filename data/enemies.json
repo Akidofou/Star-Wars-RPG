@@ -6,11 +6,11 @@
             "description": "Un loup sauvage aux crocs acérés qui chasse dans les forêts royales.",
             "sorts": [1001, 1002],
             "variantes": [
-                { "niveau": 1, "hp": 10, "force_stat": 8, "intelligence": 0, "chance": 0, "agilite": 6, "xp": 8, "or_min": 2, "or_max": 6 },
-                { "niveau": 2, "hp": 13, "force_stat": 10, "intelligence": 0, "chance": 0, "agilite": 7, "xp": 12, "or_min": 3, "or_max": 7 },
-                { "niveau": 3, "hp": 16, "force_stat": 12, "intelligence": 0, "chance": 0, "agilite": 8, "xp": 16, "or_min": 4, "or_max": 8 },
-                { "niveau": 4, "hp": 19, "force_stat": 14, "intelligence": 0, "chance": 0, "agilite": 9, "xp": 20, "or_min": 5, "or_max": 9 },
-                { "niveau": 5, "hp": 22, "force_stat": 16, "intelligence": 0, "chance": 0, "agilite": 10, "xp": 24, "or_min": 6, "or_max": 10 }
+                { "niveau": 1, "hp": 20, "force_stat": 10, "intelligence": 0, "chance": 0, "agilite": 6, "xp": 8, "or_min": 1, "or_max": 3 },
+                { "niveau": 2, "hp": 23, "force_stat": 11, "intelligence": 0, "chance": 0, "agilite": 7, "xp": 12, "or_min": 1, "or_max": 4 },
+                { "niveau": 3, "hp": 26, "force_stat": 12, "intelligence": 0, "chance": 0, "agilite": 8, "xp": 16, "or_min": 1, "or_max": 5 },
+                { "niveau": 4, "hp": 29, "force_stat": 13, "intelligence": 0, "chance": 0, "agilite": 9, "xp": 20, "or_min": 1, "or_max": 6 },
+                { "niveau": 5, "hp": 32, "force_stat": 14, "intelligence": 0, "chance": 0, "agilite": 10, "xp": 24, "or_min": 1, "or_max": 7 }
             ],
             "apparitions": [
                 { "duche": "asure", "comte": "asuria", "secteur": "foret_sylvane", "variantes_disponibles": [1, 2, 3], "taux_apparition": 40 },
@@ -18,7 +18,10 @@
             ],
             "drops": [
                 { "id": "fourrure_loup", "type": "ressource", "chance": 65, "quantite_min": 1, "quantite_max": 2 },
-                { "id": "croc_loup", "type": "ressource", "chance": 25, "quantite_min": 1, "quantite_max": 1 }
+                { "id": "croc_loup", "type": "ressource", "chance": 25, "quantite_min": 1, "quantite_max": 1 },
+                { "id": "oeil_loup", "type": "ressource", "chance": 15, "quantite_min": 1, "quantite_max": 1 },
+                { "id": "patte_loup", "type": "ressource", "chance": 10, "quantite_min": 1, "quantite_max": 1 },
+                { "id": 1001, "type": "item", "chance": 0.5, "quantite_min": 1, "quantite_max": 1 }
             ]
         },
         {

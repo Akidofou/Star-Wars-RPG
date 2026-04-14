@@ -263,6 +263,90 @@ const builder = {
         return { embeds: [embed], components: [row, row2, rowRetour], flags: 64 };
     },
 
+    inventaire(joueur, items, categorieFiltree = null) {
+        const EMOJIS_CATEGORIE = {
+            cuir: '🐾', os: '🦴', fibre: '🧵', tissu: '🪡',
+            ingredient: '🌿', minerai: '⛏️', bois: '🪵', plante: '🌱',
+            coiffe: '🎩', amulette: '📿', cape: '🧥', ceinture: '👜',
+            anneau: '💍', bottes: '👢', arme: '⚔️', torse: '👕',
+            jambes: '👖', pieds: '👟'
+        };
+
+        // Récupérer toutes les catégories présentes
+        const categories = [...new Set(items.map(i => i.categorie))].filter(Boolean).sort();
+
+        // Filtrer si une catégorie est sélectionnée
+        const itemsFiltres = categorieFiltree
+            ? items.filter(i => i.categorie === categorieFiltree)
+            : items;
+
+        // Grouper par catégorie pour l'affichage
+        let description = '';
+        if (itemsFiltres.length === 0) {
+            description = categorieFiltree
+                ? `*Aucun item dans la catégorie **${categorieFiltree}**.*`
+                : `*Votre inventaire est vide.*`;
+        } else {
+            const groupes = {};
+            itemsFiltres.forEach(item => {
+                if (!groupes[item.categorie]) groupes[item.categorie] = [];
+                groupes[item.categorie].push(item);
+            });
+            Object.entries(groupes).forEach(([cat, items]) => {
+                const emoji = EMOJIS_CATEGORIE[cat] || '📦';
+                description += `**${emoji} ${cat}**\n`;
+                items.forEach(item => {
+                    description += `• ${item.nom} ×${item.quantite}\n`;
+                });
+                description += '\n';
+            });
+        }
+
+        const embed = new EmbedBuilder()
+            .setTitle(`🎒 Inventaire de ${joueur.username}`)
+            .setDescription(
+                `*${items.length} type(s) d'objet(s) en possession.*\n\n` +
+                description
+            )
+            .setColor(0x1a1a2e);
+
+        const components = [];
+
+        if (categories.length > 0) {
+            const selectCategorie = new ActionRowBuilder()
+                .addComponents(
+                    new StringSelectMenuBuilder()
+                        .setCustomId('inventaire_categorie')
+                        .setPlaceholder('🔍 Filtrer par catégorie...')
+                        .addOptions([
+                            {
+                                label: 'Tout afficher',
+                                value: 'tout',
+                                emoji: '📦'
+                            },
+                            ...categories.map(cat => ({
+                                label: cat,
+                                value: cat,
+                                emoji: EMOJIS_CATEGORIE[cat] || '📦'
+                            }))
+                        ])
+                );
+            components.push(selectCategorie);
+        }
+
+        const rowRetour = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('retour_profil')
+                    .setLabel('Retour')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔙')
+            );
+        components.push(rowRetour);
+
+        return { embeds: [embed], components, flags: 64 };
+    },
+
     classement(joueurs, joueurActuel) {
         let description = '';
 
@@ -538,6 +622,8 @@ const builder = {
     codexFicheMonstre(joueur, enemy, varianteIndex = 0) {
         const variante = enemy.variantes[varianteIndex];
         const zonesHelper = require('../utils/zonesHelper');
+        const resourcesData = require('../../data/resources.json');
+        const itemsData = require('../../data/items.json');
 
         // Construire la liste des zones
         let zonesText = '';
@@ -549,6 +635,45 @@ const builder = {
                 zonesText += `• ${secteur.nom} — ${comte.nom}\n`;
             }
         });
+
+        // Construire les drops — uniquement les découverts
+        const { db } = require('../database/database');
+        let dropsText = '';
+        let nbDropsConnus = 0;
+        let nbDropsInconnus = 0;
+
+        if (enemy.drops && enemy.drops.length > 0) {
+            enemy.drops.forEach(drop => {
+                const decouvert = db.prepare(`
+                    SELECT 1 FROM codex WHERE discord_id = ? AND type_entree = ? AND entree_id = ?
+                `).get(joueur.discord_id, drop.type, drop.id.toString());
+
+                if (decouvert) {
+                    let nom = drop.id;
+                    if (drop.type === 'ressource') {
+                        const r = resourcesData.resources.find(r => r.id === drop.id);
+                        nom = r ? r.nom : drop.id;
+                    } else if (drop.type === 'item') {
+                        const item = itemsData.items.find(i => i.id === parseInt(drop.id));
+                        nom = item ? item.nom : drop.id;
+                    }
+                    dropsText += `• ${nom}\n`;
+                    nbDropsConnus++;
+                } else {
+                    nbDropsInconnus++;
+                }
+            });
+
+            if (nbDropsInconnus > 0) {
+                dropsText += `• ??? ×${nbDropsInconnus} *(drop(s) non découvert(s))*\n`;
+            }
+
+            if (nbDropsConnus === 0 && nbDropsInconnus === 0) {
+                dropsText = '*Aucun drop connu*';
+            }
+        } else {
+            dropsText = '*Aucun drop connu*';
+        }
 
         const embed = new EmbedBuilder()
             .setTitle(`👹 ${enemy.nom}`)
@@ -563,7 +688,8 @@ const builder = {
                 `**— Zones —**\n${zonesText || '*Zone inconnue*'}\n\n` +
                 `**— Récompenses —**\n` +
                 `✨ XP : ${variante.xp}\n` +
-                `💰 Or : ${variante.or_min} à ${variante.or_max}`
+                `💰 Or : ${variante.or_min} à ${variante.or_max}\n\n` +
+                `**— Drops —**\n${dropsText}`
             )
             .setColor(0x8b0000);
 
@@ -630,6 +756,84 @@ const builder = {
             );
 
         return { embeds: [embed], components: [rowNiveaux, rowRetour], flags: 64 };
+    },
+
+    codexFicheRessource(joueur, ressource, enemiesData) {
+        const monstresSource = ressource.drops_par.map(id => {
+            const enemy = enemiesData.enemies.find(e => e.id === id);
+            return enemy ? `• ${enemy.nom}` : null;
+        }).filter(Boolean).join('\n');
+
+        const embed = new EmbedBuilder()
+            .setTitle(`🪨 ${ressource.nom}`)
+            .setDescription(
+                `*${ressource.description}*\n\n` +
+                `**Catégorie :** ${ressource.categorie}\n\n` +
+                (monstresSource ? `**— Obtenu sur —**\n${monstresSource}\n\n` : '') +
+                (ressource.craft_vers ? `**— Transformation —**\n• Se transforme en **${ressource.craft_vers}**\n\n` : '') +
+                (ressource.obtenu_par_craft ? `**— Craft —**\n• Obtenu en transformant **${ressource.obtenu_par_craft.quantite_requise}x ${ressource.obtenu_par_craft.ressource_id}**\n` : '')
+            )
+            .setColor(0x1a1a2e);
+
+        const rowRetour = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('codex_retourliste_ressource')
+                    .setLabel('Retour à la liste')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔙')
+            );
+
+        return { embeds: [embed], components: [rowRetour], flags: 64 };
+    },
+
+    codexFicheItem(joueur, item, panoplie) {
+        const NOMS_STATS = {
+            force_stat: 'Force', intelligence: 'Intelligence', chance: 'Chance',
+            agilite: 'Agilité', vitalite: 'Vitalité', sagesse: 'Sagesse',
+            bonus_cc: 'Bonus CC', bonus_degats_pct: 'Bonus dégâts %', resistance_tous: 'Résistance'
+        };
+
+        const bonusText = item.bonus.map(b =>
+            `• ${NOMS_STATS[b.stat] || b.stat} : ${b.valeur_min} à ${b.valeur_max}`
+        ).join('\n');
+
+        const recetteText = item.recette && item.recette.length > 0
+            ? item.recette.map(r => `• ${r.quantite}x ${r.id}`).join('\n')
+            : '*Aucune recette — item non craftable*';
+
+        let panoplieText = '';
+        if (panoplie) {
+            panoplieText = `**— Panoplie : ${panoplie.nom} —**\n`;
+            panoplie.bonus.forEach(b => {
+                const statsText = b.stats.map(s => `${NOMS_STATS[s.stat] || s.stat} +${s.valeur}`).join(', ');
+                panoplieText += `• ${b.nb_pieces} pièces : ${statsText}\n`;
+            });
+            panoplieText += '\n';
+        }
+
+        const embed = new EmbedBuilder()
+            .setTitle(`⚔️ ${item.nom}`)
+            .setDescription(
+                `*${item.description}*\n\n` +
+                `**Catégorie :** ${item.categorie}\n` +
+                `**Niveau requis :** ${item.niveau_requis}\n\n` +
+                `**— Bonus —**\n${bonusText}\n\n` +
+                (panoplieText ? panoplieText : '') +
+                `**— Recette de craft —**\n${recetteText}`
+            )
+            .setColor(0x1a1a2e);
+
+        const rowRetour = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('codex_retourliste_item')
+                    .setLabel('Retour à la liste')
+                    .setStyle(ButtonStyle.Danger)
+                    .setEmoji('🔙')
+            );
+
+        return { embeds: [embed], components: [rowRetour], flags: 64 };
     },
 
     lieux(joueur, duche, comte, secteurActuel, voyages) {

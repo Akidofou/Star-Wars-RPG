@@ -1,0 +1,177 @@
+{
+    "panoplies": [
+        {
+            "id": 1,
+            "nom": "Panoplie du Novice",
+            "pieces_ids": [1001, 1002, 1003, 1004, 1005, 1006,1007,1008],
+            "bonus": [
+                { "nb_pieces": 2, "stats": [{ "stat": "vitalite", "valeur": 10 }, { "stat": "force_stat", "valeur": 10 }] },
+                { "nb_pieces": 3, "stats": [{ "stat": "vitalite", "valeur": 15 }, { "stat": "force_stat", "valeur": 15 }] },
+                { "nb_pieces": 6, "stats": [{ "stat": "vitalite", "valeur": 40 }, { "stat": "force_stat", "valeur": 40 }] }
+            ]
+        }
+    ],
+    "items": [
+        {
+            "id": 1001,
+            "nom": "Chapeau du Novice",
+            "description": "Un chapeau simple pour les jeunes aventuriers.",
+            "categorie": "coiffe",
+            "panoplie_id": 1,
+            "niveau_requis": 1,
+            "bonus": [
+                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+            ]
+        },
+        {
+            "id": 1002,
+            "nom": "Haut du Novice",
+            "description": "Un haut simple pour les jeunes aventuriers.",
+            "categorie": "torse",
+            "panoplie_id": 1,
+            "niveau_requis": 1,
+            "bonus": [
+                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+            ]
+        },
+        {
+            "id": 1003,
+            "nom": "Pantalon du Novice",
+            "description": "Un pantalon simple pour les jeunes aventuriers.",
+            "categorie": "jambes",
+            "panoplie_id": 1,
+            "niveau_requis": 1,
+            "bonus": [
+                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+            ]
+        },
+        {
+            "id": 1004,
+            "nom": "Bottes du Novice",
+            "description": "Des bottes simples pour les jeunes aventuriers.",
+            "categorie": "pieds",
+            "panoplie_id": 1,
+            "niveau_requis": 1,
+            "bonus": [
+                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+            ]
+        },
+        {
+            "id": 1005,
+            "nom": "Ceinture du Novice",
+            "description": "Une ceinture simple pour les jeunes aventuriers.",
+            "categorie": "ceinture",
+            "panoplie_id": 1,
+            "niveau_requis": 1,
+            "bonus": [
+                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+            ]
+        },
+        {
+            "id": 1006,
+            "nom": "Amulette du Novice",
+            "description": "Une amulette simple pour les jeunes aventuriers.",
+            "categorie": "amulette",
+            "panoplie_id": 1,
+            "niveau_requis": 1,
+            "bonus": [
+                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+            ]
+        },
+        {
+            "id": 1007,
+            "nom": "Anneau du Novice",
+            "description": "Un anneau simple pour les jeunes aventuriers.",
+            "categorie": "anneau",
+            "panoplie_id": 1,
+            "niveau_requis": 1,
+            "bonus": [
+                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+            ]
+        },
+        {
+            "id": 1008,
+            "nom": "Épée du Novice",
+            "description": "Une épée simple pour les jeunes aventuriers.",
+            "categorie": "arme",
+            "panoplie_id": 1,
+            "niveau_requis": 1,
+            "bonus": [
+                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+            ]
+        },
+        {
+            "id": 1009,
+            "nom": "Bottes du Loup",
+            "description": "Des bottes solides fabriquées à partir de fourrure de loup.",
+            "categorie": "bottes",
+            "panoplie_id": null,
+            "niveau_requis": 1,
+            "bonus": [
+                { "stat": "agilite", "valeur_min": 3, "valeur_max": 6 },
+                { "stat": "vitalite", "valeur_min": 2, "valeur_max": 4 }
+            ],
+            "recette": [
+                { "id": "fourrure_loup", "type": "ressource", "quantite": 10 },
+                { "id": "patte_loup", "type": "ressource", "quantite": 2 }
+            ]
+        },
+        {
+            "id": 1010,
+            "nom": "Bottes du Loup Raffinées",
+            "description": "Des bottes de qualité supérieure en fourrure de loup raffinée.",
+            "categorie": "bottes",
+            "panoplie_id": null,
+            "niveau_requis": 5,
+            "bonus": [
+                { "stat": "agilite", "valeur_min": 8, "valeur_max": 15 },
+                { "stat": "vitalite", "valeur_min": 5, "valeur_max": 10 }
+            ],
+            "recette": [
+                { "id": "fourrure_loup_raffinee", "type": "ressource", "quantite": 5 },
+                { "id": "patte_loup", "type": "ressource", "quantite": 3 },
+                { "id": "croc_loup", "type": "ressource", "quantite": 1 }
+            ]
+        }
+    ]
+}

@@ -50,6 +50,21 @@ const codexDB = {
 
     getSortsClasse(classe) {
         return spellsData.sorts.filter(s => s.classe === classe);
+    },
+
+    getFicheRessource(ressource_id) {
+        const resourcesData = require('../../data/resources.json');
+        return resourcesData.resources.find(r => r.id === ressource_id);
+    },
+
+    getFicheItem(item_id) {
+        const itemsData = require('../../data/items.json');
+        return itemsData.items.find(i => i.id === parseInt(item_id));
+    },
+
+    getPanoplie(panoplie_id) {
+        const itemsData = require('../../data/items.json');
+        return itemsData.panoplies.find(p => p.id === panoplie_id);
     }
 };
 

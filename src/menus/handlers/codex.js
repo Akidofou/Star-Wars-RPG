@@ -19,7 +19,7 @@ module.exports = async (interaction, params) => {
 
     if (action === 'fiche') {
         const categorie = params[1];
-        const entreeId = parseInt(interaction.values[0]);
+        const entreeId = interaction.values[0];
         return await afficherFiche(interaction, joueur, categorie, entreeId, discord_id);
     }
 
@@ -47,7 +47,33 @@ async function afficherListe(interaction, joueur, categorie, discord_id, page) {
         }));
     }
 
-    if (categorie === 'ressource' || categorie === 'item' || categorie === 'consommable') {
+    if (categorie === 'ressource') {
+        const resourcesData = require('../../../data/resources.json');
+        const decouverts = codexDB.getEntrees(discord_id, 'ressource');
+        entrees = decouverts.map(d => {
+            const ressource = resourcesData.resources.find(r => r.id === d.entree_id);
+            return ressource ? {
+                id: ressource.id,
+                nom: ressource.nom,
+                description_courte: ressource.categorie
+            } : null;
+        }).filter(Boolean);
+    }
+
+    if (categorie === 'item') {
+        const itemsData = require('../../../data/items.json');
+        const decouverts = codexDB.getEntrees(discord_id, 'item');
+        entrees = decouverts.map(d => {
+            const item = itemsData.items.find(i => i.id === parseInt(d.entree_id));
+            return item ? {
+                id: item.id,
+                nom: item.nom,
+                description_courte: item.categorie
+            } : null;
+        }).filter(Boolean);
+    }
+
+    if (categorie === 'consommable') {
         entrees = [];
     }
 
@@ -56,7 +82,7 @@ async function afficherListe(interaction, joueur, categorie, discord_id, page) {
 
 async function afficherFiche(interaction, joueur, categorie, entreeId, discord_id) {
     if (categorie === 'monstre') {
-        const enemy = codexDB.getFicheMonstre(entreeId);
+        const enemy = codexDB.getFicheMonstre(parseInt(entreeId));
         if (!enemy) {
             await interaction.reply({ content: '❌ Monstre introuvable.', flags: 64 });
             return;
@@ -66,11 +92,31 @@ async function afficherFiche(interaction, joueur, categorie, entreeId, discord_i
 
     if (categorie === 'sort') {
         const spellsData = require('../../../data/spells.json');
-        const sort = spellsData.sorts.find(s => s.id === entreeId);
+        const sort = spellsData.sorts.find(s => s.id === parseInt(entreeId));
         if (!sort) {
             await interaction.reply({ content: '❌ Sort introuvable.', flags: 64 });
             return;
         }
         await interaction.update(builder.codexFicheSort(joueur, sort, 1));
+    }
+
+    if (categorie === 'ressource') {
+        const ressource = codexDB.getFicheRessource(entreeId.toString());
+        if (!ressource) {
+            await interaction.reply({ content: '❌ Ressource introuvable.', flags: 64 });
+            return;
+        }
+        const enemiesData = require('../../../data/enemies.json');
+        await interaction.update(builder.codexFicheRessource(joueur, ressource, enemiesData));
+    }
+
+    if (categorie === 'item') {
+        const item = codexDB.getFicheItem(parseInt(entreeId));
+        if (!item) {
+            await interaction.reply({ content: '❌ Item introuvable.', flags: 64 });
+            return;
+        }
+        const panoplie = item.panoplie_id ? codexDB.getPanoplie(item.panoplie_id) : null;
+        await interaction.update(builder.codexFicheItem(joueur, item, panoplie));
     }
 }

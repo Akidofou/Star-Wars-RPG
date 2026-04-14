@@ -8,11 +8,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 1, "degats_max": 4, "ec": 100, "cc": 0, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 2, "degats_max": 5, "ec": 100, "cc": 0, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 2, "degats_max": 6, "ec": 100, "cc": 0, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 0, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 3, "degats_max": 8, "ec": 100, "cc": 0, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 1, "degats_max": 4, "ec": 50, "cc": 0, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 1, "degats_max": 5, "ec": 50, "cc": 0, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 1, "degats_max": 6, "ec": 50, "cc": 0, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 1, "degats_max": 7, "ec": 50, "cc": 0, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 1, "degats_max": 8, "ec": 50, "cc": 0, "cooldown": 0 }
             ]
         },
         {
@@ -23,11 +23,11 @@
             "cible": "ennemi",
             "composantes": [{ "element": "air", "stat_liee": "agilite" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 1, "degats_max": 3, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 1, "degats_max": 4, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 2, "degats_max": 5, "ec": 100, "cc": 35, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 2, "degats_max": 6, "ec": 100, "cc": 35, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 30, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 1, "degats_max": 4, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 1, "degats_max": 5, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 2, "degats_max": 6, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 4, "degats_max": 8, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
