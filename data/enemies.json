@@ -6,22 +6,23 @@
             "description": "Un loup sauvage aux crocs acérés qui chasse dans les forêts royales.",
             "sorts": [1001, 1002],
             "variantes": [
-                { "niveau": 1, "hp": 20, "force_stat": 10, "intelligence": 0, "chance": 0, "agilite": 6, "xp": 8, "or_min": 1, "or_max": 3 },
-                { "niveau": 2, "hp": 23, "force_stat": 11, "intelligence": 0, "chance": 0, "agilite": 7, "xp": 12, "or_min": 1, "or_max": 4 },
-                { "niveau": 3, "hp": 26, "force_stat": 12, "intelligence": 0, "chance": 0, "agilite": 8, "xp": 16, "or_min": 1, "or_max": 5 },
-                { "niveau": 4, "hp": 29, "force_stat": 13, "intelligence": 0, "chance": 0, "agilite": 9, "xp": 20, "or_min": 1, "or_max": 6 },
-                { "niveau": 5, "hp": 32, "force_stat": 14, "intelligence": 0, "chance": 0, "agilite": 10, "xp": 24, "or_min": 1, "or_max": 7 }
+                { "niveau": 1, "hp": 20, "terre": 10, "feu": 0, "eau": 0, "air": 6, "xp": 8, "or_min": 1, "or_max": 3 },
+                { "niveau": 2, "hp": 23, "terre": 11, "feu": 0, "eau": 0, "air": 7, "xp": 12, "or_min": 1, "or_max": 4 },
+                { "niveau": 3, "hp": 26, "terre": 12, "feu": 0, "eau": 0, "air": 8, "xp": 16, "or_min": 1, "or_max": 5 },
+                { "niveau": 4, "hp": 29, "terre": 13, "feu": 0, "eau": 0, "air": 9, "xp": 20, "or_min": 1, "or_max": 6 },
+                { "niveau": 5, "hp": 32, "terre": 14, "feu": 0, "eau": 0, "air": 10, "xp": 24, "or_min": 1, "or_max": 7 }
             ],
             "apparitions": [
                 { "duche": "asure", "comte": "asuria", "secteur": "foret_sylvane", "variantes_disponibles": [1, 2, 3], "taux_apparition": 40 },
-                { "duche": "grismonts", "comte": "greymont", "secteur": "foret_greymoor", "variantes_disponibles": [4, 5], "taux_apparition": 20 }
+                { "duche": "asure", "comte": "asuria", "secteur": "collines_valdren", "variantes_disponibles": [4, 5], "taux_apparition": 40 }
             ],
             "drops": [
                 { "id": "fourrure_loup", "type": "ressource", "chance": 65, "quantite_min": 1, "quantite_max": 2 },
                 { "id": "croc_loup", "type": "ressource", "chance": 25, "quantite_min": 1, "quantite_max": 1 },
                 { "id": "oeil_loup", "type": "ressource", "chance": 15, "quantite_min": 1, "quantite_max": 1 },
                 { "id": "patte_loup", "type": "ressource", "chance": 10, "quantite_min": 1, "quantite_max": 1 },
-                { "id": 1001, "type": "item", "chance": 0.5, "quantite_min": 1, "quantite_max": 1 }
+                { "id": 1001, "type": "item", "chance": 0.5, "quantite_min": 1, "quantite_max": 1 },
+                { "id": 1008, "type": "item", "chance": 0.5, "quantite_min": 1, "quantite_max": 1 }
             ]
         },
         {
@@ -30,19 +31,22 @@
             "description": "Un chasseur hors-la-loi armé d'un arc et d'un couteau.",
             "sorts": [1003, 1004, 1005],
             "variantes": [
-                { "niveau": 1, "hp": 15, "force_stat": 4, "intelligence": 0, "chance": 6, "agilite": 5, "xp": 10, "or_min": 5, "or_max": 12 },
-                { "niveau": 2, "hp": 20, "force_stat": 5, "intelligence": 0, "chance": 8, "agilite": 6, "xp": 15, "or_min": 6, "or_max": 14 },
-                { "niveau": 3, "hp": 25, "force_stat": 6, "intelligence": 0, "chance": 10, "agilite": 7, "xp": 20, "or_min": 7, "or_max": 16 },
-                { "niveau": 10, "hp": 80, "force_stat": 20, "intelligence": 0, "chance": 35, "agilite": 15, "xp": 80, "or_min": 20, "or_max": 40 },
-                { "niveau": 15, "hp": 130, "force_stat": 35, "intelligence": 0, "chance": 55, "agilite": 25, "xp": 140, "or_min": 35, "or_max": 60 }
+                { "niveau": 3, "hp": 25, "terre":2, "feu": 0, "eau": 0, "air": 10, "xp": 10, "or_min": 1, "or_max": 4 },
+                { "niveau": 4, "hp": 30, "terre": 4, "feu": 0, "eau": 0, "air": 12, "xp": 15, "or_min": 1, "or_max": 5 },
+                { "niveau": 5, "hp": 35, "terre": 6, "feu": 0, "eau": 0, "air": 14, "xp": 20, "or_min": 1, "or_max": 6 },
+                { "niveau": 6, "hp": 80, "terre": 8, "feu": 0, "eau": 0, "air": 15, "xp": 80, "or_min": 20, "or_max": 40 },
+                { "niveau": 7, "hp": 130, "terre": 10, "feu": 0, "eau": 0, "air": 25, "xp": 140, "or_min": 35, "or_max": 60 }
             ],
             "apparitions": [
                 { "duche": "asure", "comte": "asuria", "secteur": "foret_sylvane", "variantes_disponibles": [1, 2, 3], "taux_apparition": 35 },
-                { "duche": "vermillion", "comte": "braven", "secteur": "plaines_stervall", "variantes_disponibles": [4, 5], "taux_apparition": 25 }
+                { "duche": "asure", "comte": "lorne", "secteur": "bois_corneval", "variantes_disponibles": [2, 3], "taux_apparition": 35 },
+                { "duche": "grismont", "comte": "greymont", "secteur": "foret_greymoor", "variantes_disponibles": [4, 5], "taux_apparition": 45 }
             ],
             "drops": [
                 { "id": "plume_fleche", "type": "ressource", "chance": 50, "quantite_min": 1, "quantite_max": 3 },
-                { "id": "arc_abime", "type": "ressource", "chance": 20, "quantite_min": 1, "quantite_max": 1 }
+                { "id": "arc_abime", "type": "ressource", "chance": 20, "quantite_min": 1, "quantite_max": 1 },
+                { "id": "piege_brise", "type": "ressource", "chance": 15, "quantite_min": 1, "quantite_max": 1 },
+                { "id": "couteau_brise", "type": "ressource", "chance": 10, "quantite_min": 1, "quantite_max": 1 }
             ]
         },
         {
@@ -51,11 +55,11 @@
             "description": "Une araignée venimeuse de la taille d'un chien qui tisse ses toiles entre les grands arbres.",
             "sorts": [1006, 1007, 1008],
             "variantes": [
-                { "niveau": 2, "hp": 12, "force_stat": 0, "intelligence": 5, "chance": 4, "agilite": 8, "xp": 12, "or_min": 3, "or_max": 8 },
-                { "niveau": 3, "hp": 16, "force_stat": 0, "intelligence": 7, "chance": 5, "agilite": 10, "xp": 18, "or_min": 4, "or_max": 10 },
-                { "niveau": 4, "hp": 20, "force_stat": 0, "intelligence": 9, "chance": 6, "agilite": 12, "xp": 24, "or_min": 5, "or_max": 12 },
-                { "niveau": 6, "hp": 30, "force_stat": 0, "intelligence": 14, "chance": 8, "agilite": 16, "xp": 36, "or_min": 7, "or_max": 15 },
-                { "niveau": 12, "hp": 70, "force_stat": 0, "intelligence": 30, "chance": 15, "agilite": 30, "xp": 90, "or_min": 15, "or_max": 30 }
+                { "niveau": 2, "hp": 12, "terre": 0, "feu": 5, "eau": 4, "air": 8, "xp": 12, "or_min": 3, "or_max": 8 },
+                { "niveau": 3, "hp": 16, "terre": 0, "feu": 7, "eau": 5, "air": 10, "xp": 18, "or_min": 4, "or_max": 10 },
+                { "niveau": 4, "hp": 20, "terre": 0, "feu": 9, "eau": 6, "air": 12, "xp": 24, "or_min": 5, "or_max": 12 },
+                { "niveau": 6, "hp": 30, "terre": 0, "feu": 14, "eau": 8, "air": 16, "xp": 36, "or_min": 7, "or_max": 15 },
+                { "niveau": 12, "hp": 70, "terre": 0, "feu": 30, "eau": 15, "air": 30, "xp": 90, "or_min": 15, "or_max": 30 }
             ],
             "apparitions": [
                 { "duche": "asure", "comte": "asuria", "secteur": "foret_sylvane", "variantes_disponibles": [1, 2, 3], "taux_apparition": 25 },

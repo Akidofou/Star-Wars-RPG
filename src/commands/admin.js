@@ -14,10 +14,10 @@ module.exports = {
             .setDescription('Modifier les stats du joueur')
             .addStringOption(opt => opt.setName('stat').setDescription('Stat à modifier').setRequired(true)
                 .addChoices(
-                    { name: 'force', value: 'force_stat' },
-                    { name: 'intelligence', value: 'intelligence' },
-                    { name: 'chance', value: 'chance' },
-                    { name: 'agilite', value: 'agilite' },
+                    { name: 'terre', value: 'terre' },
+                    { name: 'feu', value: 'feu' },
+                    { name: 'eau', value: 'eau' },
+                    { name: 'air', value: 'air' },
                     { name: 'vitalite', value: 'vitalite' },
                     { name: 'sagesse', value: 'sagesse' }
                 ))
@@ -72,10 +72,10 @@ module.exports = {
             .addStringOption(opt => opt.setName('stat').setDescription('Stat à modifier').setRequired(true)
                 .addChoices(
                     { name: 'hp', value: 'hp' },
-                    { name: 'force', value: 'force_stat' },
-                    { name: 'intelligence', value: 'intelligence' },
-                    { name: 'chance', value: 'chance' },
-                    { name: 'agilite', value: 'agilite' }
+                    { name: 'terre', value: 'terre' },
+                    { name: 'feu', value: 'feu' },
+                    { name: 'eau', value: 'eau' },
+                    { name: 'air', value: 'air' }
                 ))
             .addIntegerOption(opt => opt.setName('valeur').setDescription('Valeur à définir').setRequired(true))
         )

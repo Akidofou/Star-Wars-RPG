@@ -73,9 +73,9 @@ const combat = {
 
         const bonusCC = statsAttaquand.bonus_cc || 0;
         const ccApresBonus = Math.max(2, niveauData.cc - bonusCC);
-        const agilite = statsAttaquand.agilite || 0;
-        const ccEffectif = agilite >= 8
-            ? Math.max(2, Math.floor(ccApresBonus * 2.9901 / Math.log(agilite + 12)))
+        const air = statsAttaquand.air || 0;
+        const ccEffectif = air >= 8
+            ? Math.max(2, Math.floor(ccApresBonus * 2.9901 / Math.log(air + 12)))
             : ccApresBonus;
         const critiqueRoll = niveauData.cc > 0 && Math.floor(Math.random() * ccEffectif) === 0;
 
@@ -84,17 +84,17 @@ const combat = {
 
         if (niveauData.composantes_degats) {
             niveauData.composantes_degats.forEach(composante => {
-                const statComposante = sort.composantes?.find(c => c.element === composante.element)?.stat_liee;
+                const elemComposante = composante.element;
                 let statValeur = 0;
-                if (statComposante === 'meilleure_stat') {
+                if (elemComposante === 'neutre' || !elemComposante) {
                     statValeur = Math.max(
-                        statsAttaquand.force_stat || 0,
-                        statsAttaquand.intelligence || 0,
-                        statsAttaquand.chance || 0,
-                        statsAttaquand.agilite || 0
+                        statsAttaquand.terre || 0,
+                        statsAttaquand.feu || 0,
+                        statsAttaquand.eau || 0,
+                        statsAttaquand.air || 0
                     );
-                } else if (statComposante) {
-                    statValeur = statsAttaquand[statComposante] || 0;
+                } else {
+                    statValeur = statsAttaquand[elemComposante] || 0;
                 }
                 const degatsBase = Math.floor(
                     Math.random() * (composante.degats_max - composante.degats_min + 1)
@@ -104,17 +104,18 @@ const combat = {
                 detailDegats.push({ element: composante.element, degats: degatsComposante });
             });
         } else {
-            const statLiee = sort.stat_liee || (sort.composantes && sort.composantes[0]?.stat_liee);
             let stat = 0;
-            if (statLiee === 'meilleure_stat') {
+            const element = sort.composantes && sort.composantes[0]?.element;
+
+            if (element === 'neutre' || !element) {
                 stat = Math.max(
-                    statsAttaquand.force_stat || 0,
-                    statsAttaquand.intelligence || 0,
-                    statsAttaquand.chance || 0,
-                    statsAttaquand.agilite || 0
+                    statsAttaquand.terre || 0,
+                    statsAttaquand.feu || 0,
+                    statsAttaquand.eau || 0,
+                    statsAttaquand.air || 0
                 );
-            } else if (statLiee) {
-                stat = statsAttaquand[statLiee] || 0;
+            } else if (element) {
+                stat = statsAttaquand[element] || 0;
             }
             const degatsBase = Math.floor(
                 Math.random() * (niveauData.degats_max - niveauData.degats_min + 1)

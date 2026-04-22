@@ -135,10 +135,10 @@ const builder = {
                 `** --Statistiques-- **\n` +
                 `❤️ Vitalité : ${joueur.vitalite}\n` +
                 `📖 Sagesse : ${joueur.sagesse}\n` +
-                `⚔️ Force : ${joueur.force_stat}\n` +
-                `🔥 Intelligence : ${joueur.intelligence}\n` +
-                `🍀 Chance : ${joueur.chance}\n` +
-                `💨 Agilité : ${joueur.agilite}\n\n` +
+                `🟤 Terre : ${joueur.terre}\n` +
+                `🔥 Feu : ${joueur.feu}\n` +
+                `💧 Eau : ${joueur.eau}\n` +
+                `💨 Air : ${joueur.air}\n\n` +
                 `** --Points disponibles-- **\n` +
                 `📊 Point de stat : ${joueur.points_stat}\n` +
                 `📚 Point de compétence : ${joueur.points_competence}`
@@ -193,17 +193,17 @@ const builder = {
                 `📊 **Points de stat disponibles : ${joueur.points_stat}**\n\n` +
                 `❤️ Vitalité : **${joueur.vitalite}**\n` +
                 `📖 Sagesse : **${joueur.sagesse}**\n` +
-                `⚔️ Force (terre) : **${joueur.force_stat}**\n` +
-                `🔥 Intelligence (feu) : **${joueur.intelligence}**\n` +
-                `🍀 Chance (eau) : **${joueur.chance}**\n` +
-                `💨 Agilité (air) : **${joueur.agilite}**\n\n` +
+                `🟤 Terre : **${joueur.terre}**\n` +
+                `🔥 Feu : **${joueur.feu}**\n` +
+                `💧 Eau : **${joueur.eau}**\n` +
+                `💨 Air : **${joueur.air}**\n\n` +
                 `*1 point de stat = +1 dans la statistique choisie.*\n` +
                 `*La Vitalité augmente vos points de vie maximum.*\n` +
                 `*La Sagesse augmente votre gain d'expérience.*\n` +
-                `*La Force amplifie les dégâts terre.*\n` +
-                `*L'Intelligence amplifie les dégâts feu.*\n` +
-                `*La Chance amplifie les dégâts eau.*\n` +
-                `*L'Agilité amplifie les dégâts air et améliore les critiques.*`
+                `*La Terre amplifie les dégâts terre.*\n` +
+                `*Le Feu amplifie les dégâts feu.*\n` +
+                `*L'Eau amplifie les dégâts eau.*\n` +
+                `*L'Air amplifie les dégâts air et améliore les critiques.*`
             )
             .setColor(0x1a1a2e);
 
@@ -222,14 +222,14 @@ const builder = {
                     .setEmoji('📖')
                     .setDisabled(joueur.points_stat <= 0),
                 new ButtonBuilder()
-                    .setCustomId('stats_force')
-                    .setLabel(`Force +1`)
+                    .setCustomId('stats_terre')
+                    .setLabel('Terre +1')
                     .setStyle(ButtonStyle.Primary)
-                    .setEmoji('⚔️')
+                    .setEmoji('🟤')
                     .setDisabled(joueur.points_stat <= 0),
                 new ButtonBuilder()
-                    .setCustomId('stats_intelligence')
-                    .setLabel(`Intelligence +1`)
+                    .setCustomId('stats_feu')
+                    .setLabel('Feu +1')
                     .setStyle(ButtonStyle.Primary)
                     .setEmoji('🔥')
                     .setDisabled(joueur.points_stat <= 0)
@@ -238,14 +238,14 @@ const builder = {
         const row2 = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
-                    .setCustomId('stats_chance')
-                    .setLabel(`Chance +1`)
+                    .setCustomId('stats_eau')
+                    .setLabel('Eau +1')
                     .setStyle(ButtonStyle.Primary)
-                    .setEmoji('🍀')
+                    .setEmoji('💧')
                     .setDisabled(joueur.points_stat <= 0),
                 new ButtonBuilder()
-                    .setCustomId('stats_agilite')
-                    .setLabel(`Agilité +1`)
+                    .setCustomId('stats_air')
+                    .setLabel('Air +1')
                     .setStyle(ButtonStyle.Primary)
                     .setEmoji('💨')
                     .setDisabled(joueur.points_stat <= 0)
@@ -681,10 +681,10 @@ const builder = {
                 `*${enemy.description || 'Aucune description disponible.'}*\n\n` +
                 `**— Variante ${varianteIndex + 1}/5 (Niveau ${variante.niveau}) —**\n` +
                 `❤️ HP : ${variante.hp}\n` +
-                `⚔️ Force : ${variante.force_stat || 0}\n` +
-                `🔥 Intelligence : ${variante.intelligence || 0}\n` +
-                `🍀 Chance : ${variante.chance || 0}\n` +
-                `💨 Agilité : ${variante.agilite || 0}\n\n` +
+                `🟤 Terre : ${variante.terre || 0}\n` +
+                `🔥 Feu : ${variante.feu || 0}\n` +
+                `💧 Eau : ${variante.eau || 0}\n` +
+                `💨 Air : ${variante.air || 0}\n\n` +
                 `**— Zones —**\n${zonesText || '*Zone inconnue*'}\n\n` +
                 `**— Récompenses —**\n` +
                 `✨ XP : ${variante.xp}\n` +
@@ -789,8 +789,8 @@ const builder = {
 
     codexFicheItem(joueur, item, panoplie) {
         const NOMS_STATS = {
-            force_stat: 'Force', intelligence: 'Intelligence', chance: 'Chance',
-            agilite: 'Agilité', vitalite: 'Vitalité', sagesse: 'Sagesse',
+            terre: 'Terre', feu: 'Feu', eau: 'Eau', air: 'Air',
+            vitalite: 'Vitalité', sagesse: 'Sagesse',
             bonus_cc: 'Bonus CC', bonus_degats_pct: 'Bonus dégâts %', resistance_tous: 'Résistance'
         };
 
@@ -1095,14 +1095,15 @@ const builder = {
 
     genererDescriptionSort(sort, niveauData) {
         const NOMS_STATS = {
-            force_stat: 'Force',
-            intelligence: 'Intelligence',
-            chance: 'Chance',
-            agilite: 'Agilité',
-            vitalite: 'Vitalité'
+            terre: 'Terre',
+            feu: 'Feu',
+            eau: 'Eau',
+            air: 'Air',
+            vitalite: 'Vitalité',
+            sagesse: 'Sagesse'
         };
 
-        if (sort.type === 'attaque' || sort.type === 'attaque_multiple') {
+        if (sort.type === 'attaque' || sort.type === 'attaque_multiple' || sort.type === 'attaque_buff') {
             const element = sort.composantes ? sort.composantes[0].element : sort.element || 'neutre';
             if (niveauData.composantes_degats) {
                 const parties = niveauData.composantes_degats.map(c => `${c.degats_min} à ${c.degats_max} (${c.element})`);
@@ -1134,6 +1135,21 @@ const builder = {
             return desc + '.';
         }
 
+        if (sort.type === 'attaque_buff') {
+            const element = sort.composantes ? sort.composantes[0].element : 'neutre';
+            let desc = `Inflige ${niveauData.degats_min} à ${niveauData.degats_max} dégâts ${element}`;
+            if (sort.effets) {
+                sort.effets.forEach(effet => {
+                    switch (effet.type) {
+                        case 'bonus_degats_flat': desc += ` + augmente vos dégâts de +${niveauData.valeur} pendant ${niveauData.duree} tours`; break;
+                        case 'bonus_degats_pct': desc += ` + augmente vos dégâts de ${niveauData.valeur}% pendant ${niveauData.duree} tours`; break;
+                        case 'bonus_stat': desc += ` + augmente votre ${effet.stat} de ${niveauData.valeur} pendant ${niveauData.duree} tours`; break;
+                    }
+                });
+            }
+            return desc + '.';
+        }
+
         if (sort.type === 'buff') {
             const parties = [];
             sort.effets.forEach(effet => {
@@ -1141,13 +1157,15 @@ const builder = {
                     case 'bonus_degats_pct': parties.push(`+${niveauData.valeur || niveauData.valeur_degats}% dégâts`); break;
                     case 'bonus_stat': parties.push(`+${niveauData.valeur_stat || niveauData[`valeur_${effet.stat}`]} ${NOMS_STATS[effet.stat] || effet.stat}`); break;
                     case 'bonus_vitalite': parties.push(`+${niveauData.valeur_min} à ${niveauData.valeur_max} vitalité`); break;
-                    case 'bonus_cc': parties.push(`+${niveauData.valeur_cc} CC`); break;
+                    case 'bonus_cc': parties.push(`+${niveauData.valeur_cc || niveauData.valeur} CC`); break;
                     case 'resistance_element': parties.push(`-${Math.abs(niveauData.valeur)} dégâts ${effet.element} reçus`); break;
+                    case 'resistance_element_pct': parties.push(`-${niveauData.valeur}% dégâts ${effet.element} reçus`); break;
                     case 'resistance_tous': parties.push(`-${Math.abs(niveauData.valeur || niveauData.valeur_resistance)} dégâts reçus`); break;
                     case 'resistance_tous_pct': parties.push(`-${niveauData.valeur}% dégâts reçus`); break;
                     case 'absorption_degats': parties.push(`absorbe ${niveauData.valeur} dégâts`); break;
                     case 'perte_hp_immediate': parties.push(`-${niveauData.perte_hp} HP immédiat`); break;
                     case 'perte_hp_par_tour': parties.push(`-${niveauData.perte_hp} HP/tour`); break;
+                    case 'perte_hp_par_tour_pct': parties.push(`-${niveauData.perte_hp_pct}% HP max/tour`); break;
                     case 'soin_par_tour': parties.push(`+${niveauData.soin_par_tour} HP/tour`); break;
                     case 'soin_fin_effet': parties.push(`+${niveauData.soin_fin} HP en fin d'effet`); break;
                     case 'immunite_degats': parties.push(`immunité aux dégâts`); break;
@@ -1157,6 +1175,16 @@ const builder = {
                     case 'bonus_degats_element_pct': parties.push(`+${niveauData.valeur}% dégâts ${effet.element}`); break;
                     case 'bonus_degats_hp_manquants': parties.push(`+${niveauData.valeur}% dégâts par % HP manquant`); break;
                     case 'vol_stat': parties.push(`vole ${niveauData.valeur_effet} ${NOMS_STATS[effet.stat] || effet.stat}`); break;
+                    case 'bonus_degats_flat':
+                        if (niveauData.valeur_min !== undefined && niveauData.valeur_max !== undefined) {
+                            parties.push(`+${niveauData.valeur_min} à ${niveauData.valeur_max} dégâts`);
+                        } else {
+                            parties.push(`+${niveauData.valeur || niveauData.valeur_degats_flat} dégâts`);
+                        }
+                        break;
+                    case 'serment':
+                        parties.push(`Serment actif — +${niveauData.bonus_par_coup} ${effet.stat} par coup reçu${effet.malus_degats_pct > 0 ? ` (malus : +${effet.malus_degats_pct}% dégâts subis)` : ''}`);
+                        break;
                 }
             });
             return `${parties.join(', ')} pendant ${niveauData.duree} tours.`;

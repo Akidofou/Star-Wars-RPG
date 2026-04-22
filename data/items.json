@@ -3,11 +3,23 @@
         {
             "id": 1,
             "nom": "Panoplie du Novice",
-            "pieces_ids": [1001, 1002, 1003, 1004, 1005, 1006,1007,1008],
+            "pieces_ids": [1001, 1002, 1003, 1004, 1005, 1006, 1007],
             "bonus": [
-                { "nb_pieces": 2, "stats": [{ "stat": "vitalite", "valeur": 10 }, { "stat": "force_stat", "valeur": 10 }] },
-                { "nb_pieces": 3, "stats": [{ "stat": "vitalite", "valeur": 15 }, { "stat": "force_stat", "valeur": 15 }] },
-                { "nb_pieces": 6, "stats": [{ "stat": "vitalite", "valeur": 40 }, { "stat": "force_stat", "valeur": 40 }] }
+                { "nb_pieces": 2, "stats": [{ "stat": "vitalite", "valeur": 5 }, { "stat":"sagesse", "valeur": 5 }, { "stat": "terre", "valeur": 5 }, { "stat": "feu", "valeur": 5 }, { "stat": "eau", "valeur": 15 } ,{ "stat": "air", "valeur": 5 }] },
+                { "nb_pieces": 3, "stats": [{ "stat": "vitalite", "valeur": 10 }, { "stat":"sagesse", "valeur": 10 }, { "stat": "terre", "valeur": 10 }, { "stat": "feu", "valeur": 10 }, { "stat": "eau", "valeur": 10 } ,{ "stat": "air", "valeur": 10 }] },
+                { "nb_pieces": 4, "stats": [{ "stat": "vitalite", "valeur": 15 }, { "stat":"sagesse", "valeur": 15 }, { "stat": "terre", "valeur": 15 }, { "stat": "feu", "valeur": 15 }, { "stat": "eau", "valeur": 15 } ,{ "stat": "air", "valeur": 15 }] },
+                { "nb_pieces": 5, "stats": [{ "stat": "vitalite", "valeur": 20 }, { "stat":"sagesse", "valeur": 20 }, { "stat": "terre", "valeur": 20 }, { "stat": "feu", "valeur": 20 }, { "stat": "eau", "valeur": 20 } ,{ "stat": "air", "valeur": 20 }] },
+                { "nb_pieces": 6, "stats": [{ "stat": "vitalite", "valeur": 30 }, { "stat":"sagesse", "valeur": 30 }, { "stat": "terre", "valeur": 30 }, { "stat": "feu", "valeur": 30 }, { "stat": "eau", "valeur": 30 } ,{ "stat": "air", "valeur": 30 }] },
+                { "nb_pieces": 7, "stats": [{ "stat": "vitalite", "valeur": 40 }, { "stat":"sagesse", "valeur": 40 }, { "stat": "terre", "valeur": 40 }, { "stat": "feu", "valeur": 40 }, { "stat": "eau", "valeur": 40 } ,{ "stat": "air", "valeur": 40 }] }
+            ]
+        },
+        {
+            "id": 2,
+            "nom": "Panoplie du Chasseur",
+            "pieces_ids": [1011],
+            "bonus": [
+                { "nb_pieces": 2, "stats": [{ "stat": "terre", "valeur": 10 }, { "stat": "air", "valeur": 10 }] },
+                { "nb_pieces": 3, "stats": [{ "stat": "terre", "valeur": 15 }, { "stat": "air", "valeur": 15 }] }
             ]
         }
     ],
@@ -20,12 +32,11 @@
             "panoplie_id": 1,
             "niveau_requis": 1,
             "bonus": [
-                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
                 { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+                { "stat": "terre", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "feu", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "eau", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "air", "valeur_min": 1, "valeur_max": 2 }
             ]
         },
         {
@@ -36,12 +47,11 @@
             "panoplie_id": 1,
             "niveau_requis": 1,
             "bonus": [
-                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
                 { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+                { "stat": "terre", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "feu", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "eau", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "air", "valeur_min": 1, "valeur_max": 2 }
             ]
         },
         {
@@ -52,12 +62,11 @@
             "panoplie_id": 1,
             "niveau_requis": 1,
             "bonus": [
-                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
                 { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+                { "stat": "terre", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "feu", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "eau", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "air", "valeur_min": 1, "valeur_max": 2 }
             ]
         },
         {
@@ -68,12 +77,11 @@
             "panoplie_id": 1,
             "niveau_requis": 1,
             "bonus": [
-                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
                 { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+                { "stat": "terre", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "feu", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "eau", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "air", "valeur_min": 1, "valeur_max": 2 }
             ]
         },
         {
@@ -84,12 +92,11 @@
             "panoplie_id": 1,
             "niveau_requis": 1,
             "bonus": [
-                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
                 { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+                { "stat": "terre", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "feu", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "eau", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "air", "valeur_min": 1, "valeur_max": 2 }
             ]
         },
         {
@@ -100,12 +107,11 @@
             "panoplie_id": 1,
             "niveau_requis": 1,
             "bonus": [
-                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
                 { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+                { "stat": "terre", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "feu", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "eau", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "air", "valeur_min": 1, "valeur_max": 2 }
             ]
         },
         {
@@ -116,39 +122,22 @@
             "panoplie_id": 1,
             "niveau_requis": 1,
             "bonus": [
-                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
                 { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
+                { "stat": "terre", "valeur_min": 1, "valeur_max": 2 },
+                { "stat": "feu", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "eau", "valeur_min": 0, "valeur_max": 2 },
+                { "stat": "air", "valeur_min": 1, "valeur_max": 2 }
             ]
         },
         {
             "id": 1008,
-            "nom": "Épée du Novice",
-            "description": "Une épée simple pour les jeunes aventuriers.",
-            "categorie": "arme",
-            "panoplie_id": 1,
-            "niveau_requis": 1,
-            "bonus": [
-                { "stat": "vitalite", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "sagesse", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "force_stat", "valeur_min": 1, "valeur_max": 2 },
-                { "stat": "intelligence", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "chance", "valeur_min": 0, "valeur_max": 2 },
-                { "stat": "agilite", "valeur_min": 1, "valeur_max": 2 }
-            ]
-        },
-        {
-            "id": 1009,
             "nom": "Bottes du Loup",
             "description": "Des bottes solides fabriquées à partir de fourrure de loup.",
             "categorie": "bottes",
             "panoplie_id": null,
             "niveau_requis": 1,
             "bonus": [
-                { "stat": "agilite", "valeur_min": 3, "valeur_max": 6 },
+                { "stat": "air", "valeur_min": 3, "valeur_max": 6 },
                 { "stat": "vitalite", "valeur_min": 2, "valeur_max": 4 }
             ],
             "recette": [
@@ -157,20 +146,39 @@
             ]
         },
         {
-            "id": 1010,
+            "id": 1009,
             "nom": "Bottes du Loup Raffinées",
             "description": "Des bottes de qualité supérieure en fourrure de loup raffinée.",
             "categorie": "bottes",
             "panoplie_id": null,
             "niveau_requis": 5,
             "bonus": [
-                { "stat": "agilite", "valeur_min": 8, "valeur_max": 15 },
+                { "stat": "air", "valeur_min": 8, "valeur_max": 15 },
                 { "stat": "vitalite", "valeur_min": 5, "valeur_max": 10 }
             ],
             "recette": [
                 { "id": "fourrure_loup_raffinee", "type": "ressource", "quantite": 5 },
                 { "id": "patte_loup", "type": "ressource", "quantite": 3 },
                 { "id": "croc_loup", "type": "ressource", "quantite": 1 }
+            ]
+        },
+        {
+            "id": 1009,
+            "nom": "Arc court",
+            "description": "Un arc court",
+            "categorie": "arc",
+            "panoplie_id": 2,
+            "niveau_requis": 5,
+            "prerequis": [
+                { "stat": "air", "valeur_min": 5 }
+            ],
+            "bonus": [
+                { "stat": "vitalite", "valeur": 5 },
+                { "stat": "air", "valeur": 5 }
+            ],
+            "recette": [
+                { "id": "arc_abime", "type": "ressource", "quantite": 1 },
+                { "id": "plume_fleche", "type": "ressource", "quantite": 5 }
             ]
         }
     ]

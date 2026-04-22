@@ -104,13 +104,16 @@ module.exports = async (interaction, params) => {
     const modDegatsJoueur = effects.getModificateursDegats(effetsJoueur);
 
     // Sort offensif joueur → ennemi
-    if (sortData.type === 'attaque' || sortData.type === 'attaque_effet' || sortData.type === 'attaque_multiple') {
+    if (sortData.type === 'attaque' || sortData.type === 'attaque_effet' || sortData.type === 'attaque_multiple' || sortData.type === 'attaque_buff') {
         const resultatJoueur = combatEngine.calculerDegats(sortData, niveauSort, statsJoueurModifiees);
 
         if (resultatJoueur.echec) {
             journal.push(`❌ **Échec !** Votre **${sortData.nom}** a raté !`);
         } else {
             let degatsJoueur = resultatJoueur.degats;
+            if (modDegatsJoueur.bonusFlat > 0) {
+                degatsJoueur += modDegatsJoueur.bonusFlat;
+            }
             if (modDegatsJoueur.bonusPct > 0) {
                 degatsJoueur = Math.round(degatsJoueur * (1 + modDegatsJoueur.bonusPct / 100));
             }
@@ -146,6 +149,21 @@ module.exports = async (interaction, params) => {
                 });
                 effetsEnnemi = [...effetsEnnemi, ...nouveauxEffets];
             }
+
+            if (sortData.type === 'attaque_buff') {
+                const nouveauxEffets = effects.appliquerEffetSort(sortData, niveauData, statsJoueurModifiees, 'joueur');
+                for (const effet of nouveauxEffets) {
+                    if (effet.type === 'soin') {
+                        const joueurPourSoin = playerDB.get(discord_id);
+                        const nouveauHP = Math.min(joueurPourSoin.hp_actuel + effet.valeur, joueurPourSoin.hp_max);
+                        playerDB.update(discord_id, { hp_actuel: nouveauHP });
+                        journal.push(`💚 **${sortData.nom}** vous soigne de **${effet.valeur}** HP !`);
+                    } else {
+                        journal.push(`✨ ${descriptionEffet(effet, 'vous')}`);
+                        effetsJoueur = [...effetsJoueur, effet];
+                    }
+                }
+            }
         }
     }
 
@@ -172,6 +190,13 @@ module.exports = async (interaction, params) => {
                 const nouveauHP = Math.max(0, joueurPourHP.hp_actuel - effet.valeur);
                 playerDB.update(discord_id, { hp_actuel: nouveauHP });
                 journal.push(`💔 **${sortData.nom}** vous coûte **${effet.valeur}** HP !`);
+            } else if (effet.type === 'bonus_vitalite') {
+                const joueurPourVita = playerDB.get(discord_id);
+                const nouveauHPMax = joueurPourVita.hp_max + effet.valeur;
+                const nouveauHP = Math.min(joueurPourVita.hp_actuel + effet.valeur, nouveauHPMax);
+                playerDB.update(discord_id, { hp_max: nouveauHPMax, hp_actuel: nouveauHP });
+                journal.push(`❤️ **${sortData.nom}** augmente vos HP de **+${effet.valeur}** temporairement !`);
+                effetsJoueur = [...effetsJoueur, effet];
             } else {
                 journal.push(`✨ ${descriptionEffet(effet, 'vous')}`);
                 effetsJoueur = [...effetsJoueur, effet];
@@ -230,15 +255,24 @@ module.exports = async (interaction, params) => {
     const joueurAvantTourEnnemi = playerDB.get(discord_id);
 
     // Sort offensif ennemi → joueur
-    if (sortEnnemi.type === 'attaque' || sortEnnemi.type === 'attaque_effet' || sortEnnemi.type === 'attaque_multiple') {
+    if (sortEnnemi.type === 'attaque' || sortEnnemi.type === 'attaque_effet' || sortEnnemi.type === 'attaque_multiple' || sortEnnemi.type === 'attaque_buff') {
         const resultatEnnemi = combatEngine.calculerDegats(sortEnnemi, niveauSortEnnemi, statsEnnemiModifiees);
 
         if (resultatEnnemi.echec) {
             journal.push(`❌ **${enemyData.nom}** rate son attaque !`);
         } else {
             let degatsEnnemi = resultatEnnemi.degats;
+            if (modDegatsEnnemi.bonusFlat > 0) {
+                degatsEnnemi += modDegatsEnnemi.bonusFlat;
+            }
             if (modDegatsEnnemi.bonusPct > 0) {
                 degatsEnnemi = Math.round(degatsEnnemi * (1 + modDegatsEnnemi.bonusPct / 100));
+            }
+
+            // Malus serment — le joueur reçoit plus de dégâts
+            const malusSerment = effects.getSermentMalus(effetsJoueur);
+            if (malusSerment > 0) {
+                degatsEnnemi = Math.round(degatsEnnemi * (1 + malusSerment / 100));
             }
 
             const elementEnnemi = sortEnnemi.composantes ? sortEnnemi.composantes[0].element : 'neutre';
@@ -252,6 +286,24 @@ module.exports = async (interaction, params) => {
             } else {
                 const nouveauHPJoueur = Math.max(0, joueurAvantTourEnnemi.hp_actuel - degatsApresDefenseJoueur);
                 playerDB.update(discord_id, { hp_actuel: nouveauHPJoueur });
+
+                // Serment — accumulation de stacks si le joueur a un serment actif
+                const sermentActif = effetsJoueur.find(e => e.type === 'serment' && e.duree > 0);
+                if (sermentActif && degatsApresDefenseJoueur > 0) {
+                    sermentActif.stacks += 1;
+                    sermentActif.bonus_total += sermentActif.bonus_par_coup;
+
+                    if (sermentActif.stat === 'vitalite') {
+                        const joueurPourVita = playerDB.get(discord_id);
+                        const nouveauHPMax = joueurPourVita.hp_max + sermentActif.bonus_par_coup;
+                        const nouveauHP = Math.min(joueurPourVita.hp_actuel + sermentActif.bonus_par_coup, nouveauHPMax);
+                        playerDB.update(discord_id, { hp_max: nouveauHPMax, hp_actuel: nouveauHP });
+                        journal.push(`🛡️ **Serment de Vitalité** ! +${sermentActif.bonus_par_coup} HP max (total : +${sermentActif.bonus_total} HP) !`);
+                    } else {
+                        journal.push(`🛡️ **Serment** ! +${sermentActif.bonus_par_coup} ${sermentActif.stat} (total : +${sermentActif.bonus_total}) !`);
+                    }
+                }
+
                 const ligneDetailEnnemi = resultatEnnemi.detail && resultatEnnemi.detail.length > 1
                     ? `\n　　*(${resultatEnnemi.detail.map(d => `${d.degats} ${d.element}`).join(' + ')})*`
                     : '';
@@ -272,6 +324,19 @@ module.exports = async (interaction, params) => {
                     journal.push(`✨ ${descriptionEffet(effet, 'vous')}`);
                 });
                 effetsJoueur = [...effetsJoueur, ...nouveauxEffets];
+            }
+
+            if (sortEnnemi.type === 'attaque_buff') {
+                const nouveauxEffets = effects.appliquerEffetSort(sortEnnemi, niveauDataEnnemi, statsEnnemiModifiees, 'ennemi');
+                for (const effet of nouveauxEffets) {
+                    if (effet.type === 'soin') {
+                        enemyStats.hp = Math.min(enemyStats.hp + effet.valeur, enemyStats.hp_depart || enemyStats.hp_max);
+                        journal.push(`💚 **${enemyData.nom}** se soigne de **${effet.valeur}** HP !`);
+                    } else {
+                        journal.push(`✨ ${descriptionEffet(effet, enemyData.nom)}`);
+                        effetsEnnemi = [...effetsEnnemi, effet];
+                    }
+                }
             }
         }
     }
@@ -355,11 +420,12 @@ function db_update_combat(combatId, enemyStats, cooldownsJoueur, cooldownsEnnemi
 
 function descriptionEffet(effet, cible) {
     const NOMS_STATS = {
-        force_stat: 'Force',
-        intelligence: 'Intelligence',
-        chance: 'Chance',
-        agilite: 'Agilité',
-        vitalite: 'Vitalité'
+        terre: 'Terre',
+        feu: 'Feu',
+        eau: 'Eau',
+        air: 'Air',
+        vitalite: 'Vitalité',
+        sagesse: 'Sagesse'
     };
 
     switch (effet.type) {
@@ -383,6 +449,8 @@ function descriptionEffet(effet, cible) {
             return `🎯 **${effet.source_nom}** améliore les critiques de **${cible}** pendant **${effet.duree}** tours !`;
         case 'resistance_element':
             return `🛡️ **${effet.source_nom}** réduit les dégâts **${effet.element}** reçus par **${cible}** de **${Math.abs(effet.valeur)}** pendant **${effet.duree}** tours !`;
+        case 'resistance_element_pct':
+            return `🛡️ **${effet.source_nom}** réduit les dégâts **${effet.element}** reçus par **${cible}** de **${effet.valeur}%** pendant **${effet.duree}** tours !`;
         case 'resistance_tous':
             return `🛡️ **${effet.source_nom}** réduit tous les dégâts reçus par **${cible}** de **${Math.abs(effet.valeur)}** pendant **${effet.duree}** tours !`;
         case 'resistance_tous_pct':
@@ -391,6 +459,8 @@ function descriptionEffet(effet, cible) {
             return `🛡️ **${effet.source_nom}** absorbe jusqu'à **${effet.valeur}** dégâts pour **${cible}** pendant **${effet.duree}** tours !`;
         case 'perte_hp_par_tour':
             return `💔 **${effet.source_nom}** inflige **${effet.valeur}** HP/tour à **${cible}** pendant **${effet.duree}** tours !`;
+        case 'perte_hp_par_tour_pct':
+            return `💔 **${effet.source_nom}** inflige **${effet.valeur}%** des HP max à **${cible}** pendant **${effet.duree}** tours !`;
         case 'soin_par_tour':
             return `💚 **${effet.source_nom}** soigne **${cible}** de **${effet.valeur}** HP/tour pendant **${effet.duree}** tours !`;
         case 'vol_stat':
@@ -407,6 +477,10 @@ function descriptionEffet(effet, cible) {
             return `🎯 **${effet.source_nom}** réduit les chances d'échec de **${cible}** pendant **${effet.duree}** tours !`;
         case 'bonus_degats_element_pct':
             return `⚡ **${effet.source_nom}** augmente les dégâts **${effet.element}** de **${cible}** de **${effet.valeur}%** pendant **${effet.duree}** tours !`;
+        case 'bonus_degats_flat':
+            return `⚡ **${effet.source_nom}** augmente les dégâts de **${cible}** de **+${effet.valeur}** pendant **${effet.duree}** tours !`;
+        case 'serment':
+            return `🛡️ **${effet.source_nom}** active le **Serment** sur **${cible}** — chaque coup reçu augmente **${NOMS_STATS[effet.stat] || effet.stat}** de **${effet.bonus_par_coup}** !`;
         default:
             return `✨ **${effet.source_nom}** applique un effet sur **${cible}** pendant **${effet.duree}** tours !`;
     }

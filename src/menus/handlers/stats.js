@@ -12,22 +12,11 @@ module.exports = async (interaction, params) => {
         return;
     }
 
-    const STATS_VALIDES = ['vitalite', 'sagesse', 'force', 'intelligence', 'chance', 'agilite'];
+    const STATS_VALIDES = ['vitalite', 'sagesse', 'terre', 'feu', 'eau', 'air'];
     if (!STATS_VALIDES.includes(stat)) {
         await interaction.reply({ content: '❌ Statistique invalide.', flags: 64 });
         return;
     }
-
-    const STATS_MAP = {
-        vitalite: 'vitalite',
-        sagesse: 'sagesse',
-        force: 'force_stat',
-        intelligence: 'intelligence',
-        chance: 'chance',
-        agilite: 'agilite'
-    };
-
-    const colonne = STATS_MAP[stat];
 
     if (stat === 'vitalite') {
         playerDB.update(discord_id, {
@@ -38,7 +27,7 @@ module.exports = async (interaction, params) => {
         });
     } else {
         playerDB.update(discord_id, {
-            [colonne]: joueur[colonne] + 1,
+            [stat]: joueur[stat] + 1,
             points_stat: joueur.points_stat - 1
         });
     }

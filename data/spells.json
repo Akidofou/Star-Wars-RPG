@@ -6,7 +6,7 @@
             "description": "Une morsure puissante infligeant des dégâts terre.",
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
+            "composantes": [{ "element": "terre" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 1, "degats_max": 4, "ec": 50, "cc": 0, "cooldown": 0 },
                 { "niveau": 2, "degats_min": 1, "degats_max": 5, "ec": 50, "cc": 0, "cooldown": 0 },
@@ -21,7 +21,7 @@
             "description": "Un coup de griffe rapide infligeant des dégâts air.",
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "composantes": [{ "element": "air" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 1, "degats_max": 4, "ec": 100, "cc": 50, "cooldown": 0 },
                 { "niveau": 2, "degats_min": 1, "degats_max": 5, "ec": 100, "cc": 50, "cooldown": 0 },
@@ -36,13 +36,13 @@
             "description": "Un tir précis infligeant des dégâts air.",
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "composantes": [{ "element": "air" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 2, "degats_max": 5, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 3, "degats_max": 6, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 4, "degats_max": 8, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 4, "degats_max": 10, "ec": 100, "cc": 40, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 2, "degats_max": 6, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 3, "degats_max": 6, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 4, "degats_max": 8, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 4, "degats_max": 10, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
@@ -63,17 +63,17 @@
         {
             "id": 1005,
             "nom": "Piège de Chasse",
-            "description": "Pose un piège qui réduit l'agilité de la cible pendant 2 tours.",
+            "description": "Pose un piège qui inflige des dégâts terre et réduit les stats air de la cible pendant 2 tours.",
             "type": "attaque_effet",
             "cible": "ennemi",
-            "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
-            "effets": [{ "type": "debuff_stat", "stat": "agilite", "duree": 2 }],
+            "composantes": [{ "element": "terre" }],
+            "effets": [{ "type": "debuff_stat", "stat": "air", "duree": 2 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 2, "degats_max": 4, "valeur_effet": -3, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "degats_min": 2, "degats_max": 5, "valeur_effet": -4, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "degats_min": 3, "degats_max": 6, "valeur_effet": -5, "ec": 100, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "degats_min": 3, "degats_max": 7, "valeur_effet": -6, "ec": 100, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "degats_min": 4, "degats_max": 8, "valeur_effet": -7, "ec": 100, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "degats_min": 2, "degats_max": 4, "valeur_effet": -2, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "degats_min": 2, "degats_max": 5, "valeur_effet": -4, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 3, "degats_min": 3, "degats_max": 6, "valeur_effet": -6, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 4, "degats_min": 3, "degats_max": 7, "valeur_effet": -8, "ec": 100, "cc": 0, "cooldown": 5 },
+                { "niveau": 5, "degats_min": 4, "degats_max": 8, "valeur_effet": -10, "ec": 100, "cc": 0, "cooldown": 4 }
             ]
         },
         {
@@ -82,7 +82,7 @@
             "description": "Une morsure qui inflige des dégâts eau et empoisonne la cible pendant 3 tours.",
             "type": "attaque_effet",
             "cible": "ennemi",
-            "composantes": [{ "element": "eau", "stat_liee": "chance" }],
+            "composantes": [{ "element": "eau" }],
             "effets": [{ "type": "poison", "duree": 3 }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 1, "degats_max": 4, "poison_par_tour": 2, "ec": 100, "cc": 50, "cooldown": 6 },
@@ -95,10 +95,10 @@
         {
             "id": 1007,
             "nom": "Toile Adhésive",
-            "description": "Projette une toile qui réduit l'agilité de la cible pendant 2 tours.",
+            "description": "Projette une toile qui réduit la stats air de la cible pendant 2 tours.",
             "type": "debuff",
             "cible": "ennemi",
-            "effets": [{ "type": "debuff_stat", "stat": "agilite", "duree": 2 }],
+            "effets": [{ "type": "debuff_stat", "stat": "air", "duree": 2 }],
             "niveaux": [
                 { "niveau": 1, "valeur_effet": -4, "ec": 100, "cc": 0, "cooldown": 6 },
                 { "niveau": 2, "valeur_effet": -5, "ec": 100, "cc": 0, "cooldown": 6 },
@@ -113,7 +113,7 @@
             "description": "L'araignée bondit sur sa proie infligeant de lourds dégâts air.",
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "composantes": [{ "element": "air" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 50, "cooldown": 0 },
                 { "niveau": 2, "degats_min": 4, "degats_max": 8, "ec": 100, "cc": 50, "cooldown": 0 },
@@ -122,387 +122,385 @@
                 { "niveau": 5, "degats_min": 5, "degats_max": 12, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
+
         {
             "id": 2001,
             "nom": "Frappe Brutale",
-            "description": "Un coup puissant infligeant des dégâts terre.",
+            "description": "Une attaque lourde et directe, frappant l’ennemi avec une force brute et infligeant des dégâts de terre.",
             "classe": "guerrier",
             "niveau_deblocage": 1,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
+            "composantes": [{ "element": "terre" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 8, "degats_max": 12, "ec": 100, "cc": 50, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 10, "degats_max": 14, "ec": 100, "cc": 50, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 12, "degats_max": 16, "ec": 100, "cc": 50, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 14, "degats_max": 19, "ec": 100, "cc": 50, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 17, "degats_max": 23, "ec": 100, "cc": 50, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 4, "degats_max": 8, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 5, "degats_max": 9, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 6, "degats_max": 10, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 7, "degats_max": 11, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 8, "degats_max": 12, "ec": 100, "cc": 40, "cooldown": 0 }
             ]
         },
         {
             "id": 2002,
-            "nom": "Coup Tranchant",
-            "description": "Un coup rapide infligeant des dégâts air avec bonus critique.",
+            "nom": "Impact",
+            "description": "Un coup simple mais précis, exploitant la meilleure maîtrise du combattant pour infliger des dégâts neutres.",
             "classe": "guerrier",
             "niveau_deblocage": 1,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "composantes": [{ "element": "neutre", "stat_liee": "meilleure_stat" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 5, "degats_max": 9, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 7, "degats_max": 11, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 9, "degats_max": 13, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 11, "degats_max": 15, "ec": 100, "cc": 40, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 13, "degats_max": 18, "ec": 100, "cc": 40, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 1, "degats_max": 2, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 2, "degats_max": 3, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 3, "degats_max": 4, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 4, "degats_max": 5, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 5, "degats_max": 6, "ec": 100, "cc": 40, "cooldown": 0 }
             ]
         },
         {
             "id": 2003,
             "nom": "Cri de Guerre",
-            "description": "Augmente les dégâts de X%.",
+            "description": "Un cri puissant qui galvanise le guerrier, augmentant ses dégâts pendant quelques tours.",
             "classe": "guerrier",
             "niveau_deblocage": 1,
             "type": "buff",
             "cible": "soi",
-            "effets": [{ "type": "bonus_degats_pct" }],
+            "effets": [{ "type": "bonus_degats_flat" }],
             "niveaux": [
-                { "niveau": 1, "valeur": 20, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur": 32, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur": 45, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 4, "valeur": 55, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 5, "valeur": 70, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 }
+                { "niveau": 1, "valeur_min": 2, "valeur_max": 3, "duree": 5, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 2, "valeur_min": 3, "valeur_max": 5, "duree": 5, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 3, "valeur_min": 4, "valeur_max": 7, "duree": 5, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 4, "valeur_min": 5, "valeur_max": 9, "duree": 5, "ec": 100, "cc": 50, "cooldown": 6 },
+                { "niveau": 5, "valeur_min": 6, "valeur_max": 11, "duree": 5, "ec": 100, "cc": 50, "cooldown": 6 }
             ]
         },
         {
             "id": 2004,
-            "nom": "Charge",
-            "description": "Une attaque puissante avec cooldown.",
+            "nom": "Coup Tranchant",
+            "description": "Une attaque rapide et incisive qui tranche l’ennemi, tout en renforçant brièvement la puissance offensive du guerrier.",
             "classe": "guerrier",
             "niveau_deblocage": 3,
-            "type": "attaque",
+            "type": "attaque_buff",
             "cible": "ennemi",
-            "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
+            "composantes": [{ "element": "air" }],
+            "effets": [{"type":"bonus_degats_flat"}],
             "niveaux": [
-                { "niveau": 1, "degats_min": 15, "degats_max": 20, "ec": 100, "cc": 50, "cooldown": 4 },
-                { "niveau": 2, "degats_min": 18, "degats_max": 24, "ec": 100, "cc": 50, "cooldown": 4 },
-                { "niveau": 3, "degats_min": 21, "degats_max": 28, "ec": 100, "cc": 50, "cooldown": 3 },
-                { "niveau": 4, "degats_min": 25, "degats_max": 32, "ec": 100, "cc": 50, "cooldown": 3 },
-                { "niveau": 5, "degats_min": 30, "degats_max": 38, "ec": 100, "cc": 50, "cooldown": 2 }
+                { "niveau": 1, "degats_min": 5, "degats_max": 14, "valeur": 1, "duree": 3, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 6, "degats_max": 15, "valeur": 1, "duree": 3, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 7, "degats_max": 16, "valeur": 2, "duree": 3, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 8, "degats_max": 17, "valeur": 2, "duree": 3, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 9, "degats_max": 18, "valeur": 2, "duree": 3, "ec": 100, "cc": 40, "cooldown": 0 }
             ]
         },
         {
             "id": 2005,
             "nom": "Lame Enflammée",
-            "description": "Une attaque infligeant des dégâts feu.",
+            "description": "Une frappe embrasée qui consume la cible et inflige des dégâts de feu.",
             "classe": "guerrier",
             "niveau_deblocage": 6,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
+            "composantes": [{ "element": "feu" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 7, "degats_max": 11, "ec": 100, "cc": 50, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 9, "degats_max": 13, "ec": 100, "cc": 50, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 11, "degats_max": 15, "ec": 100, "cc": 50, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 13, "degats_max": 18, "ec": 100, "cc": 50, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 15, "degats_max": 21, "ec": 100, "cc": 50, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 4, "degats_max": 11, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 5, "degats_max": 12, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 6, "degats_max": 13, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 7, "degats_max": 14, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 8, "degats_max": 15, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
             "id": 2006,
-            "nom": "Endurance",
-            "description": "Augmente la vitalité temporairement pendant 5 tours.",
+            "nom": "Armure du Guerrier",
+            "description": "Le guerrier se prépare au combat, renforçant ses résistances face aux éléments pendant une courte durée.",
             "classe": "guerrier",
             "niveau_deblocage": 9,
             "type": "buff",
             "cible": "soi",
-            "effets": [{ "type": "bonus_vitalite" }],
+            "effets": [
+                { "type": "resistance_element_pct", "element": "terre" },
+                { "type": "resistance_element_pct", "element": "feu" },
+                { "type": "resistance_element_pct", "element": "eau" },
+                { "type": "resistance_element_pct", "element": "air" }
+            ],
             "niveaux": [
-                { "niveau": 1, "valeur_min": 40, "valeur_max": 50, "duree": 5, "ec": 100, "cc": 45, "cooldown": 5 },
-                { "niveau": 2, "valeur_min": 55, "valeur_max": 70, "duree": 5, "ec": 100, "cc": 45, "cooldown": 5 },
-                { "niveau": 3, "valeur_min": 70, "valeur_max": 90, "duree": 5, "ec": 100, "cc": 45, "cooldown": 5 },
-                { "niveau": 4, "valeur_min": 90, "valeur_max": 110, "duree": 5, "ec": 100, "cc": 45, "cooldown": 5 },
-                { "niveau": 5, "valeur_min": 110, "valeur_max": 140, "duree": 5, "ec": 100, "cc": 45, "cooldown": 5 }
+                { "niveau": 1, "valeur": 2, "duree": 3, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 2, "valeur": 3, "duree": 3, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 3, "valeur": 4, "duree": 3, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 4, "valeur": 5, "duree": 3, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 5, "valeur": 6, "duree": 3, "ec": 100, "cc": 50, "cooldown": 5 }
             ]
         },
         {
             "id": 2007,
-            "nom": "Frappe Tourbillonnante",
-            "description": "3 coups rapides consécutifs infligeant des dégâts air.",
+            "nom": "Élan de puissance",
+            "description": "Une montée soudaine de puissance qui augmente temporairement les dégâts du guerrier.",
             "classe": "guerrier",
             "niveau_deblocage": 13,
-            "type": "attaque_multiple",
-            "cible": "ennemi",
-            "nb_coups": 3,
-            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "type": "buff",
+            "cible": "soi",
+            "effets": [{ "type": "bonus_degats_flat" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 3, "degats_max": 5, "ec": 100, "cc": 40, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 4, "degats_max": 6, "ec": 100, "cc": 40, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 5, "degats_max": 7, "ec": 100, "cc": 40, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 6, "degats_max": 8, "ec": 100, "cc": 40, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 7, "degats_max": 10, "ec": 100, "cc": 40, "cooldown": 2 }
+                { "niveau": 1, "valeur_min": 1, "valeur_max": 2, "duree": 2, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 2, "valeur_min": 1, "valeur_max": 3, "duree": 2, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "valeur_min": 1, "valeur_max": 4, "duree": 2, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "valeur_min": 1, "valeur_max": 5, "duree": 2, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 5, "valeur_min": 1, "valeur_max": 6, "duree": 2, "ec": 100, "cc": 50, "cooldown": 3 }
             ]
         },
         {
             "id": 2008,
             "nom": "Brasier",
-            "description": "Dégâts feu et brûlure pendant 3 tours.",
+            "description": "Une attaque ardente qui enflamme la cible, infligeant des dégâts immédiats et des brûlures sur plusieurs tours.",
             "classe": "guerrier",
             "niveau_deblocage": 17,
             "type": "attaque_effet",
             "cible": "ennemi",
-            "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
+            "composantes": [{ "element": "feu" }],
             "effets": [{ "type": "brulure", "duree": 3 }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 8, "degats_max": 12, "brulure_par_tour": 3, "ec": 100, "cc": 50, "cooldown": 6 },
-                { "niveau": 2, "degats_min": 10, "degats_max": 14, "brulure_par_tour": 4, "ec": 100, "cc": 50, "cooldown": 6 },
-                { "niveau": 3, "degats_min": 12, "degats_max": 16, "brulure_par_tour": 5, "ec": 100, "cc": 50, "cooldown": 6 },
-                { "niveau": 4, "degats_min": 14, "degats_max": 18, "brulure_par_tour": 6, "ec": 100, "cc": 50, "cooldown": 5 },
-                { "niveau": 5, "degats_min": 17, "degats_max": 22, "brulure_par_tour": 8, "ec": 100, "cc": 50, "cooldown": 5 }
+                { "niveau": 1, "degats_min": 6, "degats_max": 20, "brulure_par_tour": 5, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 2, "degats_min": 7, "degats_max": 24, "brulure_par_tour": 6, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 3, "degats_min": 8, "degats_max": 28, "brulure_par_tour": 7, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 4, "degats_min": 9, "degats_max": 32, "brulure_par_tour": 8, "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "degats_min": 10, "degats_max": 36, "brulure_par_tour": 9, "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
             "id": 2009,
-            "nom": "Puissance Guerrière",
-            "description": "Augmente tous les dégâts de X% pendant 3 tours.",
+            "nom": "Frappe Tourbillonnante",
+            "description": "Une série de frappes rapides exécutées dans un mouvement fluide, infligeant plusieurs coups d’air à l’ennemi.",
             "classe": "guerrier",
             "niveau_deblocage": 21,
-            "type": "buff",
-            "cible": "soi",
-            "effets": [{ "type": "bonus_degats_pct" }],
+            "type": "attaque_multiple",
+            "cible": "ennemi",
+            "nb_coups": 3,
+            "composantes": [{ "element": "air" }],
             "niveaux": [
-                { "niveau": 1, "valeur": 25, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "valeur": 35, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "valeur": 45, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur": 55, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur": 70, "duree": 3, "ec": 100, "cc": 0, "cooldown": 3 }
+                { "niveau": 1, "degats_min": 8, "degats_max": 12, "ec": 100, "cc": 40, "cooldown": 1 },
+                { "niveau": 2, "degats_min": 9, "degats_max": 13, "ec": 100, "cc": 40, "cooldown": 1 },
+                { "niveau": 3, "degats_min": 10, "degats_max": 14, "ec": 100, "cc": 40, "cooldown": 1 },
+                { "niveau": 4, "degats_min": 11, "degats_max": 15, "ec": 100, "cc": 40, "cooldown": 1 },
+                { "niveau": 5, "degats_min": 12, "degats_max": 16, "ec": 100, "cc": 40, "cooldown": 1 }
             ]
         },
         {
             "id": 2010,
-            "nom": "Lame de Chance",
-            "description": "Dégâts eau et saignement pendant 2 tours.",
+            "nom": "Puissance Guerrière",
+            "description": "Le guerrier libère toute sa force, augmentant significativement ses dégâts pendant plusieurs tours.",
             "classe": "guerrier",
             "niveau_deblocage": 26,
-            "type": "attaque_effet",
-            "cible": "ennemi",
-            "composantes": [{ "element": "eau", "stat_liee": "chance" }],
-            "effets": [{ "type": "saignement", "duree": 2 }],
+            "type": "buff",
+            "cible": "soi",
+            "effets": [{ "type": "bonus_degats_pct" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 9, "degats_max": 13, "saignement_par_tour": 4, "ec": 100, "cc": 50, "cooldown": 4 },
-                { "niveau": 2, "degats_min": 11, "degats_max": 15, "saignement_par_tour": 5, "ec": 100, "cc": 50, "cooldown": 4 },
-                { "niveau": 3, "degats_min": 13, "degats_max": 17, "saignement_par_tour": 6, "ec": 100, "cc": 50, "cooldown": 4 },
-                { "niveau": 4, "degats_min": 15, "degats_max": 20, "saignement_par_tour": 7, "ec": 100, "cc": 50, "cooldown": 4 },
-                { "niveau": 5, "degats_min": 18, "degats_max": 24, "saignement_par_tour": 9, "ec": 100, "cc": 50, "cooldown": 4 }
+                { "niveau": 1, "valeur": 20, "duree": 3, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 2, "valeur": 32, "duree": 3, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 3, "valeur": 45, "duree": 3, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 4, "valeur": 55, "duree": 4, "ec": 100, "cc": 50, "cooldown": 5 },
+                { "niveau": 5, "valeur": 70, "duree": 5, "ec": 100, "cc": 50, "cooldown": 6 }
             ]
         },
         {
             "id": 2011,
-            "nom": "Fracture",
-            "description": "Dégâts terre et réduit la Force de l'ennemi pendant 2 tours.",
+            "nom": "Rempart du Combattant",
+            "description": "Le guerrier adopte une posture défensive, réduisant fortement les dégâts subis pendant un court instant.",
             "classe": "guerrier",
             "niveau_deblocage": 31,
-            "type": "attaque_effet",
-            "cible": "ennemi",
-            "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
-            "effets": [{ "type": "debuff_stat", "stat": "force_stat", "duree": 2 }],
+            "type": "buff",
+            "cible": "soi",
+            "effets": [{ "type": "resistance_tous_pct" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 10, "degats_max": 14, "valeur_effet": -10, "ec": 100, "cc": 50, "cooldown": 4 },
-                { "niveau": 2, "degats_min": 12, "degats_max": 16, "valeur_effet": -15, "ec": 100, "cc": 50, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 14, "degats_max": 18, "valeur_effet": -20, "ec": 100, "cc": 50, "cooldown": 3 },
-                { "niveau": 4, "degats_min": 17, "degats_max": 21, "valeur_effet": -25, "ec": 100, "cc": 50, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 20, "degats_max": 26, "valeur_effet": -30, "ec": 100, "cc": 50, "cooldown": 2 }
+                { "niveau": 1, "valeur": 5, "duree": 2, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "valeur": 10, "duree": 2, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 3, "valeur": 15, "duree": 2, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 4, "valeur": 20, "duree": 2, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 5, "valeur": 25, "duree": 2, "ec": 100, "cc": 0, "cooldown": 6 }
             ]
         },
         {
             "id": 2012,
-            "nom": "Fléau",
-            "description": "Une attaque eau puissante.",
+            "nom": "Endurance",
+            "description": "Le guerrier puise dans sa résistance, augmentant considérablement sa vitalité pendant une longue durée.",
             "classe": "guerrier",
             "niveau_deblocage": 36,
-            "type": "attaque",
-            "cible": "ennemi",
-            "composantes": [{ "element": "eau", "stat_liee": "chance" }],
+            "type": "buff",
+            "cible": "soi",
+            "effets": [{ "type": "bonus_vitalite" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 16, "degats_max": 22, "ec": 100, "cc": 50, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 19, "degats_max": 26, "ec": 100, "cc": 50, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 22, "degats_max": 30, "ec": 100, "cc": 50, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 26, "degats_max": 34, "ec": 100, "cc": 50, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 30, "degats_max": 40, "ec": 100, "cc": 50, "cooldown": 1 }
+                { "niveau": 1, "valeur_min": 81, "valeur_max": 90, "duree": 10, "ec": 100, "cc": 45, "cooldown": 5 },
+                { "niveau": 2, "valeur_min": 91, "valeur_max": 110, "duree": 10, "ec": 100, "cc": 45, "cooldown": 5 },
+                { "niveau": 3, "valeur_min": 111, "valeur_max": 130, "duree": 10, "ec": 100, "cc": 45, "cooldown": 5 },
+                { "niveau": 4, "valeur_min": 121, "valeur_max": 150, "duree": 10, "ec": 100, "cc": 45, "cooldown": 5 },
+                { "niveau": 5, "valeur_min": 151, "valeur_max": 180, "duree": 10, "ec": 100, "cc": 45, "cooldown": 5 }
             ]
         },
         {
             "id": 2013,
-            "nom": "Armure de Feu",
-            "description": "Réduit les dégâts feu reçus pendant 4 tours.",
+            "nom": "Onde de Choc",
+            "description": "Un coup violent qui libère une onde de choc, infligeant des dégâts de terre et d’air à la cible.",
             "classe": "guerrier",
             "niveau_deblocage": 42,
-            "type": "buff",
-            "cible": "soi",
-            "effets": [{ "type": "resistance_element", "element": "feu" }],
+            "type": "attaque",
+            "cible": "ennemi",
+            "composantes": [
+                { "element": "terre" },
+                { "element": "air" }
+            ],
             "niveaux": [
-                { "niveau": 1, "valeur": -10, "duree": 4, "ec": 100, "cc": 0, "cooldown": 8 },
-                { "niveau": 2, "valeur": -13, "duree": 4, "ec": 100, "cc": 0, "cooldown": 8 },
-                { "niveau": 3, "valeur": -16, "duree": 4, "ec": 100, "cc": 0, "cooldown": 8 },
-                { "niveau": 4, "valeur": -19, "duree": 4, "ec": 100, "cc": 0, "cooldown": 7 },
-                { "niveau": 5, "valeur": -23, "duree": 4, "ec": 100, "cc": 0, "cooldown": 7 }
+                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 10, "degats_max": 14 }, { "element": "air", "degats_min": 5, "degats_max": 8 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 16 }, { "element": "air", "degats_min": 6, "degats_max": 10 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 19 }, { "element": "air", "degats_min": 7, "degats_max": 12 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 17, "degats_max": 22 }, { "element": "air", "degats_min": 9, "degats_max": 14 }], "ec": 100, "cc": 50, "cooldown": 1 },
+                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 20, "degats_max": 27 }, { "element": "air", "degats_min": 11, "degats_max": 17 }], "ec": 100, "cc": 50, "cooldown": 1 }
             ]
         },
         {
             "id": 2014,
-            "nom": "Onde de Choc",
-            "description": "Attaque terre et air simultanément.",
+            "nom": "Maîtrise du Combattant",
+            "description": "Le guerrier affine sa technique, augmentant ses chances de coups critiques pendant plusieurs tours.",
             "classe": "guerrier",
             "niveau_deblocage": 48,
-            "type": "attaque",
-            "cible": "ennemi",
-            "composantes": [
-                { "element": "terre", "stat_liee": "force_stat" },
-                { "element": "air", "stat_liee": "agilite" }
-            ],
+            "type": "buff",
+            "cible": "soi",
+            "effets": [{ "type": "bonus_cc" }],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 10, "degats_max": 14 }, { "element": "air", "degats_min": 5, "degats_max": 8 }], "ec": 100, "cc": 50, "cooldown": 2 },
-                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 16 }, { "element": "air", "degats_min": 6, "degats_max": 10 }], "ec": 100, "cc": 50, "cooldown": 2 },
-                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 19 }, { "element": "air", "degats_min": 7, "degats_max": 12 }], "ec": 100, "cc": 50, "cooldown": 1 },
-                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 17, "degats_max": 22 }, { "element": "air", "degats_min": 9, "degats_max": 14 }], "ec": 100, "cc": 50, "cooldown": 1 },
-                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 20, "degats_max": 27 }, { "element": "air", "degats_min": 11, "degats_max": 17 }], "ec": 100, "cc": 50, "cooldown": 0 }
+                { "niveau": 1, "valeur": 10, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "valeur": 15, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 3, "valeur": 20, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 4, "valeur": 25, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 5, "valeur": 30, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 }
             ]
         },
         {
             "id": 2015,
-            "nom": "Instinct Guerrier",
-            "description": "Augmente les CC et l'Agilité pendant 3 tours.",
+            "nom": "Rage Sanguinaire",
+            "description": "Le guerrier entre dans une frénésie, augmentant massivement ses dégâts mais perdant des HP à chaque tour pendant 3 tours.",
             "classe": "guerrier",
             "niveau_deblocage": 54,
             "type": "buff",
             "cible": "soi",
             "effets": [
-                { "type": "bonus_cc" },
-                { "type": "bonus_stat", "stat": "agilite" }
+                { "type": "bonus_degats_flat" },
+                { "type": "perte_hp_par_tour_pct" }
             ],
             "niveaux": [
-                { "niveau": 1, "valeur_cc": 5, "valeur_stat": 15, "duree": 3, "ec": 100, "cc": 0, "cooldown": 7 },
-                { "niveau": 2, "valeur_cc": 8, "valeur_stat": 20, "duree": 3, "ec": 100, "cc": 0, "cooldown": 7 },
-                { "niveau": 3, "valeur_cc": 10, "valeur_stat": 25, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
-                { "niveau": 4, "valeur_cc": 12, "valeur_stat": 30, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
-                { "niveau": 5, "valeur_cc": 15, "valeur_stat": 40, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 }
+                { "niveau": 1, "valeur": 20, "perte_hp_pct": 2, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "valeur": 25, "perte_hp_pct": 4, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 3, "valeur": 30, "perte_hp_pct": 6, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 4, "valeur": 35, "perte_hp_pct": 8, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 5, "valeur": 40, "perte_hp_pct": 10, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 }
             ]
         },
         {
             "id": 2016,
-            "nom": "Tempête d'Acier",
-            "description": "Une attaque air puissante.",
+            "nom": "Tempête de Feu",
+            "description": "Une attaque puissante qui libère une tempête de flammes, infligeant des dégâts de feu à l'ennemi.",
             "classe": "guerrier",
             "niveau_deblocage": 60,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "composantes": [{ "element": "feu" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 21, "degats_max": 25, "ec": 100, "cc": 40, "cooldown": 3 },
-                { "niveau": 2, "degats_min": 24, "degats_max": 28, "ec": 100, "cc": 40, "cooldown": 3 },
-                { "niveau": 3, "degats_min": 27, "degats_max": 31, "ec": 100, "cc": 40, "cooldown": 2 },
-                { "niveau": 4, "degats_min": 31, "degats_max": 35, "ec": 100, "cc": 40, "cooldown": 2 },
-                { "niveau": 5, "degats_min": 36, "degats_max": 40, "ec": 100, "cc": 40, "cooldown": 1 }
+                { "niveau": 1, "degats_min": 21, "degats_max": 25, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 24, "degats_max": 28, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 27, "degats_max": 31, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 31, "degats_max": 35, "ec": 100, "cc": 40, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 36, "degats_max": 40, "ec": 100, "cc": 40, "cooldown": 0 }
             ]
         },
         {
             "id": 2017,
             "nom": "Frappe Céleste",
-            "description": "Attaque feu et eau simultanément.",
+            "description": "Une attaque venue des cieux, frappant avec puissance et précision pour infliger d’importants dégâts d’air.",
             "classe": "guerrier",
             "niveau_deblocage": 70,
             "type": "attaque",
             "cible": "ennemi",
             "composantes": [
-                { "element": "feu", "stat_liee": "intelligence" },
-                { "element": "eau", "stat_liee": "chance" }
-            ],
+                { "element": "air" }],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "feu", "degats_min": 14, "degats_max": 18 }, { "element": "eau", "degats_min": 8, "degats_max": 12 }], "ec": 100, "cc": 50, "cooldown": 2 },
-                { "niveau": 2, "composantes_degats": [{ "element": "feu", "degats_min": 17, "degats_max": 21 }, { "element": "eau", "degats_min": 10, "degats_max": 14 }], "ec": 100, "cc": 50, "cooldown": 2 },
-                { "niveau": 3, "composantes_degats": [{ "element": "feu", "degats_min": 20, "degats_max": 25 }, { "element": "eau", "degats_min": 12, "degats_max": 16 }], "ec": 100, "cc": 50, "cooldown": 1 },
-                { "niveau": 4, "composantes_degats": [{ "element": "feu", "degats_min": 24, "degats_max": 29 }, { "element": "eau", "degats_min": 14, "degats_max": 19 }], "ec": 100, "cc": 50, "cooldown": 1 },
-                { "niveau": 5, "composantes_degats": [{ "element": "feu", "degats_min": 28, "degats_max": 34 }, { "element": "eau", "degats_min": 17, "degats_max": 23 }], "ec": 100, "cc": 50, "cooldown": 0 }
+                { "niveau": 1, "composantes_degats": [{ "element": "air", "degats_min": 11, "degats_max": 20 }], "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "composantes_degats": [{ "element": "air", "degats_min": 16, "degats_max": 25 }], "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "composantes_degats": [{ "element": "air", "degats_min": 21, "degats_max":30 }], "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "composantes_degats": [{ "element": "air", "degats_min": 26, "degats_max": 35 }], "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "composantes_degats": [{ "element": "air", "degats_min": 26, "degats_max": 40 }], "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
             "id": 2018,
-            "nom": "Rage Berserker",
-            "description": "Augmente massivement les dégâts mais perd des HP à chaque tour pendant 3 tours.",
+            "nom": "Charge du Guerrier",
+            "description": "Le guerrier se rue sur sa cible avec violence, infligeant de lourds dégâts de terre en un seul impact.",
             "classe": "guerrier",
             "niveau_deblocage": 80,
-            "type": "buff",
-            "cible": "soi",
-            "effets": [
-                { "type": "bonus_degats_pct" },
-                { "type": "perte_hp_par_tour" }
-            ],
+            "type": "attaque",
+            "cible": "ennemi",
+            "composantes": [{ "element": "terre" }],
             "niveaux": [
-                { "niveau": 1, "valeur_degats": 80, "perte_hp": 15, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
-                { "niveau": 2, "valeur_degats": 100, "perte_hp": 18, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
-                { "niveau": 3, "valeur_degats": 120, "perte_hp": 20, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 4, "valeur_degats": 140, "perte_hp": 22, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 5, "valeur_degats": 170, "perte_hp": 25, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 }
+                { "niveau": 1, "degats_min": 10, "degats_max": 30, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 2, "degats_min": 11, "degats_max": 33, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 3, "degats_min": 12, "degats_max": 36, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 4, "degats_min": 13, "degats_max": 39, "ec": 100, "cc": 50, "cooldown": 3 },
+                { "niveau": 5, "degats_min": 14, "degats_max": 42, "ec": 100, "cc": 50, "cooldown": 3 }
             ]
         },
         {
             "id": 2019,
             "nom": "Lame du Destin",
-            "description": "Attaque terre, feu et air simultanément.",
+            "description": "Une frappe imprévisible mêlant terre et air, capable d’infliger des dégâts dévastateurs.",
             "classe": "guerrier",
             "niveau_deblocage": 90,
             "type": "attaque",
             "cible": "ennemi",
             "composantes": [
-                { "element": "terre", "stat_liee": "force_stat" },
-                { "element": "feu", "stat_liee": "intelligence" },
-                { "element": "air", "stat_liee": "agilite" }
+                { "element": "terre" },
+                { "element": "air" }
             ],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 16 }, { "element": "feu", "degats_min": 8, "degats_max": 11 }, { "element": "air", "degats_min": 5, "degats_max": 8 }], "ec": 100, "cc": 50, "cooldown": 3 },
-                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 19 }, { "element": "feu", "degats_min": 10, "degats_max": 13 }, { "element": "air", "degats_min": 6, "degats_max": 9 }], "ec": 100, "cc": 50, "cooldown": 3 },
-                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 17, "degats_max": 22 }, { "element": "feu", "degats_min": 12, "degats_max": 15 }, { "element": "air", "degats_min": 7, "degats_max": 11 }], "ec": 100, "cc": 50, "cooldown": 2 },
-                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 20, "degats_max": 26 }, { "element": "feu", "degats_min": 14, "degats_max": 18 }, { "element": "air", "degats_min": 9, "degats_max": 13 }], "ec": 100, "cc": 50, "cooldown": 2 },
-                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 24, "degats_max": 31 }, { "element": "feu", "degats_min": 17, "degats_max": 22 }, { "element": "air", "degats_min": 11, "degats_max": 16 }], "ec": 100, "cc": 50, "cooldown": 1 }
+                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 36 }, { "element": "air", "degats_min": 5, "degats_max": 8 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 13, "degats_max": 39 }, { "element": "air", "degats_min": 6, "degats_max": 9 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 14, "degats_max": 42 }, { "element": "air", "degats_min": 7, "degats_max": 11 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 15, "degats_max": 45 }, { "element": "air", "degats_min": 9, "degats_max": 13 }], "ec": 100, "cc": 50, "cooldown": 2 },
+                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 16, "degats_max": 48 }, { "element": "air", "degats_min": 11, "degats_max": 16 }], "ec": 100, "cc": 50, "cooldown": 2 }
             ]
         },
         {
             "id": 2020,
             "nom": "Colère des Anciens",
-            "description": "Attaque dans tous les éléments et réduit toutes les stats de l'ennemi pendant 2 tours.",
+            "description": "Le guerrier invoque la puissance des anciens, libérant une attaque légendaire qui frappe avec tous les éléments.",
             "classe": "guerrier",
             "niveau_deblocage": 100,
-            "type": "attaque_effet",
+            "type": "attaque",
             "cible": "ennemi",
             "composantes": [
-                { "element": "terre", "stat_liee": "force_stat" },
-                { "element": "feu", "stat_liee": "intelligence" },
-                { "element": "eau", "stat_liee": "chance" },
-                { "element": "air", "stat_liee": "agilite" }
+                { "element": "terre" },
+                { "element": "feu" },
+                { "element": "eau" },
+                { "element": "air" }
             ],
-            "effets": [{ "type": "debuff_toutes_stats", "duree": 2 }],
             "niveaux": [
-                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 10, "degats_max": 14 }, { "element": "feu", "degats_min": 10, "degats_max": 14 }, { "element": "eau", "degats_min": 10, "degats_max": 14 }, { "element": "air", "degats_min": 10, "degats_max": 14 }], "valeur_effet": -10, "ec": 100, "cc": 50, "cooldown": 5 },
-                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 17 }, { "element": "feu", "degats_min": 12, "degats_max": 17 }, { "element": "eau", "degats_min": 12, "degats_max": 17 }, { "element": "air", "degats_min": 12, "degats_max": 17 }], "valeur_effet": -15, "ec": 100, "cc": 50, "cooldown": 5 },
-                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 15, "degats_max": 20 }, { "element": "feu", "degats_min": 15, "degats_max": 20 }, { "element": "eau", "degats_min": 15, "degats_max": 20 }, { "element": "air", "degats_min": 15, "degats_max": 20 }], "valeur_effet": -20, "ec": 100, "cc": 50, "cooldown": 4 },
-                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 18, "degats_max": 24 }, { "element": "feu", "degats_min": 18, "degats_max": 24 }, { "element": "eau", "degats_min": 18, "degats_max": 24 }, { "element": "air", "degats_min": 18, "degats_max": 24 }], "valeur_effet": -25, "ec": 100, "cc": 50, "cooldown": 4 },
-                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 22, "degats_max": 28 }, { "element": "feu", "degats_min": 22, "degats_max": 28 }, { "element": "eau", "degats_min": 22, "degats_max": 28 }, { "element": "air", "degats_min": 22, "degats_max": 28 }], "valeur_effet": -30, "ec": 100, "cc": 50, "cooldown": 3 }
+                { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 10, "degats_max": 14 }, { "element": "feu", "degats_min": 10, "degats_max": 14 }, { "element": "eau", "degats_min": 10, "degats_max": 14 }, { "element": "air", "degats_min": 10, "degats_max": 14 }], "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 2, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 17 }, { "element": "feu", "degats_min": 12, "degats_max": 17 }, { "element": "eau", "degats_min": 12, "degats_max": 17 }, { "element": "air", "degats_min": 12, "degats_max": 17 }], "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 3, "composantes_degats": [{ "element": "terre", "degats_min": 15, "degats_max": 20 }, { "element": "feu", "degats_min": 15, "degats_max": 20 }, { "element": "eau", "degats_min": 15, "degats_max": 20 }, { "element": "air", "degats_min": 15, "degats_max": 20 }], "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 4, "composantes_degats": [{ "element": "terre", "degats_min": 18, "degats_max": 24 }, { "element": "feu", "degats_min": 18, "degats_max": 24 }, { "element": "eau", "degats_min": 18, "degats_max": 24 }, { "element": "air", "degats_min": 18, "degats_max": 24 }], "ec": 100, "cc": 50, "cooldown": 4 },
+                { "niveau": 5, "composantes_degats": [{ "element": "terre", "degats_min": 22, "degats_max": 28 }, { "element": "feu", "degats_min": 22, "degats_max": 28 }, { "element": "eau", "degats_min": 22, "degats_max": 28 }, { "element": "air", "degats_min": 22, "degats_max": 28 }], "ec": 100, "cc": 50, "cooldown": 4 }
             ]
         },
         {
             "id": 2021,
-            "nom": "Bouclier de Pierre",
-            "description": "Réduit les dégâts terre reçus pendant 4 tours.",
+            "nom": "Bouclier",
+            "description": "Réduit les dégâts reçus pendant 4 tours.",
             "classe": "gardien",
             "niveau_deblocage": 1,
             "type": "buff",
             "cible": "soi",
-            "effets": [{ "type": "resistance_element", "element": "terre" }],
+            "effets": [{ "type": "resistance_tous", "stat_liee": "vitalite" }],
             "niveaux": [
-                { "niveau": 1, "valeur": -10, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 },
-                { "niveau": 2, "valeur": -13, "duree": 4, "ec": 100, "cc": 0, "cooldown": 6 },
-                { "niveau": 3, "valeur": -16, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 4, "valeur": -20, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 5, "valeur": -25, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 }
+                { "niveau": 1, "valeur": 8, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 2, "valeur": 10, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 3, "valeur": 12, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 4, "valeur": 14, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 },
+                { "niveau": 5, "valeur": 16, "duree": 3, "ec": 100, "cc": 0, "cooldown": 6 }
             ]
         },
         {
@@ -513,62 +511,60 @@
             "niveau_deblocage": 1,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
+            "composantes": [{ "element": "terre" }],
             "niveaux": [
-                { "niveau": 1, "degats_min": 7, "degats_max": 11, "ec": 100, "cc": 50, "cooldown": 0 },
-                { "niveau": 2, "degats_min": 9, "degats_max": 13, "ec": 100, "cc": 50, "cooldown": 0 },
-                { "niveau": 3, "degats_min": 11, "degats_max": 15, "ec": 100, "cc": 50, "cooldown": 0 },
-                { "niveau": 4, "degats_min": 13, "degats_max": 18, "ec": 100, "cc": 50, "cooldown": 0 },
-                { "niveau": 5, "degats_min": 16, "degats_max": 22, "ec": 100, "cc": 50, "cooldown": 0 }
+                { "niveau": 1, "degats_min": 2, "degats_max": 6, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 3, "degats_max": 7, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 4, "degats_max": 8, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 5, "degats_max": 9, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 6, "degats_max": 10, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
             "id": 2023,
-            "nom": "Sacrifice",
-            "description": "Perd des HP pour gagner temporairement de la Force pendant 3 tours.",
+            "nom": "Serment Terrestre",
+            "description": "Chaque coup reçu augmente la Terre du Gardien",
             "classe": "gardien",
             "niveau_deblocage": 1,
             "type": "buff",
             "cible": "soi",
-            "effets": [
-                { "type": "perte_hp_immediate" },
-                { "type": "bonus_stat", "stat": "force_stat" }
-            ],
+            "effets": [{ "type": "serment", "stat": "terre", "malus_degats_pct": 5 }],
             "niveaux": [
-                { "niveau": 1, "perte_hp": 10, "valeur_stat": 20, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 2, "perte_hp": 12, "valeur_stat": 28, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 3, "perte_hp": 14, "valeur_stat": 36, "duree": 3, "ec": 100, "cc": 0, "cooldown": 5 },
-                { "niveau": 4, "perte_hp": 16, "valeur_stat": 45, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "perte_hp": 18, "valeur_stat": 55, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 }
+                { "niveau": 1, "bonus_par_coup": 60, "duree": 5, "ec": 100, "cc": 40, "cooldown": 5 },
+                { "niveau": 2, "bonus_par_coup": 80, "duree": 5, "ec": 100, "cc": 40, "cooldown": 5 },
+                { "niveau": 3, "bonus_par_coup": 100, "duree": 5, "ec": 100, "cc": 40, "cooldown": 5 },
+                { "niveau": 4, "bonus_par_coup": 120, "duree": 5, "ec": 100, "cc": 40, "cooldown": 5 },
+                { "niveau": 5, "bonus_par_coup": 140, "duree": 5, "ec": 100, "cc": 40, "cooldown": 5 }
             ]
         },
         {
             "id": 2024,
-            "nom": "Mur de Flammes",
-            "description": "Réduit les dégâts feu reçus pendant 4 tours.",
+            "nom": "Frappe Soinante",
+            "description": "Inflige des dégâts terre et soigne le lanceur.",
             "classe": "gardien",
             "niveau_deblocage": 3,
-            "type": "buff",
-            "cible": "soi",
-            "effets": [{ "type": "resistance_element", "element": "feu" }],
+            "type": "attaque_buff",
+            "cible": "ennemi",
+            "composantes": [{ "element": "terre" }],
+            "effets": [ { "type": "soin" } ],
             "niveaux": [
-                { "niveau": 1, "valeur": -8, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 },
-                { "niveau": 2, "valeur": -11, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 },
-                { "niveau": 3, "valeur": -14, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 },
-                { "niveau": 4, "valeur": -17, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 },
-                { "niveau": 5, "valeur": -21, "duree": 4, "ec": 100, "cc": 0, "cooldown": 4 }
+                { "niveau": 1, "degats_min": 2, "degats_max": 4, "valeur_min": 2, "valeur_max": 4, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 2, "degats_min": 3, "degats_max": 5, "valeur_min": 3, "valeur_max": 5, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 3, "degats_min": 4, "degats_max": 6, "valeur_min": 4, "valeur_max": 6, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 4, "degats_min": 5, "degats_max": 7, "valeur_min": 5, "valeur_max": 7, "ec": 100, "cc": 50, "cooldown": 0 },
+                { "niveau": 5, "degats_min": 6, "degats_max": 8, "valeur_min": 6, "valeur_max": 8, "ec": 100, "cc": 50, "cooldown": 0 }
             ]
         },
         {
             "id": 2025,
             "nom": "Coup de Bouclier",
-            "description": "Dégâts terre et réduit l'Agilité de l'ennemi pendant 2 tours.",
+            "description": "Dégâts terre et réduit l'Air de l'ennemi pendant 2 tours.",
             "classe": "gardien",
             "niveau_deblocage": 6,
             "type": "attaque_effet",
             "cible": "ennemi",
-            "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
-            "effets": [{ "type": "debuff_stat", "stat": "agilite", "duree": 2 }],
+            "composantes": [{ "element": "terre" }],
+            "effets": [{ "type": "debuff_stat", "stat": "air", "duree": 2 }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 8, "degats_max": 12, "valeur_effet": -10, "ec": 100, "cc": 0, "cooldown": 4 },
                 { "niveau": 2, "degats_min": 10, "degats_max": 14, "valeur_effet": -14, "ec": 100, "cc": 0, "cooldown": 4 },
@@ -602,7 +598,7 @@
             "niveau_deblocage": 13,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
+            "composantes": [{ "element": "feu" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 10, "degats_max": 14, "ec": 100, "cc": 50, "cooldown": 0 },
                 { "niveau": 2, "degats_min": 12, "degats_max": 16, "ec": 100, "cc": 50, "cooldown": 0 },
@@ -634,13 +630,13 @@
         {
             "id": 2029,
             "nom": "Vague Glaciale",
-            "description": "Dégâts eau et réduit l'Agilité de l'ennemi pendant 2 tours.",
+            "description": "Dégâts eau et réduit l'Air de l'ennemi pendant 2 tours.",
             "classe": "gardien",
             "niveau_deblocage": 21,
             "type": "attaque_effet",
             "cible": "ennemi",
-            "composantes": [{ "element": "eau", "stat_liee": "chance" }],
-            "effets": [{ "type": "debuff_stat", "stat": "agilite", "duree": 2 }],
+            "composantes": [{ "element": "eau" }],
+            "effets": [{ "type": "debuff_stat", "stat": "air", "duree": 2 }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 10, "degats_max": 14, "valeur_effet": -12, "ec": 100, "cc": 50, "cooldown": 3 },
                 { "niveau": 2, "degats_min": 12, "degats_max": 16, "valeur_effet": -16, "ec": 100, "cc": 50, "cooldown": 3 },
@@ -674,7 +670,7 @@
             "niveau_deblocage": 31,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
+            "composantes": [{ "element": "terre" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 18, "degats_max": 24, "ec": 100, "cc": 50, "cooldown": 4 },
                 { "niveau": 2, "degats_min": 21, "degats_max": 28, "ec": 100, "cc": 50, "cooldown": 4 },
@@ -686,13 +682,13 @@
         {
             "id": 2032,
             "nom": "Drain de Force",
-            "description": "Dégâts eau et vole de la Force à l'ennemi pendant 2 tours.",
+            "description": "Dégâts eau et vole de la Terre à l'ennemi pendant 2 tours.",
             "classe": "gardien",
             "niveau_deblocage": 36,
             "type": "attaque_effet",
             "cible": "ennemi",
-            "composantes": [{ "element": "eau", "stat_liee": "chance" }],
-            "effets": [{ "type": "vol_stat", "stat": "force_stat", "duree": 2 }],
+            "composantes": [{ "element": "eau" }],
+            "effets": [{ "type": "vol_stat", "stat": "terre", "duree": 2 }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 10, "degats_max": 14, "valeur_effet": 10, "ec": 100, "cc": 50, "cooldown": 3 },
                 { "niveau": 2, "degats_min": 12, "degats_max": 16, "valeur_effet": 15, "ec": 100, "cc": 50, "cooldown": 3 },
@@ -727,8 +723,8 @@
             "type": "attaque",
             "cible": "ennemi",
             "composantes": [
-                { "element": "terre", "stat_liee": "force_stat" },
-                { "element": "air", "stat_liee": "agilite" }
+                { "element": "terre" },
+                { "element": "air" }
             ],
             "niveaux": [
                 { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 16 }, { "element": "air", "degats_min": 6, "degats_max": 9 }], "ec": 100, "cc": 40, "cooldown": 2 },
@@ -763,7 +759,7 @@
             "niveau_deblocage": 60,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "eau", "stat_liee": "chance" }],
+            "composantes": [{ "element": "eau" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 21, "degats_max": 25, "ec": 100, "cc": 50, "cooldown": 3 },
                 { "niveau": 2, "degats_min": 24, "degats_max": 28, "ec": 100, "cc": 50, "cooldown": 3 },
@@ -781,8 +777,8 @@
             "type": "attaque",
             "cible": "ennemi",
             "composantes": [
-                { "element": "terre", "stat_liee": "force_stat" },
-                { "element": "feu", "stat_liee": "intelligence" }
+                { "element": "terre" },
+                { "element": "feu" }
             ],
             "niveaux": [
                 { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 15, "degats_max": 19 }, { "element": "feu", "degats_min": 9, "degats_max": 13 }], "ec": 100, "cc": 50, "cooldown": 3 },
@@ -818,9 +814,9 @@
             "type": "attaque",
             "cible": "ennemi",
             "composantes": [
-                { "element": "terre", "stat_liee": "force_stat" },
-                { "element": "eau", "stat_liee": "chance" },
-                { "element": "air", "stat_liee": "agilite" }
+                { "element": "terre" },
+                { "element": "eau" },
+                { "element": "air" }
             ],
             "niveaux": [
                 { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 13, "degats_max": 17 }, { "element": "eau", "degats_min": 9, "degats_max": 12 }, { "element": "air", "degats_min": 6, "degats_max": 9 }], "ec": 100, "cc": 50, "cooldown": 6 },
@@ -858,7 +854,7 @@
             "niveau_deblocage": 1,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "composantes": [{ "element": "air" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 7, "degats_max": 11, "ec": 100, "cc": 40, "cooldown": 0 },
                 { "niveau": 2, "degats_min": 9, "degats_max": 13, "ec": 100, "cc": 40, "cooldown": 0 },
@@ -875,7 +871,7 @@
             "niveau_deblocage": 1,
             "type": "attaque_effet",
             "cible": "ennemi",
-            "composantes": [{ "element": "eau", "stat_liee": "chance" }],
+            "composantes": [{ "element": "eau" }],
             "effets": [{ "type": "poison", "duree": 3 }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 5, "degats_max": 9, "poison_par_tour": 3, "ec": 100, "cc": 50, "cooldown": 3 },
@@ -888,14 +884,14 @@
         {
             "id": 2043,
             "nom": "Concentration",
-            "description": "Augmente les CC et l'Agilité pendant 3 tours.",
+            "description": "Augmente les CC et l'Air pendant 3 tours.",
             "classe": "archer",
             "niveau_deblocage": 1,
             "type": "buff",
             "cible": "soi",
             "effets": [
                 { "type": "bonus_cc" },
-                { "type": "bonus_stat", "stat": "agilite" }
+                { "type": "bonus_stat", "stat": "air" }
             ],
             "niveaux": [
                 { "niveau": 1, "valeur_cc": 20, "valeur_stat": 10, "duree": 3, "ec": 100, "cc": 0, "cooldown": 4 },
@@ -914,7 +910,7 @@
             "type": "attaque_multiple",
             "cible": "ennemi",
             "nb_coups": 3,
-            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "composantes": [{ "element": "air" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 3, "degats_max": 5, "ec": 100, "cc": 50, "cooldown": 3 },
                 { "niveau": 2, "degats_min": 4, "degats_max": 6, "ec": 100, "cc": 50, "cooldown": 3 },
@@ -931,7 +927,7 @@
             "niveau_deblocage": 6,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
+            "composantes": [{ "element": "feu" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 8, "degats_max": 12, "ec": 100, "cc": 50, "cooldown": 0 },
                 { "niveau": 2, "degats_min": 10, "degats_max": 14, "ec": 100, "cc": 50, "cooldown": 0 },
@@ -943,13 +939,13 @@
         {
             "id": 2046,
             "nom": "Esquive Tactique",
-            "description": "Augmente l'Agilité et réduit les dégâts reçus pendant 3 tours.",
+            "description": "Augmente l'Air et réduit les dégâts reçus pendant 3 tours.",
             "classe": "archer",
             "niveau_deblocage": 9,
             "type": "buff",
             "cible": "soi",
             "effets": [
-                { "type": "bonus_stat", "stat": "agilite" },
+                { "type": "bonus_stat", "stat": "air" },
                 { "type": "resistance_tous" }
             ],
             "niveaux": [
@@ -968,7 +964,7 @@
             "niveau_deblocage": 13,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "composantes": [{ "element": "air" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 16, "degats_max": 22, "ec": 100, "cc": 35, "cooldown": 3 },
                 { "niveau": 2, "degats_min": 19, "degats_max": 26, "ec": 100, "cc": 35, "cooldown": 3 },
@@ -980,13 +976,13 @@
         {
             "id": 2048,
             "nom": "Flèche Glaciale",
-            "description": "Dégâts eau et réduit l'Agilité de l'ennemi pendant 2 tours.",
+            "description": "Dégâts eau et réduit l'Air de l'ennemi pendant 2 tours.",
             "classe": "archer",
             "niveau_deblocage": 17,
             "type": "attaque_effet",
             "cible": "ennemi",
-            "composantes": [{ "element": "eau", "stat_liee": "chance" }],
-            "effets": [{ "type": "debuff_stat", "stat": "agilite", "duree": 2 }],
+            "composantes": [{ "element": "eau" }],
+            "effets": [{ "type": "debuff_stat", "stat": "air", "duree": 2 }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 9, "degats_max": 13, "valeur_effet": -15, "ec": 100, "cc": 50, "cooldown": 5 },
                 { "niveau": 2, "degats_min": 11, "degats_max": 15, "valeur_effet": -20, "ec": 100, "cc": 50, "cooldown": 5 },
@@ -1018,15 +1014,15 @@
         {
             "id": 2050,
             "nom": "Tir Perforant",
-            "description": "Dégâts air et réduit l'Agilité et la Chance de l'ennemi pendant 2 tours.",
+            "description": "Dégâts air et réduit l'Air et l'Eau de l'ennemi pendant 2 tours.",
             "classe": "archer",
             "niveau_deblocage": 26,
             "type": "attaque_effet",
             "cible": "ennemi",
-            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "composantes": [{ "element": "air" }],
             "effets": [
-                { "type": "debuff_stat", "stat": "agilite", "duree": 2 },
-                { "type": "debuff_stat", "stat": "chance", "duree": 2 }
+                { "type": "debuff_stat", "stat": "air", "duree": 2 },
+                { "type": "debuff_stat", "stat": "eau", "duree": 2 }
             ],
             "niveaux": [
                 { "niveau": 1, "degats_min": 11, "degats_max": 15, "valeur_effet": -10, "ec": 100, "cc": 5, "cooldown": 3 },
@@ -1044,7 +1040,7 @@
             "niveau_deblocage": 31,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
+            "composantes": [{ "element": "terre" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 12, "degats_max": 16, "ec": 100, "cc": 50, "cooldown": 0 },
                 { "niveau": 2, "degats_min": 14, "degats_max": 19, "ec": 100, "cc": 50, "cooldown": 0 },
@@ -1061,7 +1057,7 @@
             "niveau_deblocage": 36,
             "type": "attaque_effet",
             "cible": "ennemi",
-            "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
+            "composantes": [{ "element": "feu" }],
             "effets": [{ "type": "brulure", "duree": 3 }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 10, "degats_max": 14, "brulure_par_tour": 4, "ec": 100, "cc": 50, "cooldown": 5 },
@@ -1097,8 +1093,8 @@
             "type": "attaque",
             "cible": "ennemi",
             "composantes": [
-                { "element": "air", "stat_liee": "agilite" },
-                { "element": "eau", "stat_liee": "chance" }
+                { "element": "air" },
+                { "element": "eau" }
             ],
             "niveaux": [
                 { "niveau": 1, "composantes_degats": [{ "element": "air", "degats_min": 11, "degats_max": 15 }, { "element": "eau", "degats_min": 7, "degats_max": 10 }], "ec": 100, "cc": 50, "cooldown": 2 },
@@ -1136,7 +1132,7 @@
             "niveau_deblocage": 60,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "composantes": [{ "element": "air" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 21, "degats_max": 25, "ec": 100, "cc": 35, "cooldown": 3 },
                 { "niveau": 2, "degats_min": 24, "degats_max": 28, "ec": 100, "cc": 35, "cooldown": 3 },
@@ -1154,8 +1150,8 @@
             "type": "attaque",
             "cible": "ennemi",
             "composantes": [
-                { "element": "air", "stat_liee": "agilite" },
-                { "element": "feu", "stat_liee": "intelligence" }
+                { "element": "air" },
+                { "element": "feu" }
             ],
             "niveaux": [
                 { "niveau": 1, "composantes_degats": [{ "element": "air", "degats_min": 14, "degats_max": 18 }, { "element": "feu", "degats_min": 9, "degats_max": 13 }], "ec": 100, "cc": 50, "cooldown": 2 },
@@ -1194,9 +1190,9 @@
             "type": "attaque",
             "cible": "ennemi",
             "composantes": [
-                { "element": "air", "stat_liee": "agilite" },
-                { "element": "terre", "stat_liee": "force_stat" },
-                { "element": "eau", "stat_liee": "chance" }
+                { "element": "air" },
+                { "element": "terre" },
+                { "element": "eau" }
             ],
             "niveaux": [
                 { "niveau": 1, "composantes_degats": [{ "element": "air", "degats_min": 14, "degats_max": 18 }, { "element": "terre", "degats_min": 9, "degats_max": 12 }, { "element": "eau", "degats_min": 6, "degats_max": 9 }], "ec": 100, "cc": 50, "cooldown": 3 },
@@ -1209,20 +1205,20 @@
         {
             "id": 2060,
             "nom": "Flèche Légendaire",
-            "description": "Attaque dans tous les éléments et réduit l'Agilité et la Chance de l'ennemi pendant 2 tours.",
+            "description": "Attaque dans tous les éléments et réduit l'Air et l'Eau de l'ennemi pendant 2 tours.",
             "classe": "archer",
             "niveau_deblocage": 100,
             "type": "attaque_effet",
             "cible": "ennemi",
             "composantes": [
-                { "element": "air", "stat_liee": "agilite" },
-                { "element": "terre", "stat_liee": "force_stat" },
-                { "element": "feu", "stat_liee": "intelligence" },
-                { "element": "eau", "stat_liee": "chance" }
+                { "element": "air" },
+                { "element": "terre" },
+                { "element": "feu" },
+                { "element": "eau" }
             ],
             "effets": [
-                { "type": "debuff_stat", "stat": "agilite", "duree": 2 },
-                { "type": "debuff_stat", "stat": "chance", "duree": 2 }
+                { "type": "debuff_stat", "stat": "air", "duree": 2 },
+                { "type": "debuff_stat", "stat": "eau", "duree": 2 }
             ],
             "niveaux": [
                 { "niveau": 1, "composantes_degats": [{ "element": "air", "degats_min": 12, "degats_max": 16 }, { "element": "terre", "degats_min": 10, "degats_max": 14 }, { "element": "feu", "degats_min": 8, "degats_max": 12 }, { "element": "eau", "degats_min": 8, "degats_max": 12 }], "valeur_effet": -20, "ec": 100, "cc": 50, "cooldown": 6 },
@@ -1240,7 +1236,7 @@
             "niveau_deblocage": 1,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
+            "composantes": [{ "element": "feu" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 7, "degats_max": 11, "ec": 100, "cc": 50, "cooldown": 0 },
                 { "niveau": 2, "degats_min": 9, "degats_max": 13, "ec": 100, "cc": 50, "cooldown": 0 },
@@ -1274,8 +1270,8 @@
             "niveau_deblocage": 1,
             "type": "attaque_effet",
             "cible": "ennemi",
-            "composantes": [{ "element": "eau", "stat_liee": "chance" }],
-            "effets": [{ "type": "debuff_stat", "stat": "intelligence", "duree": 2 }],
+            "composantes": [{ "element": "eau" }],
+            "effets": [{ "type": "debuff_stat", "stat": "feu", "duree": 2 }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 5, "degats_max": 9, "valeur_effet": -10, "ec": 100, "cc": 50, "cooldown": 4 },
                 { "niveau": 2, "degats_min": 7, "degats_max": 11, "valeur_effet": -14, "ec": 100, "cc": 50, "cooldown": 4 },
@@ -1292,7 +1288,7 @@
             "niveau_deblocage": 3,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
+            "composantes": [{ "element": "feu" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 14, "degats_max": 19, "ec": 100, "cc": 50, "cooldown": 0 },
                 { "niveau": 2, "degats_min": 17, "degats_max": 22, "ec": 100, "cc": 50, "cooldown": 0 },
@@ -1326,7 +1322,7 @@
             "niveau_deblocage": 9,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "eau", "stat_liee": "chance" }],
+            "composantes": [{ "element": "eau" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 9, "degats_max": 13, "ec": 100, "cc": 50, "cooldown": 0 },
                 { "niveau": 2, "degats_min": 11, "degats_max": 15, "ec": 100, "cc": 50, "cooldown": 0 },
@@ -1343,7 +1339,7 @@
             "niveau_deblocage": 13,
             "type": "attaque_effet",
             "cible": "ennemi",
-            "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
+            "composantes": [{ "element": "feu" }],
             "effets": [{ "type": "brulure", "duree": 3 }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 9, "degats_max": 13, "brulure_par_tour": 4, "ec": 100, "cc": 50, "cooldown": 3 },
@@ -1378,7 +1374,7 @@
             "niveau_deblocage": 21,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "terre", "stat_liee": "force_stat" }],
+            "composantes": [{ "element": "terre" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 11, "degats_max": 15, "ec": 100, "cc": 50, "cooldown": 0 },
                 { "niveau": 2, "degats_min": 13, "degats_max": 17, "ec": 100, "cc": 50, "cooldown": 0 },
@@ -1412,7 +1408,7 @@
             "niveau_deblocage": 31,
             "type": "attaque",
             "cible": "ennemi",
-            "composantes": [{ "element": "air", "stat_liee": "agilite" }],
+            "composantes": [{ "element": "air" }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 12, "degats_max": 16, "ec": 100, "cc": 50, "cooldown": 3 },
                 { "niveau": 2, "degats_min": 14, "degats_max": 19, "ec": 100, "cc": 50, "cooldown": 3 },
@@ -1430,8 +1426,8 @@
             "type": "attaque",
             "cible": "ennemi",
             "composantes": [
-                { "element": "feu", "stat_liee": "intelligence" },
-                { "element": "terre", "stat_liee": "force_stat" }
+                { "element": "feu" },
+                { "element": "terre" }
             ],
             "niveaux": [
                 { "niveau": 1, "composantes_degats": [{ "element": "feu", "degats_min": 12, "degats_max": 16 }, { "element": "terre", "degats_min": 7, "degats_max": 10 }], "ec": 100, "cc": 50, "cooldown": 2 },
@@ -1450,8 +1446,8 @@
             "type": "buff",
             "cible": "soi",
             "effets": [
-                { "type": "bonus_stat", "stat": "intelligence" },
-                { "type": "bonus_stat", "stat": "chance" }
+                { "type": "bonus_stat", "stat": "feu" },
+                { "type": "bonus_stat", "stat": "eau" }
             ],
             "niveaux": [
                 { "niveau": 1, "valeur_intelligence": 20, "valeur_chance": 20, "duree": 4, "ec": 100, "cc": 0, "cooldown": 5 },
@@ -1470,8 +1466,8 @@
             "type": "attaque",
             "cible": "ennemi",
             "composantes": [
-                { "element": "feu", "stat_liee": "intelligence" },
-                { "element": "eau", "stat_liee": "chance" }
+                { "element": "feu" },
+                { "element": "eau" }
             ],
             "niveaux": [
                 { "niveau": 1, "composantes_degats": [{ "element": "feu", "degats_min": 13, "degats_max": 17 }, { "element": "eau", "degats_min": 8, "degats_max": 12 }], "ec": 100, "cc": 50, "cooldown": 4 },
@@ -1509,8 +1505,8 @@
             "niveau_deblocage": 60,
             "type": "attaque_effet",
             "cible": "ennemi",
-            "composantes": [{ "element": "feu", "stat_liee": "intelligence" }],
-            "effets": [{ "type": "debuff_stat", "stat": "intelligence", "duree": 2 }],
+            "composantes": [{ "element": "feu" }],
+            "effets": [{ "type": "debuff_stat", "stat": "feu", "duree": 2 }],
             "niveaux": [
                 { "niveau": 1, "degats_min": 21, "degats_max": 25, "valeur_effet": -20, "ec": 100, "cc": 50, "cooldown": 6 },
                 { "niveau": 2, "degats_min": 24, "degats_max": 28, "valeur_effet": -28, "ec": 100, "cc": 50, "cooldown": 5 },
@@ -1528,9 +1524,9 @@
             "type": "attaque",
             "cible": "ennemi",
             "composantes": [
-                { "element": "feu", "stat_liee": "intelligence" },
-                { "element": "eau", "stat_liee": "chance" },
-                { "element": "air", "stat_liee": "agilite" }
+                { "element": "feu" },
+                { "element": "eau" },
+                { "element": "air" }
             ],
             "niveaux": [
                 { "niveau": 1, "composantes_degats": [{ "element": "feu", "degats_min": 13, "degats_max": 17 }, { "element": "eau", "degats_min": 9, "degats_max": 12 }, { "element": "air", "degats_min": 6, "degats_max": 9 }], "ec": 100, "cc": 50, "cooldown": 2 },
@@ -1566,10 +1562,10 @@
             "type": "attaque",
             "cible": "ennemi",
             "composantes": [
-                { "element": "terre", "stat_liee": "force_stat" },
-                { "element": "feu", "stat_liee": "intelligence" },
-                { "element": "eau", "stat_liee": "chance" },
-                { "element": "air", "stat_liee": "agilite" }
+                { "element": "terre" },
+                { "element": "feu" },
+                { "element": "eau" },
+                { "element": "air" }
             ],
             "niveaux": [
                 { "niveau": 1, "composantes_degats": [{ "element": "terre", "degats_min": 12, "degats_max": 16 }, { "element": "feu", "degats_min": 12, "degats_max": 16 }, { "element": "eau", "degats_min": 10, "degats_max": 13 }, { "element": "air", "degats_min": 8, "degats_max": 11 }], "ec": 100, "cc": 50, "cooldown": 4 },
@@ -1588,10 +1584,10 @@
             "type": "attaque_effet",
             "cible": "ennemi",
             "composantes": [
-                { "element": "terre", "stat_liee": "force_stat" },
-                { "element": "feu", "stat_liee": "intelligence" },
-                { "element": "eau", "stat_liee": "chance" },
-                { "element": "air", "stat_liee": "agilite" }
+                { "element": "terre" },
+                { "element": "feu" },
+                { "element": "eau" },
+                { "element": "air" }
             ],
             "effets": [
                 { "type": "debuff_toutes_stats", "duree": 2 },

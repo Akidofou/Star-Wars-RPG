@@ -41,6 +41,34 @@
             "description": "Une patte robuste prélevée sur un loup des bois.",
             "categorie": "patte",
             "drops_par": [1]
+        },
+        {
+            "id": "plume_fleche",
+            "nom": "Plume de Flèche",
+            "description": "Une plume utilisée pour fabriquer des flèches.",
+            "categorie": "plume",
+            "drops_par": [2]
+        },
+        {
+            "id": "arc_abime",
+            "nom": "Arc Abîmé",
+            "description": "Un Arc court en mauvais état.",
+            "categorie": "arme",
+            "drops_par": [2]
+        },
+        {
+            "id": "piege_brise",
+            "nom": "Piège Brisé",
+            "description": "Un piège endommagé.",
+            "categorie": "outil",
+            "drops_par": [2]
+        },
+        {
+            "id": "couteau_brise",
+            "nom": "Couteau Brisé",
+            "description": "Un couteau fendu en deux.",
+            "categorie": "arme",
+            "drops_par": [2]
         }
     ]
 }

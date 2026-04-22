@@ -24,14 +24,14 @@
                             "id": "foret_sylvane",
                             "nom": "Forêt de Sylvane",
                             "description": "Forêt royale protégée aux abords de la capitale. Braconniers et créatures des bois y rôdent.",
-                            "niveau_recommande": 1,
+                            "niveau_recommande": "1 - 3",
                             "combat": true
                         },
                         {
                             "id": "collines_valdren",
                             "nom": "Collines de Valdren",
                             "description": "Collines venteuses balayées par les vents du nord. Brigands et loups sauvages y font la loi.",
-                            "niveau_recommande": 3,
+                            "niveau_recommande": "1 - 5",
                             "combat": true
                         },
                         {

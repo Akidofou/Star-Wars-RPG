@@ -18,9 +18,8 @@ const effects = {
                 case 'brulure':
                     nouvelEffet.valeur = niveauData.brulure_par_tour || 0;
                     nouvelEffet.element = 'feu';
-                    nouvelEffet.stat_liee = 'intelligence';
                     nouvelEffet.stats_attaquant = {
-                        intelligence: statsAttaquant.intelligence || 0
+                        feu: statsAttaquant.feu || 0
                     };
                     break;
 
@@ -31,7 +30,10 @@ const effects = {
 
                 case 'saignement':
                     nouvelEffet.valeur = niveauData.saignement_par_tour || 0;
-                    nouvelEffet.element = null;
+                    nouvelEffet.element = 'terre';
+                    nouvelEffet.stats_attaquant = {
+                        terre: statsAttaquant.terre || 0
+                    };
                     break;
 
                 case 'debuff_stat':
@@ -45,6 +47,16 @@ const effects = {
 
                 case 'bonus_degats_pct':
                     nouvelEffet.valeur = niveauData.valeur || niveauData.valeur_degats || 0;
+                    break;
+                
+                case 'bonus_degats_flat':
+                    if (niveauData.valeur_min !== undefined && niveauData.valeur_max !== undefined) {
+                        nouvelEffet.valeur = Math.floor(
+                            Math.random() * (niveauData.valeur_max - niveauData.valeur_min + 1)
+                        ) + niveauData.valeur_min;
+                    } else {
+                        nouvelEffet.valeur = niveauData.valeur || niveauData.valeur_degats_flat || 0;
+                    }
                     break;
 
                 case 'bonus_stat':
@@ -67,10 +79,19 @@ const effects = {
                 case 'resistance_element':
                     nouvelEffet.element = effet.element;
                     nouvelEffet.valeur = niveauData.valeur || 0;
+                    nouvelEffet.stat_liee = effet.stat_liee || null;
+                    nouvelEffet.stat_valeur = effet.stat_liee ? (statsAttaquant[effet.stat_liee] || 0) : 0;
                     break;
 
                 case 'resistance_tous':
                     nouvelEffet.valeur = niveauData.valeur || niveauData.valeur_resistance || 0;
+                    nouvelEffet.stat_liee = effet.stat_liee || null;
+                    nouvelEffet.stat_valeur = effet.stat_liee ? (statsAttaquant[effet.stat_liee] || 0) : 0;
+                    break;
+                
+                case 'resistance_element_pct':
+                    nouvelEffet.element = effet.element;
+                    nouvelEffet.valeur = niveauData.valeur || 0;
                     break;
 
                 case 'resistance_tous_pct':
@@ -88,6 +109,10 @@ const effects = {
 
                 case 'perte_hp_par_tour':
                     nouvelEffet.valeur = niveauData.perte_hp || 0;
+                    break;
+
+                case 'perte_hp_par_tour_pct':
+                    nouvelEffet.valeur = niveauData.perte_hp_pct || 0;
                     break;
 
                 case 'soin':
@@ -134,6 +159,14 @@ const effects = {
                     nouvelEffet.element = effet.element;
                     nouvelEffet.valeur = niveauData.valeur || 0;
                     break;
+                case 'serment':
+                    nouvelEffet.stat = effet.stat;
+                    nouvelEffet.bonus_par_coup = niveauData.bonus_par_coup || 0;
+                    nouvelEffet.malus_degats_pct = effet.malus_degats_pct || 0;
+                    nouvelEffet.affaiblit = effet.affaiblit || false;
+                    nouvelEffet.stacks = 0;
+                    nouvelEffet.bonus_total = 0;
+                    break;
             }
 
             effetsAppliques.push(nouvelEffet);
@@ -161,7 +194,7 @@ const effects = {
                     }
                     let degats = effet.valeur;
                     if (effet.stats_attaquant) {
-                        const stat = effet.stats_attaquant.intelligence || 0;
+                        const stat = effet.stats_attaquant.feu || 0;
                         degats = Math.round(degats * (1 + stat / 100));
                     }
                     if (absorptionRestante > 0) {
@@ -225,6 +258,14 @@ const effects = {
                     break;
                 }
 
+                case 'perte_hp_par_tour_pct': {
+                    if (estImmune) break;
+                    const perteHP = Math.round((cible.hp_max || cible.hp_actuel) * effet.valeur / 100);
+                    hpChange -= perteHP;
+                    journal.push(`💔 **${nomCible}** perd **${perteHP}** HP (${effet.valeur}% HP max) ! (${effet.duree - 1} tour(s) restant)`);
+                    break;
+                }
+
                 case 'soin_par_tour': {
                     hpChange += effet.valeur;
                     journal.push(`💚 **${nomCible}** récupère **${effet.valeur}** HP ! (${effet.duree - 1} tour(s) restant)`);
@@ -237,6 +278,12 @@ const effects = {
                 effetsRestants.push(effetMisAJour);
             } else {
                 effects.traiterFinEffet(effetMisAJour, journal, nomCible);
+                if (effetMisAJour.type === 'bonus_vitalite') {
+                    hpChange -= effetMisAJour.valeur;
+                }
+                if (effetMisAJour.type === 'serment' && effetMisAJour.stat === 'vitalite') {
+                    hpChange -= effetMisAJour.bonus_total;
+                }
             }
         });
 
@@ -257,17 +304,23 @@ const effects = {
             case 'bonus_degats_pct':
                 journal.push(`⚡ Le bonus de dégâts de **${effet.source_nom}** sur **${nomCible}** se termine !`);
                 break;
+            case 'bonus_degats_flat':
+                journal.push(`⚡ Le bonus de dégâts flat de **${effet.source_nom}** sur **${nomCible}** se termine !`);
+                break;
             case 'bonus_stat':
                 journal.push(`📈 Le bonus de stat de **${effet.source_nom}** sur **${nomCible}** se termine !`);
                 break;
             case 'bonus_vitalite':
-                journal.push(`❤️ Le bonus de vitalité de **${effet.source_nom}** sur **${nomCible}** se termine !`);
+                journal.push(`❤️ Le bonus de vitalité de **${effet.source_nom}** sur **${nomCible}** se termine ! (-${effet.valeur} HP max)`);
                 break;
             case 'bonus_cc':
                 journal.push(`🎯 Le bonus de critique de **${effet.source_nom}** sur **${nomCible}** se termine !`);
                 break;
             case 'resistance_element':
                 journal.push(`🛡️ La résistance **${effet.element}** de **${effet.source_nom}** sur **${nomCible}** se termine !`);
+                break;
+            case 'resistance_element_pct':
+                journal.push(`🛡️ La résistance **${effet.element}** % de **${effet.source_nom}** sur **${nomCible}** se termine !`);
                 break;
             case 'resistance_tous':
             case 'resistance_tous_pct':
@@ -306,17 +359,28 @@ const effects = {
             case 'perte_hp_par_tour':
                 journal.push(`💔 L'effet de perte de HP de **${effet.source_nom}** sur **${nomCible}** se termine !`);
                 break;
+            case 'perte_hp_par_tour_pct':
+                journal.push(`💔 L'effet de perte de HP % de **${effet.source_nom}** sur **${nomCible}** se termine !`);
+                break;
             case 'soin_par_tour':
                 journal.push(`💚 L'effet de soin de **${effet.source_nom}** sur **${nomCible}** se termine !`);
                 break;
             case 'vol_stat':
                 journal.push(`🔄 Le vol de stat de **${effet.source_nom}** sur **${nomCible}** se termine !`);
                 break;
+            case 'serment':
+                if (effet.stat === 'vitalite' && effet.bonus_total > 0) {
+                    journal.push(`🛡️ Le Serment de Vitalité de **${effet.source_nom}** se termine ! (-${effet.bonus_total} HP max)`);
+                } else {
+                    journal.push(`🛡️ Le Serment de **${effet.source_nom}** se termine ! (+${effet.bonus_total} ${effet.stat} accumulé)`);
+                }
+                break;
         }
     },
 
     getModificateursDegats(effetsActifs) {
         let bonusPct = 0;
+        let bonusFlat = 0;
         let bonusElementPct = {};
         let estImmune = false;
         let multiplicateur = 1;
@@ -327,6 +391,9 @@ const effects = {
                 case 'bonus_degats_pct':
                     bonusPct += effet.valeur;
                     break;
+                case 'bonus_degats_flat':
+                    bonusFlat += effet.valeur;
+                    break;
                 case 'bonus_degats_element_pct':
                     bonusElementPct[effet.element] = (bonusElementPct[effet.element] || 0) + effet.valeur;
                     break;
@@ -336,16 +403,33 @@ const effects = {
                 case 'multiplicateur_effets':
                     multiplicateur = effet.valeur;
                     break;
+                case 'serment':
+                    if (effet.affaiblit && effet.stacks > 0) {
+                        bonusPct -= Math.min(effet.stacks * 5, 30);
+                    }
+                    break;
             }
         });
 
-        return { bonusPct, bonusElementPct, estImmune, multiplicateur };
+        return { bonusPct, bonusFlat, bonusElementPct, estImmune, multiplicateur };
+    },
+
+    getSermentMalus(effetsActifs) {
+        let malusDegats = 0;
+        effetsActifs.forEach(effet => {
+            if (effet.duree <= 0) return;
+            if (effet.type === 'serment') {
+                malusDegats += effet.malus_degats_pct || 0;
+            }
+        });
+        return malusDegats;
     },
 
     getModificateursDefense(effetsActifs) {
         let reductionFlat = 0;
         let reductionPct = 0;
         let reductionElement = {};
+        let reductionElementPct = {};
         let absorption = 0;
         let nbEsquives = 0;
         let estImmune = false;
@@ -354,13 +438,23 @@ const effects = {
             if (effet.duree <= 0) return;
             switch (effet.type) {
                 case 'resistance_tous':
-                    reductionFlat += Math.abs(effet.valeur);
+                    if (effet.stat_valeur > 0) {
+                        reductionFlat += Math.round(Math.abs(effet.valeur) * (1 + effet.stat_valeur / 100));
+                    } else {
+                        reductionFlat += Math.abs(effet.valeur);
+                    }
                     break;
                 case 'resistance_tous_pct':
                     reductionPct += effet.valeur;
                     break;
                 case 'resistance_element':
-                    reductionElement[effet.element] = (reductionElement[effet.element] || 0) + Math.abs(effet.valeur);
+                    const reductionElem = effet.stat_valeur > 0
+                        ? Math.round(Math.abs(effet.valeur) * (1 + effet.stat_valeur / 100))
+                        : Math.abs(effet.valeur);
+                    reductionElement[effet.element] = (reductionElement[effet.element] || 0) + reductionElem;
+                    break;
+                case 'resistance_element_pct':
+                    reductionElementPct[effet.element] = (reductionElementPct[effet.element] || 0) + effet.valeur;
                     break;
                 case 'absorption_degats':
                     absorption += effet.restant || effet.valeur;
@@ -374,7 +468,7 @@ const effects = {
             }
         });
 
-        return { reductionFlat, reductionPct, reductionElement, absorption, nbEsquives, estImmune };
+        return { reductionFlat, reductionPct, reductionElement, reductionElementPct, absorption, nbEsquives, estImmune };
     },
 
     getModificateursStats(effetsActifs) {
@@ -393,7 +487,7 @@ const effects = {
                     bonusStats[effet.stat] = (bonusStats[effet.stat] || 0) + effet.valeur;
                     break;
                 case 'debuff_toutes_stats':
-                    ['force_stat', 'intelligence', 'chance', 'agilite'].forEach(stat => {
+                    ['terre', 'feu', 'eau', 'air'].forEach(stat => {
                         bonusStats[stat] = (bonusStats[stat] || 0) + effet.valeur;
                     });
                     break;
@@ -403,6 +497,14 @@ const effects = {
                 case 'reduction_ec':
                     reductionEC += effet.valeur;
                     break;
+                case 'serment':
+                    if (effet.stat !== 'vitalite') {
+                        bonusStats[effet.stat] = (bonusStats[effet.stat] || 0) + effet.bonus_total;
+                    }
+                    if (effet.affaiblit) {
+                        bonusPct -= Math.min(effet.stacks * 5, 30);
+                    }
+                    break;
             }
         });
 
@@ -410,16 +512,28 @@ const effects = {
     },
 
     appliquerDegatsAvecDefense(degats, element, effetsDefenseur) {
-        const { reductionFlat, reductionPct, reductionElement, absorption, nbEsquives, estImmune } = effects.getModificateursDefense(effetsDefenseur);
+        const { reductionFlat, reductionPct, reductionElement, reductionElementPct, absorption, nbEsquives, estImmune } = effects.getModificateursDefense(effetsDefenseur);
 
-        if (estImmune) return { degats: 0, esquive: false, absorbe: false, immune: true, reduit: false, montantReduit: 0 };
+        if (estImmune) return { degats: 0, esquive: false, absorbe: false, immune: true, reduit: false, montantReduit: 0, montantTotalBloque: 0 };
 
-        if (nbEsquives > 0) return { degats: 0, esquive: true, absorbe: false, immune: false, reduit: false, montantReduit: 0 };
+        if (nbEsquives > 0) return { degats: 0, esquive: true, absorbe: false, immune: false, reduit: false, montantReduit: 0, montantTotalBloque: 0 };
 
         let degatsFinaux = degats;
+
+        // Résistance flat élémentaire
         if (reductionElement[element]) degatsFinaux -= reductionElement[element];
+
+        // Résistance % élémentaire
+        if (reductionElementPct[element]) {
+            degatsFinaux = Math.round(degatsFinaux * (1 - reductionElementPct[element] / 100));
+        }
+
+        // Résistance flat globale
         if (reductionFlat > 0) degatsFinaux -= reductionFlat;
+
+        // Résistance % globale
         if (reductionPct > 0) degatsFinaux = Math.round(degatsFinaux * (1 - reductionPct / 100));
+
         degatsFinaux = Math.max(0, degatsFinaux);
 
         const montantReduit = degats - degatsFinaux;
