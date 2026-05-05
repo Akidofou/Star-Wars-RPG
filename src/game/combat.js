@@ -128,9 +128,13 @@ const combat = {
     },
 
     creerCombat(discord_id, enemy, variante) {
+        const joueur = db.prepare('SELECT pa_max FROM players WHERE discord_id = ?').get(discord_id);
+        const paJoueur = joueur ? joueur.pa_max : 6;
+        const paEnnemi = variante.pa || 6;
+
         db.prepare(`
-            INSERT INTO combats (discord_id, enemy_id, enemy_niveau, enemy_hp, enemy_hp_max, enemy_stats, cooldowns_ennemi)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO combats (discord_id, enemy_id, enemy_niveau, enemy_hp, enemy_hp_max, enemy_stats, cooldowns_ennemi, pa_joueur, pa_ennemi)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         `).run(
             discord_id,
             enemy.id,
@@ -138,7 +142,9 @@ const combat = {
             variante.hp,
             variante.hp,
             JSON.stringify({ ...variante, hp_depart: variante.hp }),
-            JSON.stringify({})
+            JSON.stringify({}),
+            paJoueur,
+            paEnnemi
         );
         return db.prepare(`SELECT * FROM combats WHERE discord_id = ? ORDER BY id DESC LIMIT 1`).get(discord_id);
     },

@@ -26,6 +26,7 @@ const initDB = () => {
         air                 INTEGER DEFAULT 0,
         points_stat         INTEGER DEFAULT 0,
         points_competence   INTEGER DEFAULT 0,
+        pa_max              INTEGER DEFAULT 6,
         zone_actuelle       TEXT DEFAULT 'asure',
         secteur_actuel      TEXT DEFAULT 'asuria',
         position            TEXT DEFAULT 'ville',
@@ -73,6 +74,8 @@ const initDB = () => {
         cooldowns_joueur    TEXT DEFAULT '{}',
         cooldowns_ennemi    TEXT DEFAULT '{}',
         tour                INTEGER DEFAULT 1,
+        pa_joueur           INTEGER DEFAULT 6,
+        pa_ennemi           INTEGER DEFAULT 6,
         statut              TEXT DEFAULT 'en_cours',
         created_at          TEXT DEFAULT (datetime('now')),
         FOREIGN KEY (discord_id) REFERENCES players(discord_id)

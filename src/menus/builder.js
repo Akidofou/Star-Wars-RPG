@@ -187,18 +187,27 @@ const builder = {
     },
 
     stats(joueur) {
+        const { getCoutStat } = require('./handlers/stats');
+
+        const coutTerre = getCoutStat(joueur.classe, 'terre', joueur.terre || 0);
+        const coutFeu = getCoutStat(joueur.classe, 'feu', joueur.feu || 0);
+        const coutEau = getCoutStat(joueur.classe, 'eau', joueur.eau || 0);
+        const coutAir = getCoutStat(joueur.classe, 'air', joueur.air || 0);
+        const coutVitalite = getCoutStat(joueur.classe, 'vitalite', joueur.vitalite || 0);
+        const coutSagesse = getCoutStat(joueur.classe, 'sagesse', joueur.sagesse || 0);
+        const gainVitalite = joueur.classe === 'gardien' ? 2 : 1;
+
         const embed = new EmbedBuilder()
             .setTitle(`📊 Statistiques de ${joueur.username}`)
             .setDescription(
                 `📊 **Points de stat disponibles : ${joueur.points_stat}**\n\n` +
-                `❤️ Vitalité : **${joueur.vitalite}**\n` +
-                `📖 Sagesse : **${joueur.sagesse}**\n` +
-                `🟤 Terre : **${joueur.terre}**\n` +
-                `🔥 Feu : **${joueur.feu}**\n` +
-                `💧 Eau : **${joueur.eau}**\n` +
-                `💨 Air : **${joueur.air}**\n\n` +
-                `*1 point de stat = +1 dans la statistique choisie.*\n` +
-                `*La Vitalité augmente vos points de vie maximum.*\n` +
+                `❤️ Vitalité : **${joueur.vitalite}** *(+${gainVitalite} pour ${coutVitalite}pt)*\n` +
+                `📖 Sagesse : **${joueur.sagesse}** *(+1 pour ${coutSagesse}pt)*\n` +
+                `🟤 Terre : **${joueur.terre}** *(+1 pour ${coutTerre}pt)*\n` +
+                `🔥 Feu : **${joueur.feu}** *(+1 pour ${coutFeu}pt)*\n` +
+                `💧 Eau : **${joueur.eau}** *(+1 pour ${coutEau}pt)*\n` +
+                `💨 Air : **${joueur.air}** *(+1 pour ${coutAir}pt)*\n\n` +
+                `*La Vitalité augmente vos HP maximum.*\n` +
                 `*La Sagesse augmente votre gain d'expérience.*\n` +
                 `*La Terre amplifie les dégâts terre.*\n` +
                 `*Le Feu amplifie les dégâts feu.*\n` +
@@ -211,44 +220,44 @@ const builder = {
             .addComponents(
                 new ButtonBuilder()
                     .setCustomId('stats_vitalite')
-                    .setLabel('Vitalité +1')
+                    .setLabel(`Vitalité +${gainVitalite} (${coutVitalite}pt)`)
                     .setStyle(ButtonStyle.Success)
                     .setEmoji('❤️')
-                    .setDisabled(joueur.points_stat <= 0),
+                    .setDisabled(joueur.points_stat < coutVitalite),
                 new ButtonBuilder()
                     .setCustomId('stats_sagesse')
-                    .setLabel('Sagesse +1')
+                    .setLabel(`Sagesse +1 (${coutSagesse}pt)`)
                     .setStyle(ButtonStyle.Success)
                     .setEmoji('📖')
-                    .setDisabled(joueur.points_stat <= 0),
+                    .setDisabled(joueur.points_stat < coutSagesse),
                 new ButtonBuilder()
                     .setCustomId('stats_terre')
-                    .setLabel('Terre +1')
+                    .setLabel(`Terre +1 (${coutTerre}pt)`)
                     .setStyle(ButtonStyle.Primary)
                     .setEmoji('🟤')
-                    .setDisabled(joueur.points_stat <= 0),
+                    .setDisabled(joueur.points_stat < coutTerre),
                 new ButtonBuilder()
                     .setCustomId('stats_feu')
-                    .setLabel('Feu +1')
+                    .setLabel(`Feu +1 (${coutFeu}pt)`)
                     .setStyle(ButtonStyle.Primary)
                     .setEmoji('🔥')
-                    .setDisabled(joueur.points_stat <= 0)
+                    .setDisabled(joueur.points_stat < coutFeu)
             );
 
         const row2 = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
                     .setCustomId('stats_eau')
-                    .setLabel('Eau +1')
+                    .setLabel(`Eau +1 (${coutEau}pt)`)
                     .setStyle(ButtonStyle.Primary)
                     .setEmoji('💧')
-                    .setDisabled(joueur.points_stat <= 0),
+                    .setDisabled(joueur.points_stat < coutEau),
                 new ButtonBuilder()
                     .setCustomId('stats_air')
-                    .setLabel('Air +1')
+                    .setLabel(`Air +1 (${coutAir}pt)`)
                     .setStyle(ButtonStyle.Primary)
                     .setEmoji('💨')
-                    .setDisabled(joueur.points_stat <= 0)
+                    .setDisabled(joueur.points_stat < coutAir)
             );
 
         const rowRetour = new ActionRowBuilder()
@@ -1014,6 +1023,7 @@ const builder = {
                 `**- Vous -**\n` +
                 `${barreJoueur}\n` +
                 `❤️ HP : ${joueur.hp_actuel} / ${joueur.hp_max}\n\n` +
+                `⚡ PA : ${combatData.pa_joueur ?? joueur.pa_max ?? 6} / ${joueur.pa_max || 6}\n\n` +
                 `⭐ Niveau : ${joueur.niveau}\n\n` +
                 `**- ${enemyData ? enemyData.nom : 'Ennemi'} (Nv.${combatData.enemy_niveau}) -**\n` +
                 `${barreEnemy}\n` +
@@ -1032,19 +1042,24 @@ const builder = {
                         sorts.map(sort => {
                             const enCooldown = cooldowns[sort.sort_id] > 0;
                             const niveauData = sort.niveaux.find(n => n.niveau === sort.niveau_actuel);
+                            const coutPA = niveauData?.cout_pa || 3;
+                            const paActuel = combatData.pa_joueur ?? joueur.pa_max ?? 6;
+                            const paInsuffisant = paActuel < coutPA;
                             let description = '';
 
                             if (enCooldown) {
                                 description = `⏳ Cooldown : ${cooldowns[sort.sort_id]} tour(s)`;
+                            } else if (paInsuffisant) {
+                                description = `❌ PA insuffisants (coûte ${coutPA} PA)`;
                             } else {
                                 description = this.genererDescriptionSort(sort, niveauData);
                             }
 
                             return {
-                                label: `${sort.nom} (Nv.${sort.niveau_actuel})`,
+                                label: `${sort.nom} — ${coutPA} PA (Nv.${sort.niveau_actuel})`,
                                 description: description.substring(0, 100),
                                 value: `${sort.sort_id}`,
-                                emoji: enCooldown ? '⏳' : '⚔️'
+                                emoji: enCooldown ? '⏳' : paInsuffisant ? '❌' : '⚔️'
                             };
                         })
                     )
@@ -1052,6 +1067,11 @@ const builder = {
 
         const rowFuite = new ActionRowBuilder()
             .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('combat_passertour')
+                    .setLabel('Passer le tour')
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji('⏭️'),
                 new ButtonBuilder()
                     .setCustomId('combat_fuir')
                     .setLabel('Fuir')

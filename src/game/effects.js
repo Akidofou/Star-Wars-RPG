@@ -273,7 +273,9 @@ const effects = {
                 }
             }
 
-            const effetMisAJour = { ...effet, duree: effet.duree - 1 };
+            const effetMisAJour = effet.type === 'serment'
+                ? { ...effet, duree: effet.duree - 1, bonus_ce_tour: 0 }
+                : { ...effet, duree: effet.duree - 1 };
             if (effetMisAJour.duree > 0) {
                 effetsRestants.push(effetMisAJour);
             } else {
